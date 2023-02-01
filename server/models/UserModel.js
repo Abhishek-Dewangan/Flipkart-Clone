@@ -45,4 +45,16 @@ UserSchema.pre('save', async function (next) {
   }
 });
 
-
+//  Token generating for authentication
+UserSchema.methods.generateAuthToken = async function () {
+  try {
+    const token = await jwt.sign({_id: this._id}, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+    this.token = token;
+    await this.save();
+    return token;
+  } catch (error) {
+    console.log(error);
+  }
+};
