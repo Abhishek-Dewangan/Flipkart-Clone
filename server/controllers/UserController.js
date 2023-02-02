@@ -1,19 +1,22 @@
 const User = require('../models/UserModel');
+const bcrypt = require('bcrypt');
 
+// Signup/Register route
 const signup = async (req, res) => {
   try {
     const isExist = await User.findOne({email: req.body.email});
     if (isExist) {
-      res.status(409).send('Email is already exist');
+      res.status(409).send({message: 'Email is already exist'});
     } else {
       const user = await new User(req.body).save();
-      res.status(200).send(`${user.name} registered successfully`);
+      res.status(200).send({message: `${user.name} registered successfully`});
     }
   } catch (error) {
-    res.status(400).send('Invalid data or invalid syntax');
+    res.status(400).send({message: 'Invalid data or invalid syntax', error});
   }
 };
 
+// Signin/Login route
 const signin = async (req, res) => {
   try {
     const user = await User.findOne({email: req.body.email});
@@ -31,8 +34,25 @@ const signin = async (req, res) => {
       res.status(404).send({message: 'Email is not registerd'});
     }
   } catch (error) {
-    res.status(400).send('Error while signin');
+    res.status(400).send({message: 'Error while signin', error});
   }
 };
 
-module.exports = {signup, signin};
+// Signout/Logout route
+const signout = async (req, res) => {
+  try {
+    const user = await User.findOne({token: req.body.token});
+    if (user) {
+      user.token = '';
+      await user.save();
+      res.status(200).send({message: 'Logout successfully'});
+    } else {
+      res.status(498).send({message: 'Invalid token'});
+    }
+  } catch (error) {
+    res.status(401).send({message: 'Error while signout', error});
+  }
+};
+
+// Exporting all user routes
+module.exports = {signup, signin, signout};
