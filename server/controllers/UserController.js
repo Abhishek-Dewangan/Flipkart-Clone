@@ -1,6 +1,6 @@
 const User = require('../models/UserModel');
 
-const signin = async (req, res) => {
+const signup = async (req, res) => {
   try {
     const isExist = await User.findOne({email: req.body.email});
     if (isExist) {
@@ -14,4 +14,25 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports = {signin};
+const signin = async (req, res) => {
+  try {
+    const user = await User.findOne({email: req.body.email});
+    if (user) {
+      const isMatch = await bcrypt.compare(req.body.password, user.password);
+      if (isMatch) {
+        const token = await user.generateAuthToken();
+        res
+          .status(201)
+          .send({message: `${user.name} signin successfully`, token});
+      } else {
+        res.status(401).send({message: 'Wrong password entered'});
+      }
+    } else {
+      res.status(404).send({message: 'Email is not registerd'});
+    }
+  } catch (error) {
+    res.status(400).send('Error while signin');
+  }
+};
+
+module.exports = {signup, signin};
