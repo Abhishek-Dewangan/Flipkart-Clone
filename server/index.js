@@ -1,6 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const router = require('./routes/router');
+const connection = require('./database/connection');
+
+// Connecting to database
+connection();
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -8,6 +13,7 @@ const port = process.env.PORT || 8080;
 // App uses
 app.use(express.json());
 app.use(cors());
+app.use('/api', router);
 
 app.get('/', (req, res) => {
   res.send('Hello World');

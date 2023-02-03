@@ -7,7 +7,7 @@ require('dotenv').config();
 // Creating user schema
 const UserSchema = mongoose.Schema({
   first_name: {type: String, required: true},
-  last_name: {type: String, required: true},
+  last_name: {type: String},
   email: {
     type: String,
     required: true,

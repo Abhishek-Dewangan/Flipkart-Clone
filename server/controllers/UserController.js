@@ -10,7 +10,7 @@ const signup = async (req, res) => {
       res.status(409).send({message: 'Email is already exist'});
     } else {
       const user = await new User(req.body).save();
-      res.status(200).send({message: `${user.name} registered successfully`});
+      res.status(200).send({message: `${user.first_name} registered successfully`});
     }
   } catch (error) {
     res.status(400).send({message: 'Invalid data or invalid syntax', error});
@@ -28,7 +28,7 @@ const signin = async (req, res) => {
         const token = await user.generateAuthToken();
         res
           .status(201)
-          .send({message: `${user.name} signin successfully`, token});
+          .send({message: `${user.first_name} signin successfully`, token});
       } else {
         res.status(401).send({message: 'Wrong password entered'});
       }
