@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt');
 // Signup/Register route
 const signup = async (req, res) => {
   try {
-    const isExist = await User.findOne({email: req.body.email});
+    const {email} = req.body;
+    const isExist = await User.findOne({email});
     if (isExist) {
       res.status(409).send({message: 'Email is already exist'});
     } else {
@@ -19,9 +20,10 @@ const signup = async (req, res) => {
 // Signin/Login route
 const signin = async (req, res) => {
   try {
-    const user = await User.findOne({email: req.body.email});
+    const {email, password} = req.body;
+    const user = await User.findOne({email});
     if (user) {
-      const isMatch = await bcrypt.compare(req.body.password, user.password);
+      const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
         const token = await user.generateAuthToken();
         res
