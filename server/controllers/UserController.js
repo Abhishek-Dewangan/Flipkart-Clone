@@ -4,13 +4,18 @@ const bcrypt = require('bcrypt');
 // Signup/Register route
 const signup = async (req, res) => {
   try {
-    const {email} = req.body;
-    const isExist = await User.findOne({email});
-    if (isExist) {
+    const {email, mobile_number} = req.body;
+    const isEmailExist = await User.findOne({email});
+    const isMobileExist = await User.findOne({mobile_number});
+    if (isEmailExist) {
       res.status(409).send({message: 'Email is already exist'});
+    } else if (isMobileExist) {
+      res.status(409).send({message: 'Mobile number already exist'});
     } else {
       const user = await new User(req.body).save();
-      res.status(200).send({message: `${user.first_name} registered successfully`});
+      res
+        .status(200)
+        .send({message: `${user.first_name} registered successfully`});
     }
   } catch (error) {
     res.status(400).send({message: 'Invalid data or invalid syntax', error});
