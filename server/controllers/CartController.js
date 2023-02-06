@@ -18,5 +18,16 @@ const addToCart = async (req, res) => {
   }
 };
 
+const removeCartProductById = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const removeItem = await Cart.findByIdAndDelete({_id: id});
+    res
+      .status(201)
+      .send({message: 'Product successfully removed from cart', removeItem});
+  } catch (error) {
+    res.status(401).send({message: 'Unable to remove product', error});
+  }
+};
 
-
+module.exports = {addToCart, removeCartProductById};
