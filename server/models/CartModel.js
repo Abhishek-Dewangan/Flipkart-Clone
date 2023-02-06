@@ -11,4 +11,4 @@ const CartSchema = new mongoose.Schema({
   query_url: {type: String},
 });
 
-module.exports = mongoose.model('product', CartSchema);
+module.exports = mongoose.model('cart', CartSchema);
