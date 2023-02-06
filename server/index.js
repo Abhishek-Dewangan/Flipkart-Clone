@@ -3,7 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const router = require('./routes/router');
 const connection = require('./database/connection');
-const {FlipkartScraper} = require('flipkart-scraper');
+
 // Connecting to database
 connection();
 
@@ -15,17 +15,8 @@ app.use(express.json());
 app.use(cors());
 app.use('/api', router);
 
-app.get('/', (req, res) => {
-// res.send('Hello World');
-const scraper = new FlipkartScraper(
-  '<Affiliate-Id-Here>',
-  '<Affiliate-Token-Here>'
-);
-scraper.on('data', (data) => {
-  res.send(data);
-  // console.log('hello')
-});
-scraper.start();
+app.get('/', async (req, res) => {
+  res.send('Welcome to Flipkart');
 });
 
 app.listen(port, () =>
