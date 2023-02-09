@@ -1,5 +1,18 @@
 const Wishlist = require('../models/WishlishModel');
 
+// Getting all product from wishlist
+const getWishlistProducts = async (req, res) => {
+  try {
+    const wishlistProducts = await Wishlist.find();
+    res.status(201).send({
+      message: 'Wishlist product fetched successfully',
+      data: wishlistProducts,
+    });
+  } catch (error) {
+    res.status(409).send({message: 'Unable to fetch wishlist products', error});
+  }
+};
+
 // Adding product in whishlist
 const addToWishlist = async (req, res) => {
   try {
@@ -35,4 +48,4 @@ const removeFromWishlist = async (req, res) => {
   }
 };
 
-module.exports = {addToWishlist,removeFromWishlist};
+module.exports = {getWishlistProducts, addToWishlist, removeFromWishlist};
