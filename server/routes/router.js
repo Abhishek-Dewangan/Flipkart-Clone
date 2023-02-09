@@ -1,5 +1,9 @@
 const express = require('express');
-const {addToCart, removeFromCart} = require('../controllers/CartController');
+const {
+  addToCart,
+  removeFromCart,
+  getCartProducts,
+} = require('../controllers/CartController');
 const {
   getProduct,
   getProductById,
@@ -8,6 +12,7 @@ const {signin, signup, signout} = require('../controllers/UserController');
 const {
   addToWishlist,
   removeFromWishlist,
+  getWishlistProducts,
 } = require('../controllers/WishlistController');
 
 const router = express.Router();
@@ -22,10 +27,12 @@ router.get('/getproducts', getProduct);
 router.get('getproductbyid/:id', getProductById);
 
 // Cart routes
+router.get('getcartproducts', getCartProducts);
 router.post('addtocart', addToCart);
 router.delete('removefromcart', removeFromCart);
 
 // Wishlist routes
+router.get('getwishlistproducts', getWishlistProducts);
 router.post('addtowishlist', addToWishlist);
 router.delete('removefromwishlist', removeFromWishlist);
 
