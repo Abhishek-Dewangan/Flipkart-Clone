@@ -18,6 +18,7 @@ const addToCart = async (req, res) => {
   }
 };
 
+// Removing prouct from cart by Id
 const removeCartProductById = async (req, res) => {
   try {
     const {id} = req.params;
