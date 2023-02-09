@@ -1,4 +1,4 @@
-Wishlist = require('../models/WishlishModel');
+const Wishlist = require('../models/WishlishModel');
 
 // Adding product in whishlist
 const addToWishlist = async (req, res) => {
@@ -19,3 +19,20 @@ const addToWishlist = async (req, res) => {
       .send({message: 'Unable to add producut on wishlist', error});
   }
 };
+
+// Removing product from wihslist
+const removeFromWishlist = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const response = await Wishlist.findByIdAndDelete({_id: id});
+    res
+      .status(201)
+      .send({message: 'Product removed successfully from wishlist'});
+  } catch (error) {
+    res
+      .status(401)
+      .send({message: 'Unable to remove product from wishlist', error});
+  }
+};
+
+module.exports = {addToWishlist,removeFromWishlist};
