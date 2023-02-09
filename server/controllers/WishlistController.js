@@ -1,0 +1,2 @@
+Wishlist = require('../models/WishlishModel');
+
