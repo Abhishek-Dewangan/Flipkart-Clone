@@ -5,6 +5,10 @@ const {
   getProductById,
 } = require('../controllers/ProductController');
 const {signin, signup, signout} = require('../controllers/UserController');
+const {
+  addToWishlist,
+  removeFromWishlist,
+} = require('../controllers/WishlistController');
 
 const router = express.Router();
 
@@ -20,6 +24,10 @@ router.get('getproductbyid/:id', getProductById);
 // Cart routes
 router.post('addtocart', addToCart);
 router.delete('removefromcart', removeFromCart);
+
+// Wishlist routes
+router.post('addtowishlist', addToWishlist);
+router.delete('removefromwishlist', removeFromWishlist);
 
 // Exporting router
 module.exports = router;
