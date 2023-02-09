@@ -19,7 +19,7 @@ const addToCart = async (req, res) => {
 };
 
 // Removing prouct from cart by Id
-const removeCartProductById = async (req, res) => {
+const removeFromCart = async (req, res) => {
   try {
     const {id} = req.params;
     const removeItem = await Cart.findByIdAndDelete({_id: id});
@@ -31,4 +31,4 @@ const removeCartProductById = async (req, res) => {
   }
 };
 
-module.exports = {addToCart, removeCartProductById};
+module.exports = {addToCart, removeFromCart};
