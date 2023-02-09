@@ -1,4 +1,5 @@
 const express = require('express');
+const {addToCart, removeFromCart} = require('../controllers/CartController');
 const {
   getProduct,
   getProductById,
@@ -17,6 +18,8 @@ router.get('/getproducts', getProduct);
 router.get('getproductbyid/:id', getProductById);
 
 // Cart routes
+router.post('addtocart', addToCart);
+router.delete('removefromcart', removeFromCart);
 
 // Exporting router
 module.exports = router;
