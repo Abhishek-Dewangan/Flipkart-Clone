@@ -1,5 +1,17 @@
 const Cart = require('../models/CartModel');
 
+// Getting all products from cart
+const getCartProducts = async (req, res) => {
+  try {
+    const cartProducts = await Cart.find();
+    res
+      .status(201)
+      .send({message: 'Cart data fetched successfully', data: cartProducts});
+  } catch (error) {
+    res.status(401).send({message: 'Unable to fetching cart data', error});
+  }
+};
+
 // Adding product into cart
 const addToCart = async (req, res) => {
   try {
@@ -31,4 +43,4 @@ const removeFromCart = async (req, res) => {
   }
 };
 
-module.exports = {addToCart, removeFromCart};
+module.exports = {getCartProducts, addToCart, removeFromCart};
