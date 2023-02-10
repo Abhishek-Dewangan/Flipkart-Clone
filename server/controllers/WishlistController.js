@@ -40,7 +40,7 @@ const removeFromWishlist = async (req, res) => {
     const response = await Wishlist.findByIdAndDelete({_id: id});
     res
       .status(201)
-      .send({message: 'Product removed successfully from wishlist'});
+      .send({message: 'Product removed successfully from wishlist',response});
   } catch (error) {
     res
       .status(401)
@@ -48,4 +48,14 @@ const removeFromWishlist = async (req, res) => {
   }
 };
 
-module.exports = {getWishlistProducts, addToWishlist, removeFromWishlist};
+// Remove all products from wishlist
+const removeAllFromWishlist = async(req,res) => {
+  try {
+    const response = await Wishlist.remove({});
+    res.status(201).send({message:'All products removed from wishlist',response});
+  } catch (error) {
+    res.status(401).send({message:'Unabe to remove all products from wishlist',error});
+  }
+}
+
+module.exports = {getWishlistProducts, addToWishlist, removeFromWishlist, removeAllFromWishlist};
