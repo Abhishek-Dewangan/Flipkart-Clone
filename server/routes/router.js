@@ -3,6 +3,7 @@ const {
   addToCart,
   removeFromCart,
   getCartProducts,
+  removeAllFromCart,
 } = require('../controllers/CartController');
 const {
   getProduct,
@@ -31,6 +32,7 @@ router.get('getproductbyid/:id', getProductById);
 router.get('getcartproducts', getCartProducts);
 router.post('addtocart', addToCart);
 router.delete('removefromcart', removeFromCart);
+router.delete('removeallfromcart',removeAllFromCart);
 
 // Wishlist routes
 router.get('getwishlistproducts', getWishlistProducts);
