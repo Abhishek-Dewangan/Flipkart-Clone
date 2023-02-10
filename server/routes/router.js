@@ -13,6 +13,7 @@ const {
   addToWishlist,
   removeFromWishlist,
   getWishlistProducts,
+  removeAllFromWishlist,
 } = require('../controllers/WishlistController');
 
 const router = express.Router();
@@ -35,6 +36,7 @@ router.delete('removefromcart', removeFromCart);
 router.get('getwishlistproducts', getWishlistProducts);
 router.post('addtowishlist', addToWishlist);
 router.delete('removefromwishlist', removeFromWishlist);
+router.delete('removeallfromwishlist',removeAllFromWishlist);
 
 // Exporting router
 module.exports = router;
