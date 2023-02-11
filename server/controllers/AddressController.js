@@ -20,4 +20,14 @@ const addNewAddress = async (req, res) => {
   }
 };
 
-module.exports = {addNewAddress, getAddress};
+const removeAddress = async (req, res) => {
+  try {
+    const {addressId} = req.params;
+    const response = await findByIdAndDelete({_id: addressId});
+    res.status(201).send({message: 'Address deleted successfully', response});
+  } catch (error) {
+    res.status(401).send({message: 'Unable to delete address', error});
+  }
+};
+
+module.exports = {addNewAddress, getAddress, removeAddress};
