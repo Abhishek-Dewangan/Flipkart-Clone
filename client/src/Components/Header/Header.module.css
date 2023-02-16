@@ -8,11 +8,11 @@
   color: f0f0f0;
   align-items: center;
   justify-content: center;
-  gap:2em;
+  gap: 2em;
 }
 .left {
   display: flex;
-  width: 43%;
+  width: 44%;
   justify-content: space-between;
 }
 .right {
@@ -31,29 +31,44 @@
   background-color: white;
   justify-content: space-between;
   align-items: center;
+  border-radius: 2px;
 }
 .searchBar input {
-  width: 350px;
+  width: 375px;
   border: none;
 }
-.searchIcon{
+.searchBar input:focus {
+  outline: none;
+}
+.searchIcon {
   color: #2874f0;
   font-size: large;
 }
-.loginBtn{
-  width: 100px;
+.searchIcon:hover {
+  cursor: pointer;
 }
-.link{
+.loginBtn {
+  width: 120px;
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #2874f0;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+}
+.loginBtn:hover {
+  cursor: pointer;
+}
+.link {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-.cartIcon{
+.cartIcon {
   position: relative;
   top: 3px;
 }
-.openCloseIcon{
+.openCloseIcon {
   position: relative;
-  top:3px;
-
+  top: 3px;
 }

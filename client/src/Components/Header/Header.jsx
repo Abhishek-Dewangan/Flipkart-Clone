@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
 import {SiFlipkart} from 'react-icons/si';
-import {BiSearch, BiChevronDown, BiChevronUp} from 'react-icons/bi';
-import {FaShoppingCart} from 'react-icons/fa';
+import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
+import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ const Header = () => {
             name={'searchBar'}
             placeholder={'Search for products, brand and more'}
           />
-          <BiSearch className={styles.searchIcon} />
+          <FaSearch className={styles.searchIcon} />
         </div>
         <button className={styles.loginBtn}>Login</button>
       </section>
