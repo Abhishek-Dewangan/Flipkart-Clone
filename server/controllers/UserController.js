@@ -1,5 +1,7 @@
 const User = require('../models/UserModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Signup/Register route
 const signup = async (req, res) => {
@@ -65,5 +67,18 @@ const signout = async (req, res) => {
   }
 };
 
+// Authentication route
+const authentication = async (req, res) => {
+  try {
+    const {token} = req.body;
+    if (token) {
+      const isValid = jwt.verify(token, process.env.SECERET_KEY);
+      res.send(isValid);
+    }
+  } catch (error) {
+    res.status(401).send({message: error.message, error});
+  }
+};
+
 // Exporting all user routes
-module.exports = {signup, signin, signout};
+module.exports = {signup, signin, signout, authentication};
