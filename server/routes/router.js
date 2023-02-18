@@ -14,7 +14,12 @@ const {
   getProduct,
   getProductById,
 } = require('../controllers/ProductController');
-const {signin, signup, signout} = require('../controllers/UserController');
+const {
+  signin,
+  signup,
+  signout,
+  authentication,
+} = require('../controllers/UserController');
 const {
   addToWishlist,
   removeFromWishlist,
@@ -28,6 +33,7 @@ const router = express.Router();
 router.post('/signup', signup);
 router.post('/signin', signin);
 router.post('/signout', signout);
+router.post('/authentication', authentication);
 
 // Product routes
 router.get('/getproducts', getProduct);

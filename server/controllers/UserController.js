@@ -72,7 +72,7 @@ const authentication = async (req, res) => {
   try {
     const {token} = req.body;
     if (token) {
-      const isValid = jwt.verify(token, process.env.SECERET_KEY);
+      const isValid = jwt.verify(token, process.env.JWT_SECRET);
       res.send(isValid);
     }
   } catch (error) {
