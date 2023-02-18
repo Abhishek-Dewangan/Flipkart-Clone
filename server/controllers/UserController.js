@@ -61,7 +61,7 @@ const signout = async (req, res) => {
       res.status(498).send({message: 'Invalid token'});
     }
   } catch (error) {
-    res.status(401).send({message: 'Error while signout', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
