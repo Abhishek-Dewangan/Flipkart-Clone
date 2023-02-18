@@ -18,15 +18,15 @@ const signup = async (req, res) => {
         .send({message: `${user.first_name} registered successfully`});
     }
   } catch (error) {
-    res.status(400).send({message: 'Invalid data or invalid syntax', error});
+    res.status(400).send({message: error.message, error});
   }
 };
 
 // Signin/Login route
 const signin = async (req, res) => {
   try {
-    const {email, password} = req.body;
-    const user = await User.findOne({email});
+    const {email, mobile_number, password} = req.body;
+    const user = await User.findOne({$or: [{email}, {mobile_number}]});
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
