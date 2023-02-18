@@ -38,7 +38,11 @@ const signin = async (req, res) => {
         res.status(401).send({message: 'Wrong password entered'});
       }
     } else {
-      res.status(404).send({message: 'Email is not registerd'});
+      res.status(404).send({
+        message: `${
+          mobile_number ? 'Mobile Number' : 'Email'
+        } is not registered`,
+      });
     }
   } catch (error) {
     res.status(400).send({message: 'Error while signin', error});
