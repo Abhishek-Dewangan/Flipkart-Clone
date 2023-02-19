@@ -6,7 +6,7 @@ const getProduct = async (req, res) => {
     const products = await Product.find();
     res.status(201).send({data: products});
   } catch (error) {
-    res.status(401).send({message: 'Unable to get products', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
@@ -18,8 +18,9 @@ const getProductById = async (req, res) => {
     const product = await Product.findById({_id: id});
     res.status(201).send({data: product});
   } catch (error) {
-    res.status(401).send({message: 'Unable to get product', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
+// Exporting all products routes
 module.exports = {getProduct, getProductById};
