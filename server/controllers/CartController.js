@@ -15,8 +15,8 @@ const getCartProducts = async (req, res) => {
 // Adding product into cart
 const addToCart = async (req, res) => {
   try {
-    const {_id} = req.body;
-    const isProductExist = await Cart.findById({_id});
+    const {productId, userId} = req.body;
+    const isProductExist = await Cart.findOne({productId, userId});
     if (isProductExist) {
       res.status(409).send({message: 'Product already added into cart'});
     } else {
@@ -26,7 +26,7 @@ const addToCart = async (req, res) => {
         .send({message: 'Product successfully added into cart', response});
     }
   } catch (error) {
-    res.status(401).send({message: 'Unable to add product into cart', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
