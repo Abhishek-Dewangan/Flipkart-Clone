@@ -14,6 +14,7 @@ const getProduct = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const {id} = req.params;
+    console.log(id);
     const product = await Product.findById({_id: id});
     res.status(201).send({data: product});
   } catch (error) {

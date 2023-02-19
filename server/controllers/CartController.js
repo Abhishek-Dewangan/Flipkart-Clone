@@ -57,4 +57,10 @@ const removeAllFromCart = async (req, res) => {
   }
 };
 
-module.exports = {getCartProducts, addToCart, removeFromCart, removeAllFromCart};
+// Exporting all routes
+module.exports = {
+  getCartProducts,
+  addToCart,
+  removeFromCart,
+  removeAllFromCart,
+};
