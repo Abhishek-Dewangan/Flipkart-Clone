@@ -3,7 +3,8 @@ const Cart = require('../models/CartModel');
 // Getting all products from cart
 const getCartProducts = async (req, res) => {
   try {
-    const cartProducts = await Cart.find();
+    const {userid} = req.params;
+    const cartProducts = await Cart.find({userId: userid});
     res
       .status(201)
       .send({message: 'Cart data fetched successfully', data: cartProducts});

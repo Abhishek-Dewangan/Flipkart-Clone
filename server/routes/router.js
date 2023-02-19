@@ -40,9 +40,9 @@ router.get('/getproducts', getProduct);
 router.get('/getproductbyid/:id', getProductById);
 
 // Cart routes
-router.get('/getcartproducts', getCartProducts);
+router.get('/getcartproducts/:userid', getCartProducts);
 router.post('/addtocart', addToCart);
-router.delete('/removefromcart', removeFromCart);
+router.delete('/removefromcart/:id', removeFromCart);
 router.delete('/removeallfromcart', removeAllFromCart);
 
 // Wishlist routes
