@@ -14,6 +14,18 @@ export const getPrducts = async (dispatch) => {
     const products = await axios.get('http://localhost:8080/api/getproducts');
     dispatch({type: GET_PRODUCTS, payload: products.data.data});
   } catch (error) {
-    dispatch({type: IS_ERROR, payload: error});
+    dispatch({type: IS_ERROR});
+  }
+};
+
+//  Get products by category
+export const getProductsByCategory = async (dispatch, category) => {
+  try {
+    const products = await axios.get(
+      `http://localhost:8080/api/getproductsbycategory/${category}`
+    );
+    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products});
+  } catch (error) {
+    dispatch({type: IS_ERROR});
   }
 };
