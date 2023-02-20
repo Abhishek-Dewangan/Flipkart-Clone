@@ -29,3 +29,15 @@ export const getProductsByCategory = async (dispatch, category) => {
     dispatch({type: IS_ERROR});
   }
 };
+
+// Get product by id
+export const getProductById = async (dispatch, id) => {
+  try {
+    const product = await axios.get(
+      `http:/localhost:8080/api/getproductbyid/${id}`
+    );
+    dispatch({type: GET_PRODUCTS_BY_ID, payload: product});
+  } catch (error) {
+    dispatch({type: IS_ERROR});
+  }
+};
