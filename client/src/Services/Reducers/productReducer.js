@@ -10,18 +10,25 @@ import {
 const initialState = {
   isLoading: false,
   isError: false,
+  product: {},
   products: [],
   productsByCategory: [],
 };
 
-export const ProductReducer = (state = initialState, {type, payload}) => {
-  switch (type) {
+export const ProductReducer = (state = initialState, action) => {
+  switch (action.type) {
     case GET_PRODUCTS: {
       return {
         ...state,
         isLoading: false,
         isError: false,
-        products: payload,
+        products: action.payload,
+      };
+    }
+    case GET_PRODUCTS_BY_CATEGORY: {
+      return {
+        ...state,
+        productsByCategory: action.payload,
       };
     }
     default: {
