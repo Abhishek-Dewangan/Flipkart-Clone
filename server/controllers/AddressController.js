@@ -1,4 +1,3 @@
-// const { findByIdAndDelete } = require('../models/AddressModel');
 const Address = require('../models/AddressModel');
 
 const addNewAddress = async (req, res) => {
@@ -31,4 +30,5 @@ const removeAddress = async (req, res) => {
   }
 };
 
+// Exporting all address routes
 module.exports = {addNewAddress, getAddress, removeAddress};
