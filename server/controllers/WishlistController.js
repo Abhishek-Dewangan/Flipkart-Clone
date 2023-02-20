@@ -10,7 +10,7 @@ const getWishlistProducts = async (req, res) => {
       data: wishlistProducts,
     });
   } catch (error) {
-    res.status(409).send({message: 'Unable to fetch wishlist products', error});
+    res.status(409).send({message: error.message, error});
   }
 };
 
@@ -41,9 +41,7 @@ const removeFromWishlist = async (req, res) => {
       .status(201)
       .send({message: 'Product removed successfully from wishlist', response});
   } catch (error) {
-    res
-      .status(401)
-      .send({message: 'Unable to remove product from wishlist', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
