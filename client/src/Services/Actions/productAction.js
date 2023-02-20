@@ -11,8 +11,8 @@ export const IS_LOADING = 'IS_LOADING';
 // Get products
 export const getPrducts = async (dispatch) => {
   try {
-    const products = await axios.get('http://localhost/api/getproducts');
-    dispatch({type: IS_SUCCESS, payload: products});
+    const products = await axios.get('http://localhost:8080/api/getproducts');
+    dispatch({type: IS_SUCCESS, payload: products.data.data});
   } catch (error) {
     dispatch({type: IS_ERROR, payload: error});
   }

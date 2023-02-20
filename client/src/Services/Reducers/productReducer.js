@@ -5,7 +5,7 @@ import {
   IS_ERROR,
   IS_SUCCESS,
   IS_LOADING,
-} from '../Actions/productAction';
+} from '../Actions/ProductAction';
 
 const initialState = {
   isLoading: false,
@@ -14,9 +14,10 @@ const initialState = {
   productsByCategory: [],
 };
 
-export const productProducer = (state = initialState, {type, payload}) => {
+export const ProductReducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case GET_PRODUCTS: {
+    case IS_SUCCESS: {
+      console.log(payload);
       return {
         ...state,
         isLoading: false,
