@@ -16,8 +16,7 @@ const initialState = {
 
 export const ProductReducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case IS_SUCCESS: {
-      console.log(payload);
+    case GET_PRODUCTS: {
       return {
         ...state,
         isLoading: false,
