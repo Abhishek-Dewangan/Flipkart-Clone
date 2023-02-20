@@ -48,14 +48,13 @@ const removeFromWishlist = async (req, res) => {
 // Remove all products from wishlist
 const removeAllFromWishlist = async (req, res) => {
   try {
-    const response = await Wishlist.remove({});
+    const {userid} = req.params;
+    const response = await Wishlist.deleteMany({userId: userid});
     res
       .status(201)
       .send({message: 'All products removed from wishlist', response});
   } catch (error) {
-    res
-      .status(401)
-      .send({message: 'Unabe to remove all products from wishlist', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 

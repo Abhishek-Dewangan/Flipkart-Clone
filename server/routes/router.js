@@ -49,7 +49,7 @@ router.delete('/removeallfromcart/:userid', removeAllFromCart);
 router.get('/getwishlistproducts/:userid', getWishlistProducts);
 router.post('/addtowishlist', addToWishlist);
 router.delete('/removefromwishlist/:id', removeFromWishlist);
-router.delete('/removeallfromwishlist', removeAllFromWishlist);
+router.delete('/removeallfromwishlist/:userid', removeAllFromWishlist);
 
 // Address routes
 router.get('/getaddress', getAddress);
