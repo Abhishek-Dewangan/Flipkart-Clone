@@ -31,6 +31,12 @@ export const ProductReducer = (state = initialState, action) => {
         productsByCategory: action.payload,
       };
     }
+    case GET_PRODUCTS_BY_ID: {
+      return {
+        ...state,
+        product: action.payload,
+      };
+    }
     default: {
       return state;
     }
