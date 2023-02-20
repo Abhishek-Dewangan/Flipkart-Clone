@@ -16,7 +16,7 @@ const getAddress = async (req, res) => {
     res.status(201).send({message: 'Successfully got the addres', addresses});
     res.send;
   } catch (error) {
-    res.status(401).send({message: 'Unable to get address', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
