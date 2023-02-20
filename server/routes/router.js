@@ -54,6 +54,6 @@ router.delete('/removeallfromwishlist/:userid', removeAllFromWishlist);
 // Address routes
 router.get('/getaddress/:userid', getAddress);
 router.post('/addnewaddress', addNewAddress);
-router.post('/removeaddress', removeAddress);
+router.delete('/removeaddress/:id', removeAddress);
 // Exporting router
 module.exports = router;

@@ -1,3 +1,4 @@
+// const { findByIdAndDelete } = require('../models/AddressModel');
 const Address = require('../models/AddressModel');
 
 const addNewAddress = async (req, res) => {
@@ -22,11 +23,11 @@ const getAddress = async (req, res) => {
 
 const removeAddress = async (req, res) => {
   try {
-    const {addressId} = req.params;
-    const response = await findByIdAndDelete({_id: addressId});
+    const {id} = req.params;
+    const response = await Address.findByIdAndDelete({_id: id});
     res.status(201).send({message: 'Address deleted successfully', response});
   } catch (error) {
-    res.status(401).send({message: 'Unable to delete address', error});
+    res.status(401).send({message: error.message, error});
   }
 };
 
