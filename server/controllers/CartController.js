@@ -47,7 +47,8 @@ const removeFromCart = async (req, res) => {
 // Remove all products from cart
 const removeAllFromCart = async (req, res) => {
   try {
-    const response = await Cart.remove({});
+    const {userid} = req.params;
+    const response = await Cart.deleteMany({userId: userid});
     res
       .status(201)
       .send({message: 'All products successfully removed from cart', response});

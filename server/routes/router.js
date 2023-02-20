@@ -43,7 +43,7 @@ router.get('/getproductbyid/:id', getProductById);
 router.get('/getcartproducts/:userid', getCartProducts);
 router.post('/addtocart', addToCart);
 router.delete('/removefromcart/:id', removeFromCart);
-router.delete('/removeallfromcart', removeAllFromCart);
+router.delete('/removeallfromcart/:userid', removeAllFromCart);
 
 // Wishlist routes
 router.get('/getwishlistproducts', getWishlistProducts);
