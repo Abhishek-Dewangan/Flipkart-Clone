@@ -46,7 +46,7 @@ router.delete('/removefromcart/:id', removeFromCart);
 router.delete('/removeallfromcart/:userid', removeAllFromCart);
 
 // Wishlist routes
-router.get('/getwishlistproducts', getWishlistProducts);
+router.get('/getwishlistproducts/:userid', getWishlistProducts);
 router.post('/addtowishlist', addToWishlist);
 router.delete('/removefromwishlist', removeFromWishlist);
 router.delete('/removeallfromwishlist', removeAllFromWishlist);

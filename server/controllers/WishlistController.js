@@ -3,7 +3,8 @@ const Wishlist = require('../models/WishlishModel');
 // Getting all product from wishlist
 const getWishlistProducts = async (req, res) => {
   try {
-    const wishlistProducts = await Wishlist.find();
+    const {userid} = req.params;
+    const wishlistProducts = await Wishlist.find({userId: userid});
     res.status(201).send({
       message: 'Wishlist product fetched successfully',
       data: wishlistProducts,
