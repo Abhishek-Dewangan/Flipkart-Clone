@@ -52,7 +52,7 @@ router.delete('/removefromwishlist/:id', removeFromWishlist);
 router.delete('/removeallfromwishlist/:userid', removeAllFromWishlist);
 
 // Address routes
-router.get('/getaddress', getAddress);
+router.get('/getaddress/:userid', getAddress);
 router.post('/addnewaddress', addNewAddress);
 router.post('/removeaddress', removeAddress);
 // Exporting router

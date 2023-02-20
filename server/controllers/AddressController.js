@@ -11,8 +11,8 @@ const addNewAddress = async (req, res) => {
 
 const getAddress = async (req, res) => {
   try {
-    const {userId} = req.params;
-    const addresses = await Address.find({userId: userId});
+    const {userid} = req.params;
+    const addresses = await Address.find({userId: userid});
     res.status(201).send({message: 'Successfully got the addres', addresses});
     res.send;
   } catch (error) {
