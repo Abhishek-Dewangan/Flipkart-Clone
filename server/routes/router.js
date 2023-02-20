@@ -11,8 +11,9 @@ const {
   removeAllFromCart,
 } = require('../controllers/CartController');
 const {
-  getProduct,
+  getProducts,
   getProductById,
+  getProductsByCategory,
 } = require('../controllers/ProductController');
 const {
   signin,
@@ -36,8 +37,9 @@ router.post('/signout', signout);
 router.post('/authentication', authentication);
 
 // Product routes
-router.get('/getproducts', getProduct);
+router.get('/getproducts', getProducts);
 router.get('/getproductbyid/:id', getProductById);
+router.get('/getproductsbycategory/:category', getProductsByCategory);
 
 // Cart routes
 router.get('/getcartproducts/:userid', getCartProducts);

@@ -1,7 +1,7 @@
 const Product = require('../models/ProductModel');
 
 // Getting all product and sendign to client
-const getProduct = async (req, res) => {
+const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.status(201).send({data: products});
@@ -21,5 +21,16 @@ const getProductById = async (req, res) => {
   }
 };
 
+// Getting products by category
+const getProductsByCategory = async (req, res) => {
+  try {
+    const {category} = req.params;
+    const products = await Product.find({category});
+    res.status(201).send({data: products});
+  } catch (error) {
+    res.status(401).send({message: error.message, error});
+  }
+};
+
 // Exporting all products routes
-module.exports = {getProduct, getProductById};
+module.exports = {getProducts, getProductById, getProductsByCategory};
