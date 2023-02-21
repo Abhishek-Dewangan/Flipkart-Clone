@@ -1,1 +1,30 @@
 /* Footer styles */
+.footer {
+  font-size: 12px;
+  color: #ffffff;
+  background: #172337;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topSection {
+  display: flex;
+  padding: 1em 4em 1em 4em;
+}
+.linkSection {
+  width: 90%;
+  padding: 1em;
+}
+span {
+  color: #878787;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+p {
+  line-height: 20px;
+}
+hr {
+  border: 1px groove #878787;
+  border-radius: 0.1px;
+  height: 160px;
+}

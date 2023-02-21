@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <section className={styles.topSection}>
-        <div>
+        <div className={styles.linkSection}>
           <span>ABOUT</span>
           {about.map((elem, i) => (
             <p key={i}>
@@ -14,7 +14,7 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <div className={styles.linkSection}>
           <span>HELP</span>
           {help.map((elem, i) => (
             <p key={i}>
@@ -22,7 +22,7 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <div className={styles.linkSection}>
           <span>POLICY</span>
           {policy.map((elem, i) => (
             <p key={i}>
@@ -30,7 +30,7 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <div className={styles.linkSection}>
           <span>SOCIAL</span>
           {social.map((elem, i) => (
             <p key={i}>
@@ -38,7 +38,8 @@ const Footer = () => {
             </p>
           ))}
         </div>
-        <div>
+        <hr className={styles.horizonLine} />
+        <div className={styles.linkSection}>
           <span>Mail Us:</span>
           <p>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
@@ -46,7 +47,7 @@ const Footer = () => {
             Bengaluru, 560103, Karnataka, India
           </p>
         </div>
-        <div>
+        <div className={styles.linkSection}>
           <span>Registered Ofiice Address:</span>
           <p>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
