@@ -1,10 +1,10 @@
-import appliance from './Images/appliance.jpg';
-import babycare from './Images/babycare.jpg';
-import beauty from './Images/beauty.jpg';
-import growcery from './Images/growcery.jpg';
-import home from './Images/home.jpg';
-import mobile from './Images/mobile.jpg';
-import sports from './Images/sports.jpg';
+import appliance from './BannerImages/appliance.jpg';
+import babycare from './BannerImages/babycare.jpg';
+import beauty from './BannerImages/beauty.jpg';
+import growcery from './BannerImages/growcery.jpg';
+import home from './BannerImages/home.jpg';
+import mobile from './BannerImages/mobile.jpg';
+import sports from './BannerImages/sports.jpg';
 
 export const BannerData = [
   {banner: growcery, link: '/growcery'},
