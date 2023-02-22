@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
-import {SiFlipkart} from 'react-icons/si';
 import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
@@ -12,7 +11,6 @@ const Header = () => {
     <nav className={styles.navbar}>
       <section className={styles.left}>
         <Link className={styles.link}>
-          {/*<SiFlipkart className={styles.flipkartIcon} />*/}
           <img className={styles.logo} src={logo} alt='Flipkart logo' />
         </Link>
         <div className={styles.searchBar}>
