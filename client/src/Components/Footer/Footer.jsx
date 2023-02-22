@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import {about, help, policy, social} from '../../Assets/FooterData/FooterData';
+import {about, help, policy, social} from '../../Assets/FooterData';
 import {BsBagFill} from 'react-icons/bs';
 import {GiAlliedStar, GiHelp} from 'react-icons/gi';
 import {MdCardGiftcard} from 'react-icons/md';
