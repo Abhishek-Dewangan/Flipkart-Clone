@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import BannerSlider from '../../Components/BannerSlider/BannerSlider';
 import {getPrducts} from '../../Services/Actions/ProductAction';
 
 const LandingPage = () => {
@@ -11,7 +12,11 @@ const LandingPage = () => {
   useEffect(() => {
     console.log(products);
   }, [products]);
-  return <div>LandingPage</div>;
+  return (
+    <div>
+      <BannerSlider />
+    </div>
+  );
 };
 
 export default LandingPage;
