@@ -1,10 +1,11 @@
-import React from 'react'
-import styles from './BannerSlider.module.css'
+import React from 'react';
+import styles from './BannerSlider.module.css';
 
 const BannerSlider = () => {
   return (
-    <div>BannerSlider</div>
-  )
-}
+    <div>
+    </div>
+  );
+};
 
-export default BannerSlider
+export default BannerSlider;

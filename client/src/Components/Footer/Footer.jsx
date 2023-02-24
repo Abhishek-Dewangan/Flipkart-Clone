@@ -62,20 +62,20 @@ const Footer = () => {
         <hr className={styles.verticleLine} />
         <div className={styles.linkSection}>
           <span>Mail Us:</span>
-          <text>
+          <p className={styles.text}>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
             Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village,
             Bengaluru, 560103, Karnataka, India
-          </text>
+          </p>
         </div>
         <div className={styles.linkSection}>
           <span>Registered Ofiice Address:</span>
-          <text>
+          <p className={styles.text}>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
             Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village,
             Bengaluru, 560103, Karnataka, India CIN : U51109KA2012PTC066107
             Telephone: 044-45614700
-          </text>
+          </p>
         </div>
       </section>
       <hr className={styles.horizonLine} />

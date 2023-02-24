@@ -25,11 +25,11 @@
 .card {
   font-size: 25px;
 }
-.bottomSection p{
-    font-size: 15px;
+.bottomSection p {
+  font-size: 15px;
 }
-.icon{
-    color: yellow;
+.icon {
+  color: yellow;
 }
 span {
   color: #878787;
@@ -38,7 +38,7 @@ a {
   text-decoration: none;
   color: #ffffff;
 }
-text {
+.text {
   display: block;
   line-height: 20px;
   margin-top: 0.9em;
