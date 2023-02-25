@@ -24,7 +24,7 @@ export const getProductsByCategory = async (dispatch, category) => {
     const products = await axios.get(
       `http://localhost:8080/api/getproductsbycategory/${category}`
     );
-    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products});
+    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products.data.data});
   } catch (error) {
     dispatch({type: IS_ERROR});
   }
