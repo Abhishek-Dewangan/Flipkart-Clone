@@ -3,6 +3,7 @@ import styles from './LandingPage.module.css';
 import {useDispatch, useSelector} from 'react-redux';
 import BannerSlider from '../../Components/BannerSlider/BannerSlider';
 import {getPrducts} from '../../Services/Actions/ProductAction';
+import SubHeader from '../../Components/SubHeader/SubHeader';
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const LandingPage = () => {
   }, [products]);
   return (
     <div className={styles.container}>
+      <SubHeader />
       <BannerSlider />
     </div>
   );
