@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BannerSlider.module.css';
+import {Link} from 'react-router-dom';
 import {bannerData} from '../../Assets/BannerData';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {
@@ -27,11 +28,13 @@ const BannerSlider = () => {
       {bannerData.map((elem, i) => {
         return (
           <SwiperSlide key={i}>
-            <img
-              src={elem.banner}
-              alt='Banner'
-              className={styles.bannerImage}
-            />
+            <Link to={`/category/${elem.linkName}`}>
+              <img
+                src={elem.banner}
+                alt='Banner'
+                className={styles.bannerImage}
+              />
+            </Link>
           </SwiperSlide>
         );
       })}
