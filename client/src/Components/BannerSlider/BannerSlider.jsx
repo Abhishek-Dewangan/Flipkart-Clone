@@ -1,6 +1,6 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import styles from './BannerSlider.module.css';
-import {BannerData} from '../../Assets/BannerData';
+import {bannerData} from '../../Assets/BannerData';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {
   Navigation,
@@ -24,7 +24,7 @@ const BannerSlider = () => {
       navigation
       className={styles.bannerSliderContainer}
     >
-      {BannerData.map((elem, i) => {
+      {bannerData.map((elem, i) => {
         return (
           <SwiperSlide key={i}>
             <img
