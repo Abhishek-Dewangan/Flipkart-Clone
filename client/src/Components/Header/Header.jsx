@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <nav className={styles.navbar}>
       <section className={styles.left}>
-        <Link className={styles.link}>
+        <Link to={'/'} className={styles.link}>
           <img className={styles.logo} src={logo} alt='Flipkart logo' />
         </Link>
         <div className={styles.searchBar}>
