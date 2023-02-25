@@ -1,0 +1,6 @@
+/* Sub Headder Styles */
+.subHeaderContainer{
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+}
