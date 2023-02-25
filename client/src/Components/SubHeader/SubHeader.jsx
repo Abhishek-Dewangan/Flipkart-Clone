@@ -9,8 +9,8 @@ const SubHeader = () => {
       {subHeaderData.map((elem, i) => {
         return (
           <div key={i}>
-            <Link>
-              <img src={elem.image} alt={elem.name} />
+            <Link className={styles.categoryLink}>
+              <img src={elem.image} alt={elem.name} className={styles.categoryImage}/>
               <p>{elem.name}</p>
             </Link>
           </div>
