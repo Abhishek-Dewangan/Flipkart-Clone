@@ -31,10 +31,10 @@
 .icon {
   color: yellow;
 }
-span {
+.spanText {
   color: #878787;
 }
-a {
+.ancorLink {
   text-decoration: none;
   color: #ffffff;
 }

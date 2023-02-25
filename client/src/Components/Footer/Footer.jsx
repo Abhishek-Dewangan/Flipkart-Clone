@@ -20,40 +20,60 @@ const Footer = () => {
     <footer className={styles.footer}>
       <section className={styles.topSection}>
         <div className={styles.linkSection}>
-          <span>ABOUT</span>
+          <span className={styles.spanText}>ABOUT</span>
           {about.map((elem, i) => (
             <p key={i}>
-              <a href={elem.link} target={'_blank'} rel='noreferrer'>
+              <a
+                className={styles.ancorLink}
+                href={elem.link}
+                target={'_blank'}
+                rel='noreferrer'
+              >
                 {elem.name}
               </a>
             </p>
           ))}
         </div>
         <div className={styles.linkSection}>
-          <span>HELP</span>
+          <span className={styles.spanText}>HELP</span>
           {help.map((elem, i) => (
             <p key={i}>
-              <a href={elem.link} target={'_blank'} rel='noreferrer'>
+              <a
+                className={styles.ancorLink}
+                href={elem.link}
+                target={'_blank'}
+                rel='noreferrer'
+              >
                 {elem.name}
               </a>
             </p>
           ))}
         </div>
         <div className={styles.linkSection}>
-          <span>POLICY</span>
+          <span className={styles.spanText}>POLICY</span>
           {policy.map((elem, i) => (
             <p key={i}>
-              <a href={elem.link} target={'_blank'} rel='noreferrer'>
+              <a
+                className={styles.ancorLink}
+                href={elem.link}
+                target={'_blank'}
+                rel='noreferrer'
+              >
                 {elem.name}
               </a>
             </p>
           ))}
         </div>
         <div className={styles.linkSection}>
-          <span>SOCIAL</span>
+          <span className={styles.spanText}>SOCIAL</span>
           {social.map((elem, i) => (
             <p key={i}>
-              <a href={elem.link} target={'_blank'} rel='noreferrer'>
+              <a
+                className={styles.ancorLink}
+                href={elem.link}
+                target={'_blank'}
+                rel='noreferrer'
+              >
                 {elem.name}
               </a>
             </p>
@@ -61,7 +81,7 @@ const Footer = () => {
         </div>
         <hr className={styles.verticleLine} />
         <div className={styles.linkSection}>
-          <span>Mail Us:</span>
+          <span className={styles.spanText}>Mail Us:</span>
           <p className={styles.text}>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
             Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village,
@@ -69,7 +89,7 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.linkSection}>
-          <span>Registered Ofiice Address:</span>
+          <span className={styles.spanText}>Registered Ofiice Address:</span>
           <p className={styles.text}>
             Flipkart Internet Private Limited, Buildings Alyssa, Begonia & Clove
             Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village,
@@ -82,6 +102,7 @@ const Footer = () => {
       <section className={styles.bottomSection}>
         <p>
           <a
+            className={styles.ancorLink}
             href='https://seller.flipkart.com/?utm_source=fkwebsite&utm_medium=websitedirect'
             target={'_blank'}
             rel='noreferrer'
@@ -91,6 +112,7 @@ const Footer = () => {
         </p>
         <p>
           <a
+            className={styles.ancorLink}
             href='https://brands.flipkart.com/'
             target={'_blank'}
             rel='noreferrer'
@@ -100,6 +122,7 @@ const Footer = () => {
         </p>
         <p>
           <a
+            className={styles.ancorLink}
             href='https://www.flipkart.com/the-gift-card-store?otracker=undefined_footer_footer_navlinks'
             target={'_blank'}
             rel='noreferrer'
@@ -109,6 +132,7 @@ const Footer = () => {
         </p>
         <p>
           <a
+            className={styles.ancorLink}
             href='https://www.flipkart.com/helpcentre?otracker=undefined_footer_footer_navlinks'
             target={'_blank'}
             rel='noreferrer'
