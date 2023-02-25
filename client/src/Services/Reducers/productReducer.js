@@ -12,7 +12,7 @@ const initialState = {
   isError: false,
   product: {},
   products: [],
-  productsByCategory: [],
+  categoryProducts: [],
 };
 
 export const ProductReducer = (state = initialState, action) => {
@@ -28,7 +28,7 @@ export const ProductReducer = (state = initialState, action) => {
     case GET_PRODUCTS_BY_CATEGORY: {
       return {
         ...state,
-        productsByCategory: action.payload,
+        categoryProducts: action.payload,
       };
     }
     case GET_PRODUCTS_BY_ID: {
