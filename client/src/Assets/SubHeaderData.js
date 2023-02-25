@@ -33,13 +33,13 @@ export const subHeaderData = [
     name: 'Beauty',
     link: '',
     image:
-      'https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100',
+      'https://i.pinimg.com/736x/6c/ab/93/6cab93a7cdb23d2b7bd8920f6cf2eb51.jpg',
   },
   {
     name: 'Sports',
     link: '',
     image:
-      'https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100',
+      'https://www.shutterstock.com/image-vector/sports-equipment-background-sport-concept-260nw-1917840683.jpg',
   },
   {
     name: 'Top Offers',
