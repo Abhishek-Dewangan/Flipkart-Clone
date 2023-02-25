@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styles from './BannerSlider.module.css';
 import {BannerData} from '../../Assets/BannerData';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Pagination, Scrollbar, A11y} from 'swiper';
-import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const BannerSlider = () => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       pagination={{clickable: true}}
+      autoplay={{delay: 2500, disableOnInteraction: false}}
     >
       {BannerData.map((elem, i) => {
         return (
