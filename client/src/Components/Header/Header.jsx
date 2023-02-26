@@ -37,7 +37,7 @@ const Header = () => {
             </label>
           </div>
         </Link>
-        <Link className={styles.link}>
+        <Link to={'/cart'} className={styles.link}>
           <div className={styles.cart}>
             <FaShoppingCart className={styles.cartIcon} /> Cart
           </div>
