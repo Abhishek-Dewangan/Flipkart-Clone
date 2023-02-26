@@ -4,6 +4,7 @@ import Header from './Components/Header/Header';
 import {Routes, Route} from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import ProductCategoryPage from './Pages/ProductCategoryPage/ProductCategoryPage';
+import CartPage from './Pages/CartPage/CartPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
+        <Route path='/cart' element={<CartPage />} />
       </Routes>
       <Footer />
     </div>
