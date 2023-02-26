@@ -3,7 +3,7 @@ import styles from './CartPage.module.css'
 
 const CartPage = () => {
   return (
-    <div>CartPage</div>
+    <div className={styles.cartPageContainer}>CartPage</div>
   )
 }
 
