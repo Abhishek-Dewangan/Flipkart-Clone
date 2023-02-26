@@ -29,3 +29,15 @@ export const getCartData = async (dispatch) => {
     dispatch({type: ERROR, payload: error});
   }
 };
+
+// Remove from cart
+export const removeFromCart = async (dispatch, id) => {
+  try {
+    const res = await axios.delete(
+      `http://localhost:8080/api/removefromcart/${id}`
+    );
+    dispatch({type: REMOVE_FROM_CART, payload: res});
+  } catch (error) {
+    dispatch({type: ERROR, payload: error});
+  }
+};
