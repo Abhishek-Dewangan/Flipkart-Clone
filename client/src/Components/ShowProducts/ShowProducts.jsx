@@ -30,6 +30,7 @@ const ShowProducts = ({products}) => {
             </p>
             <div className={styles.buttonDiv}>
               <button>Add to Cart</button>
+              <button>Buy Now</button>
             </div>
           </div>
         );
