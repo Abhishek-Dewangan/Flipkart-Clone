@@ -28,6 +28,9 @@ const ShowProducts = ({products}) => {
                 ₹{elem.original_price}
               </strike>
             </p>
+            <div className={styles.buttonDiv}>
+              <button>Add to Cart</button>
+            </div>
           </div>
         );
       })}
