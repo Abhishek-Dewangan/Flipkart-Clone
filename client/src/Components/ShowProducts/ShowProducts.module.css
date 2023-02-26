@@ -1,0 +1,15 @@
+/* Show products styles */
+.showProductsContainer{
+    display: grid;
+    height: max-content;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1em;
+    margin: auto;
+}
+.productBox{
+    align-items: center;
+}
+.productImage{
+    width: 200px;
+    height: 200px;
+}
