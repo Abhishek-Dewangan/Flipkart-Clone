@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ShowProducts.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
+import {AiOutlineHeart} from 'react-icons/ai';
 
 const ShowProducts = ({products}) => {
   console.log(products);
@@ -9,6 +10,9 @@ const ShowProducts = ({products}) => {
       {products.map((elem) => {
         return (
           <div key={elem._id} className={styles.productBox}>
+            <button className={styles.wishlistBtn} > 
+              <AiOutlineHeart />
+            </button>
             <div classname={styles.productImageDiv}>
               <img
                 src={elem.thumbnail}
