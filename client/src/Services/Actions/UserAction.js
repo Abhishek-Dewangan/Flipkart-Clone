@@ -25,3 +25,13 @@ export const signin = async (dispatch, user) => {
     dispatch({type: IS_ERROR, payload: error});
   }
 };
+
+// User Signout/Logout
+export const signout = async (dispatch, token) => {
+  try {
+    const res = await axios.post(`http://localhost:8080/api/signout`, token);
+    dispatch({type: SIGNOUT, payload: res});
+  } catch (error) {
+    dispatch({type: IS_ERROR, payload: error});
+  }
+};
