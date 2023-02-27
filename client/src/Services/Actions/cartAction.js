@@ -21,9 +21,9 @@ export const addToCart = async (dispatch, product) => {
 };
 
 // Get cart data
-export const getCartData = async (dispatch) => {
+export const getCartProducts = async (dispatch,userId) => {
   try {
-    const cartData = await axios.get('http://localhost:8080/api/getcartdata');
+    const cartData = await axios.get(`http://localhost:8080/api/getcartproducts/${userId}`);
     dispatch({type: GET_CART_DATA, payload: cartData});
   } catch (error) {
     dispatch({type: ERROR, payload: error});
