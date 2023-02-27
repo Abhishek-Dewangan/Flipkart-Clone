@@ -32,6 +32,12 @@ export const WishlistReducer = (state = initialState, action) => {
         wishlistData: action.payload,
       };
     }
+    case REMOVE_ALL_FROM_WISHLIST: {
+      return {
+        ...state,
+        wishlistData: [],
+      };
+    }
     default: {
       return state;
     }
