@@ -31,3 +31,15 @@ export const getWishlistProducts = async (dispatch, userId) => {
     dispatch({type: ERROR, payload: error});
   }
 };
+
+// Remove from wishlist
+export const removeFromWishlist = async (dispatch, productId) => {
+  try {
+    const res = await axios.delete(
+      `http://localhost:8080/api/removefromwishlist/${productId}`
+    );
+    dispatch({type: REMOVE_FROM_WISHLIST, payload: res});
+  } catch (error) {
+    dispatch({type: ERROR, payload: error});
+  }
+};
