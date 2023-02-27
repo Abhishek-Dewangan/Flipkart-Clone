@@ -19,3 +19,15 @@ export const addToWishlist = async (dispatch, product) => {
     dispatch({type: ERROR, payload: error});
   }
 };
+
+// Get wishlist products
+export const getWishlistProducts = async (dispatch, userId) => {
+  try {
+    const wishlistData = await axios.get(
+      `http://localhost:8080/api/getwishlistproducts/${userId}`
+    );
+    dispatch({type: GET_WISHLIST_PRODUCTS, payload: wishlistData});
+  } catch (error) {
+    dispatch({type: ERROR, payload: error});
+  }
+};
