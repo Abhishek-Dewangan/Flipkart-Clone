@@ -21,9 +21,12 @@ export const WishlistReducer = (state = initialState, action) => {
       };
     }
     case REMOVE_FROM_WISHLIST: {
+      const updatedWishlistData = state.wishlistData.filter(
+        (elem) => elem.id !== action.payload.id
+      );
       return {
         ...state,
-        wishlistData: action.payload,
+        wishlistData: updatedWishlistData,
       };
     }
     case GET_WISHLIST_PRODUCTS: {
