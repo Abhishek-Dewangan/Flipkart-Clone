@@ -26,6 +26,12 @@ export const WishlistReducer = (state = initialState, action) => {
         wishlistData: action.payload,
       };
     }
+    case GET_WISHLIST_PRODUCTS: {
+      return {
+        ...state,
+        wishlistData: action.payload,
+      };
+    }
     default: {
       return state;
     }
