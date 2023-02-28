@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './ShowProducts.module.css';
+import {Link} from 'react-router-dom';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
@@ -15,7 +16,6 @@ const ShowProducts = ({products}) => {
         const discount = Math.floor(
           (elem.current_price * 100) / elem.original_price
         );
-        console.log(discount);
         return (
           <div key={elem._id} className={styles.productBox}>
             <AiOutlineHeart
@@ -23,11 +23,13 @@ const ShowProducts = ({products}) => {
               style={{stroke: 'silver', strokeWidth: '50'}}
             />
             <div className={styles.productImageDiv}>
-              <img
-                src={elem.thumbnail}
-                alt={elem.category}
-                className={styles.productImage}
-              />
+              <Link to={`/productdetail/${elem._id}`}>
+                <img
+                  src={elem.thumbnail}
+                  alt={elem.category}
+                  className={styles.productImage}
+                />
+              </Link>
             </div>
             <div className={styles.productTitle}>
               <p className={styles.productName}>{elem.name}</p>
