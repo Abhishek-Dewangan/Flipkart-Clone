@@ -10,7 +10,7 @@ const ShowProducts = ({products}) => {
       {products.map((elem) => {
         return (
           <div key={elem._id} className={styles.productBox}>
-            <button className={styles.wishlistBtn} > 
+            <button className={styles.wishlistBtn}>
               <AiOutlineHeart />
             </button>
             <div classname={styles.productImageDiv}>
@@ -20,12 +20,14 @@ const ShowProducts = ({products}) => {
                 className={styles.productImage}
               />
             </div>
-            <p className={styles.productName}>{elem.name}</p>
-            <img
-              className={styles.fAssured}
-              src={fAssured}
-              alt='Flipkart assured'
-            />
+            <div className={styles.productTitle}>
+              <p className={styles.productName}>{elem.name}</p>
+              <img
+                className={styles.fAssured}
+                src={fAssured}
+                alt='Flipkart assured'
+              />
+            </div>
             <p className={styles.price}>
               <span className={styles.currentPrice}>₹{elem.current_price}</span>{' '}
               <strike className={styles.originalPrice}>

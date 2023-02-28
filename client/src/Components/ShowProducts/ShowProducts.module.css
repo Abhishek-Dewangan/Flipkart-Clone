@@ -1,6 +1,7 @@
 /* Show products styles */
 .showProductsContainer {
   display: grid;
+  width: 80%;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   margin: 1em;
@@ -8,6 +9,7 @@
 }
 .productBox {
   display: flex;
+  width: fit-content;
   flex-direction: column;
   align-items: center;
   padding: 10px;
@@ -22,9 +24,19 @@
 .productImage:hover {
   transform: scale(1.1);
 }
+.productTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  align-items: center;
+}
 .productName {
   font-size: 14px;
   color: #212121;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .currentPrice {
   font-size: 16px;
@@ -41,4 +53,5 @@
 }
 .fAssured {
   width: 66px;
+  height: 20px;
 }
