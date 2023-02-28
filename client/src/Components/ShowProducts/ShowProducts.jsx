@@ -8,7 +8,7 @@ import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
 
 const ShowProducts = ({products}) => {
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className={styles.showProductsContainer}>
