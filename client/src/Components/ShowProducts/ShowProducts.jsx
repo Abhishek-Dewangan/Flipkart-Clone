@@ -14,7 +14,7 @@ const ShowProducts = ({products}) => {
     <div className={styles.showProductsContainer}>
       {products.map((elem) => {
         const discount = Math.floor(
-          (elem.current_price * 100) / elem.original_price
+          100 - (elem.current_price * 100) / elem.original_price
         );
         return (
           <div key={elem._id} className={styles.productBox}>
@@ -31,14 +31,17 @@ const ShowProducts = ({products}) => {
                 />
               </Link>
             </div>
-            <div className={styles.productTitle}>
+            <Link
+              to={`/productdetails/${elem._id}`}
+              className={styles.productTitle}
+            >
               <p className={styles.productName}>{elem.name}</p>
               <img
                 className={styles.fAssured}
                 src={fAssured}
                 alt='Flipkart assured'
               />
-            </div>
+            </Link>
             <p className={styles.price}>
               <span className={styles.currentPrice}>₹{elem.current_price}</span>{' '}
               <strike className={styles.originalPrice}>
