@@ -2,9 +2,9 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_BY_CATEGORY,
   GET_PRODUCTS_BY_ID,
-  IS_ERROR,
-  IS_SUCCESS,
+  GET_PROUDUCT_DETAILS,
   IS_LOADING,
+  IS_ERROR,
 } from '../Actions/ProductAction';
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   product: {},
   products: [],
   categoryProducts: [],
+  productDetails: {},
 };
 
 export const ProductReducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ export const ProductReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         products: action.payload,
+      };
+    }
+    case GET_PROUDUCT_DETAILS: {
+      return {
+        ...state,
+        productDetails: action.payload,
       };
     }
     case GET_PRODUCTS_BY_CATEGORY: {
