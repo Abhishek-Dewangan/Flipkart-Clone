@@ -1,18 +1,21 @@
 import React from 'react';
+import axios from 'axios';
 import styles from './ShowProducts.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart} from 'react-icons/ai';
 
 const ShowProducts = ({products}) => {
   console.log(products);
+
   return (
     <div className={styles.showProductsContainer}>
       {products.map((elem) => {
         return (
           <div key={elem._id} className={styles.productBox}>
-            <button className={styles.wishlistBtn}>
-              <AiOutlineHeart />
-            </button>
+            <AiOutlineHeart
+              className={styles.wishlistIcon}
+              style={{stroke: 'silver', strokeWidth: '50'}}
+            />
             <div classname={styles.productImageDiv}>
               <img
                 src={elem.thumbnail}
