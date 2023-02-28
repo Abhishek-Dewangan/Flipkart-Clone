@@ -45,6 +45,7 @@ export const getProductById = async (dispatch, id) => {
 // Get prouduct details
 export const getProductDetails = async (dispatch, product) => {
   try {
+    console.log(product);
     const productDetails = await axios.get(product.query_url);
     dispatch({type: GET_PROUDUCT_DETAILS, payload: productDetails});
   } catch (error) {
