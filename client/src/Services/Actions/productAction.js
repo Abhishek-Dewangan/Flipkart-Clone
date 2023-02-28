@@ -2,10 +2,10 @@ import axios from 'axios';
 
 // Actions types
 export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const GET_PROUDUCT_DETAILS = 'GET_PROUDUCT_DETAILS';
 export const GET_PRODUCTS_BY_ID = 'GET_PRODUCTS_BY_ID';
 export const GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY';
 export const IS_ERROR = 'IS_ERROR';
-export const IS_SUCCESS = 'IS_SUCCESS';
 export const IS_LOADING = 'IS_LOADING';
 
 // Get products
@@ -39,5 +39,15 @@ export const getProductById = async (dispatch, id) => {
     dispatch({type: GET_PRODUCTS_BY_ID, payload: product});
   } catch (error) {
     dispatch({type: IS_ERROR});
+  }
+};
+
+// Get prouduct details
+export const getProductDetails = async (dispatch, product) => {
+  try {
+    const productDetails = await axios.get(product.query_url);
+    dispatch({type: GET_PROUDUCT_DETAILS, payload: productDetails});
+  } catch (error) {
+    dispatch({type: IS_ERROR, payload: error});
   }
 };
