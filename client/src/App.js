@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import ProductCategoryPage from './Pages/ProductCategoryPage/ProductCategoryPage';
 import CartPage from './Pages/CartPage/CartPage';
-import ProductDetailsPage from './Pages/ProductDetaitsPage/ProductDetailsPage';
+import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import {useEffect} from 'react';
 import {getPrducts} from './Services/Actions/ProductAction';
 import {useDispatch} from 'react-redux';
