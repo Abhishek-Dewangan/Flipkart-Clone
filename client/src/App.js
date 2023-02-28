@@ -6,8 +6,15 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import ProductCategoryPage from './Pages/ProductCategoryPage/ProductCategoryPage';
 import CartPage from './Pages/CartPage/CartPage';
 import ProductDetailsPage from './Pages/ProductDetaitsPage/ProductDetailsPage';
+import {useEffect} from 'react';
+import {getPrducts} from './Services/Actions/ProductAction';
+import {useDispatch} from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getPrducts(dispatch);
+  }, []);
   return (
     <div className='App'>
       <Header />
