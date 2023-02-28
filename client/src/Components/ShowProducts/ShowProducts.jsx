@@ -10,13 +10,17 @@ const ShowProducts = ({products}) => {
   return (
     <div className={styles.showProductsContainer}>
       {products.map((elem) => {
+        const discount = Math.floor(
+          (elem.current_price * 100) / elem.original_price
+        );
+        console.log(discount);
         return (
           <div key={elem._id} className={styles.productBox}>
             <AiOutlineHeart
               className={styles.wishlistIcon}
               style={{stroke: 'silver', strokeWidth: '50'}}
             />
-            <div classname={styles.productImageDiv}>
+            <div className={styles.productImageDiv}>
               <img
                 src={elem.thumbnail}
                 alt={elem.category}
@@ -36,6 +40,7 @@ const ShowProducts = ({products}) => {
               <strike className={styles.originalPrice}>
                 ₹{elem.original_price}
               </strike>
+              <span className={styles.discount}>{discount}% off</span>
             </p>
             <div className={styles.buttonDiv}>
               <button>Add to Cart</button>

@@ -62,6 +62,15 @@
 .price {
   display: flex;
   gap: 1em;
+  align-items: center;
+  margin-top: 0;
+  margin-left: -5rem;
+}
+.discount {
+  font-size: 12px;
+  color: #388e3c;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 600;
 }
 .fAssured {
   width: 66px;
