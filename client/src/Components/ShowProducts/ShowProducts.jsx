@@ -3,6 +3,8 @@ import axios from 'axios';
 import styles from './ShowProducts.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart} from 'react-icons/ai';
+import {FaShoppingCart} from 'react-icons/fa';
+import {GiElectric} from 'react-icons/gi';
 
 const ShowProducts = ({products}) => {
   console.log(products);
@@ -43,8 +45,14 @@ const ShowProducts = ({products}) => {
               <span className={styles.discount}>{discount}% off</span>
             </p>
             <div className={styles.buttonDiv}>
-              <button>Add to Cart</button>
-              <button>Buy Now</button>
+              <button className={styles.addToCartBtn}>
+                <FaShoppingCart />
+                Add to Cart
+              </button>
+              <button className={styles.buyNowBtn}>
+                <GiElectric />
+                Buy Now
+              </button>
             </div>
           </div>
         );
