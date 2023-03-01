@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './SignIn.module.css';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import signinImage from '../../Assets/Images/signinimage.png';
 import {signin} from '../../Services/Actions/UserAction';
@@ -11,7 +10,6 @@ const SignIn = ({showSignin, handleCloseSignin, handleShowSignup}) => {
   const dispatch = useDispatch();
   const submit = (e) => {
     e.preventDefault();
-    // console.log(isNaN(e.target.emailormobile.value));
     const user = {
       email: isNaN(e.target.emailormobile.value)
         ? e.target.emailormobile.value
@@ -21,7 +19,6 @@ const SignIn = ({showSignin, handleCloseSignin, handleShowSignup}) => {
         : null,
       password: e.target.password.value,
     };
-    // console.log(user);
     signin(dispatch, user);
   };
   return (
