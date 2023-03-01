@@ -6,18 +6,24 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import ProductCategoryPage from './Pages/ProductCategoryPage/ProductCategoryPage';
 import CartPage from './Pages/CartPage/CartPage';
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {getPrducts} from './Services/Actions/ProductAction';
 import {useDispatch} from 'react-redux';
+import SignIn from './Components/SignIn/SignIn';
 
 function App() {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(() => {
     getPrducts(dispatch);
   }, []);
   return (
     <div className='App'>
-      <Header />
+      <Header setShow={setShow} handleShow={handleShow} />
+      <SignIn show={show} handleClose={handleClose} handleShow={handleShow} />
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
