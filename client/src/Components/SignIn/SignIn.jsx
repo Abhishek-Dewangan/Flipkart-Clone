@@ -19,6 +19,7 @@ const SignIn = ({show, handleClose, handleShow}) => {
           Save Changes
         </Button>
       </Modal.Footer>
+      <button className={styles.signup}>New to Flipkart? Create an account</button>
     </Modal>
   );
 };
