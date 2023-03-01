@@ -20,6 +20,7 @@
   display: flex;
   width: 20%;
   justify-content: space-between;
+  align-items: center;
 }
 .flipkartIcon {
   color: #ffe11b;
@@ -68,11 +69,6 @@
   color: white;
   font-weight: bold;
 }
-.cartIcon {
-  position: relative;
-  top: 3px;
-}
-.openCloseIcon {
-  position: relative;
-  top: 3px;
+.link:hover {
+  color: whitesmoke;
 }
