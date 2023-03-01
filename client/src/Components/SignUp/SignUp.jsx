@@ -1,8 +1,10 @@
 import React from 'react'
+import Modal from 'react-bootstrap/Modal'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const SignUp = () => {
+const SignUp = ({showSignup}) => {
   return (
-    <div>SignUp</div>
+    <Modal show={showSignup}>SignUp</Modal>
   )
 }
 
