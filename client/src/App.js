@@ -27,14 +27,14 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      <Header setShowSignin={setShowSignin} handleShow={handleShowSignin} />
+      <Header handleShowSignin={handleShowSignin} />
       <SignIn
-        showSignin={showSignin}
+        show={showSignin}
         handleCloseSignin={handleCloseSignin}
         handleShowSignup={handleShowSignup}
       />
       <SignUp
-        showSignup={showSignup}
+        show={showSignup}
         handleCloseSignup={handleCloseSignup}
         handleShowSignin={handleShowSignin}
       />

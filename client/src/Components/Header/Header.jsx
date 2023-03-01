@@ -5,7 +5,7 @@ import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 
-const Header = ({setShow, handleShow}) => {
+const Header = ({handleShowSignin}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ const Header = ({setShow, handleShow}) => {
           />
           <FaSearch className={styles.searchIcon} />
         </div>
-        <button className={styles.loginBtn} onClick={handleShow}>
+        <button className={styles.loginBtn} onClick={handleShowSignin}>
           Login
         </button>
       </section>

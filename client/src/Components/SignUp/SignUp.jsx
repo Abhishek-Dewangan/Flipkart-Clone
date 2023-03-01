@@ -7,7 +7,7 @@ import signupImage from '../../Assets/Images/signupimage.png';
 import {signup} from '../../Services/Actions/UserAction';
 import {useDispatch, useSelector} from 'react-redux';
 
-const SignUp = ({showSignup, handleCloseSignup, handleShowSignin}) => {
+const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
   const dispatch = useDispatch();
   const submit = (e) => {
     e.preventDefault();
@@ -24,17 +24,16 @@ const SignUp = ({showSignup, handleCloseSignup, handleShowSignin}) => {
     <div className={styles.signupContainer}>
       <Modal
         size=''
-        show={showSignup}
+        show={show}
         onHide={handleCloseSignup}
         className={styles.modal}
-        closebutton
       >
         <div className={styles.signupBody}>
           <div className={styles.imageDiv}>
             <img src={signupImage} alt='' className={styles.signupSideImage} />
           </div>
           <div className={styles.formDiv}>
-            <Modal.Header closeButton={true}>
+            <Modal.Header closeButton>
               <Modal.Title className={styles.formTitle}>SignUp</Modal.Title>
             </Modal.Header>
             <Modal.Body>
