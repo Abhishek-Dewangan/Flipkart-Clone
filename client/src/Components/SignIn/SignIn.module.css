@@ -1,10 +1,30 @@
-/* SignIn styles */
-.signinContainer{
-    margin-top: 3em;
+/* Signin styles */
+.signinContainer {
+  
 }
-.signin{
-    border: none;
-    color: #2874f0;
-    font-size: 14px;
-    background-color: transparent;
+.modal {
+  margin-top: 3em;
+}
+.formTitle{
+  color: #2874f0;
+}
+.imageDiv {
+
+}
+.signinSideImage{
+  width: 200px;
+}
+.signinBody {
+  display: flex;
+}
+.formDiv{
+    width: 100%;
+}
+.signinForm{
+}
+.signinBtn {
+  border: none;
+  color: #2874f0;
+  font-size: 14px;
+  background-color: transparent;
 }
