@@ -29,7 +29,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
-        message: action.message,
+        message: action.payload.message,
       };
     }
     case SIGNIN: {
@@ -37,8 +37,8 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        token: action.payload.token,
-        user: action.payload,
+        token: action.payload.user.token,
+        user: action.payload.user,
         message: action.payload.message,
       };
     }
