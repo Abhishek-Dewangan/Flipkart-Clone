@@ -11,8 +11,14 @@ const SignIn = ({showSignin, handleCloseSignin, handleShowSignup}) => {
   const dispatch = useDispatch();
   const submit = (e) => {
     e.preventDefault();
+    // console.log(isNaN(e.target.emailormobile.value));
     const user = {
-      email: e.target.email.value,
+      email: isNaN(e.target.emailormobile.value)
+        ? e.target.emailormobile.value
+        : null,
+      mobile_number: !isNaN(e.target.emailormobile.value)
+        ? e.target.emailormobile.value
+        : null,
       password: e.target.password.value,
     };
     // console.log(user);
@@ -39,9 +45,9 @@ const SignIn = ({showSignin, handleCloseSignin, handleShowSignup}) => {
               <form onSubmit={submit} className={styles.signinForm}>
                 <input
                   required
-                  type={'email'}
-                  placeholder='Email'
-                  name='email'
+                  type={'text'}
+                  placeholder='Email or Mobile'
+                  name='emailormobile'
                 />{' '}
                 <br />
                 <input
