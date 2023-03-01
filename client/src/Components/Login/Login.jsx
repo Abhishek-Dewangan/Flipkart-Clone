@@ -1,8 +1,9 @@
 import React from 'react'
+import Modal from 'react-bootstrap/Modal'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <Modal>Login</Modal>
   )
 }
 
