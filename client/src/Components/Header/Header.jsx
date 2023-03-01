@@ -4,18 +4,12 @@ import {Link} from 'react-router-dom';
 import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
-import SignIn from '../SignIn/SignIn';
 
-const Header = () => {
+const Header = ({setShow, handleShow}) => {
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <nav className={styles.navbar}>
-      <SignIn show={show} handleClose={handleClose} handleShow={handleShow} />
       <section className={styles.left}>
         <Link to={'/'} className={styles.link}>
           <img className={styles.logo} src={logo} alt='Flipkart logo' />
