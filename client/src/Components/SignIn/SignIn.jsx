@@ -21,7 +21,7 @@ const SignIn = ({showSignin, handleCloseSignin, handleShowSignup}) => {
         </Button>
       </Modal.Footer>
       <button
-        className={styles.signup}
+        className={styles.signin}
         onClick={() => {
           handleShowSignup();
           handleCloseSignin();
