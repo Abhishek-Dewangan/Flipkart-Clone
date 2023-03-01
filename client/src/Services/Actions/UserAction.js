@@ -8,13 +8,13 @@ export const IS_ERROR = 'IS_ERROR';
 
 // User Signup/Register
 export const signup = async (dispatch, user) => {
-  console.log(user)
   try {
     const res = await axios.post(`http://localhost:8080/api/signup`, user);
-    console.log(res);
-    dispatch({type: SIGNUP, payload: res});
+    console.log(res.data);
+    dispatch({type: SIGNUP, payload: res.data});
   } catch (error) {
-    dispatch({type: IS_ERROR, payload: error});
+    console.log(error.response.data);
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
 
