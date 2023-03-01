@@ -33,9 +33,13 @@ const signin = async (req, res) => {
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
         const token = await user.generateAuthToken();
+        const {first_name, last_name, _id} = user;
         res
           .status(201)
-          .send({message: `${user.first_name} signin successfully`, token});
+          .send({
+            message: `${user.first_name} signin successfully`,
+            user: {userId: _id, first_name, last_name, token},
+          });
       } else {
         res.status(401).send({message: 'Wrong password entered'});
       }
