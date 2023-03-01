@@ -10,20 +10,34 @@ import {useEffect, useState} from 'react';
 import {getPrducts} from './Services/Actions/ProductAction';
 import {useDispatch} from 'react-redux';
 import SignIn from './Components/SignIn/SignIn';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+  const [showSignin, setShowSignin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseSignin = () => setShowSignin(false);
+  const handleShowSignin = () => setShowSignin(true);
+  const handleCloseSignup = () => setShowSignup(false);
+  const handleShowSignup = () => setShowSignup(true);
+
   useEffect(() => {
     getPrducts(dispatch);
   }, []);
   return (
     <div className='App'>
-      <Header setShow={setShow} handleShow={handleShow} />
-      <SignIn show={show} handleClose={handleClose} handleShow={handleShow} />
+      <Header setShowSignin={setShowSignin} handleShow={handleShowSignin} />
+      <SignIn
+        showSignin={showSignin}
+        handleCloseSignin={handleCloseSignin}
+        handleShowSignup={handleShowSignup}
+      />
+      <SignUp
+        showSignup={showSignup}
+        handleCloseSignup={handleCloseSignup}
+        handleShowSignin={handleShowSignin}
+      />
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
