@@ -22,7 +22,6 @@ export const signup = async (dispatch, user) => {
 
 // User Signin/Login
 export const signin = async (dispatch, user) => {
-  // console.log(user);
   dispatch({type: IS_LOADING});
   try {
     const res = await axios.post(`http://localhost:8080/api/signin`, user);
@@ -30,7 +29,7 @@ export const signin = async (dispatch, user) => {
     dispatch({type: SIGNIN, payload: res.data});
   } catch (error) {
     console.log(error.response.data);
-    dispatch({type: IS_ERROR, payload: error.res.data});
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
 
