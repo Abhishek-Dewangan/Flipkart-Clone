@@ -5,9 +5,11 @@ export const SIGNUP = 'SIGNUP';
 export const SIGNIN = 'SIGNIN';
 export const SIGNOUT = 'SIGNOUT';
 export const IS_ERROR = 'IS_ERROR';
+export const IS_LOADING = 'IS_LOADING';
 
 // User Signup/Register
 export const signup = async (dispatch, user) => {
+  dispatch({type: IS_LOADING});
   try {
     const res = await axios.post(`http://localhost:8080/api/signup`, user);
     console.log(res.data);
@@ -20,6 +22,7 @@ export const signup = async (dispatch, user) => {
 
 // User Signin/Login
 export const signin = async (dispatch, user) => {
+  dispatch({type: IS_LOADING});
   try {
     const res = await axios.post(`http://localhost:8080/api/signin`, user);
     dispatch({type: SIGNIN, payload: res});
@@ -30,6 +33,7 @@ export const signin = async (dispatch, user) => {
 
 // User Signout/Logout
 export const signout = async (dispatch, token) => {
+  dispatch({type: IS_LOADING});
   try {
     const res = await axios.post(`http://localhost:8080/api/signout`, token);
     dispatch({type: SIGNOUT, payload: res});
