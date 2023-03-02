@@ -6,11 +6,13 @@ import {
   SIGNUP,
 } from '../Actions/UserAction';
 
+const userData = JSON.parse(localStorage.getItem('user')) || {};
+
 const initialState = {
   isError: false,
   isLoading: false,
   token: '',
-  user: {},
+  user: userData,
   message: '',
 };
 
