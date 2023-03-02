@@ -26,6 +26,7 @@ export const signin = async (dispatch, user) => {
   try {
     const res = await axios.post(`http://localhost:8080/api/signin`, user);
     console.log(res.data);
+    localStorage.setItem('user', JSON.stringify(res.data.user));
     dispatch({type: SIGNIN, payload: res.data});
   } catch (error) {
     console.log(error.response.data);
