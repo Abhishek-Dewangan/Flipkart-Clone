@@ -11,6 +11,7 @@ const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
   isError: false,
   isLoading: false,
+  isSuccess: false,
   token: '',
   user: userData,
   message: '',
@@ -23,6 +24,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         isError: false,
+        isSuccess: false,
         message: '',
       };
     }
@@ -31,6 +33,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
+        isSuccess: false,
         message: action.payload.message,
       };
     }
@@ -39,6 +42,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
+        isSuccess: true,
         token: action.payload.user.token,
         user: action.payload.user,
         message: action.payload.message,
@@ -49,6 +53,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
+        isSuccess: true,
         message: action.payload.message,
       };
     }
@@ -57,6 +62,7 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
+        isSuccess: true,
         token: '',
         user: {},
         message: action.payload.message,
