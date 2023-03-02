@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 
 const Header = ({handleShowSignin}) => {
   const [open, setOpen] = useState(false);
+  const {user} = useSelector((state) => state.UserReducer);
 
   return (
     <nav className={styles.navbar}>
@@ -22,9 +24,13 @@ const Header = ({handleShowSignin}) => {
           />
           <FaSearch className={styles.searchIcon} />
         </div>
-        <button className={styles.loginBtn} onClick={handleShowSignin}>
-          Login
-        </button>
+        {user.first_name ? (
+          <button className={styles.loginBtn}>{user.first_name}</button>
+        ) : (
+          <button className={styles.loginBtn} onClick={handleShowSignin}>
+            Login
+          </button>
+        )}
       </section>
       <section className={styles.right}>
         <Link className={styles.link}>Become a Seller</Link>
