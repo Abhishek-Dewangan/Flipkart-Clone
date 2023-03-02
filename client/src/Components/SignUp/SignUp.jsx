@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './SignUp.module.css';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import signupImage from '../../Assets/Images/signupimage.png';
 import {signup} from '../../Services/Actions/UserAction';

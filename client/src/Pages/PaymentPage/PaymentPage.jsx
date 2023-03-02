@@ -3,7 +3,7 @@ import styles from './PaymentPage.module.css';
 
 const PaymentPage = () => {
   return (
-    <div>PaymentPage</div>
+    <div className={styles.paymentPageContainer}>PaymentPage</div>
   )
 }
 
