@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './SignIn.module.css';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import signinImage from '../../Assets/Images/signinimage.png';
 import {signin} from '../../Services/Actions/UserAction';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
   const dispatch = useDispatch();
+  const {signinSuccess, message, isError} = useSelector(
+    (state) => state.UserReducer
+  );
+
   const submit = (e) => {
     e.preventDefault();
     const user = {
@@ -21,6 +25,12 @@ const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
     };
     signin(dispatch, user);
   };
+
+  useEffect(() => {
+    signinSuccess && handleCloseSignin();
+    isError && alert(message);
+  }, []);
+
   return (
     <div className={styles.signinContainer}>
       <Modal
@@ -64,7 +74,7 @@ const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
                   handleCloseSignin();
                 }}
               >
-                Already have an account? SignIn
+                New to Flipkart? Create an account
               </button>
             </Modal.Footer>
           </div>

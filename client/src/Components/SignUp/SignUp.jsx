@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './SignUp.module.css';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +8,9 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
   const dispatch = useDispatch();
+  const {message, signupSuccess, isError} = useSelector(
+    (state) => state.UserReducer
+  );
   const submit = (e) => {
     e.preventDefault();
     const user = {
@@ -19,6 +22,15 @@ const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
     };
     signup(dispatch, user);
   };
+
+  useEffect(() => {
+    if (signupSuccess) {
+      handleCloseSignup();
+      handleShowSignin();
+    }
+    isError && alert(message);
+  }, [signupSuccess, isError]);
+
   return (
     <div className={styles.signupContainer}>
       <Modal

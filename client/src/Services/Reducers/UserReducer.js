@@ -11,7 +11,9 @@ const userData = JSON.parse(localStorage.getItem('user')) || {};
 const initialState = {
   isError: false,
   isLoading: false,
-  isSuccess: false,
+  signinSuccess: false,
+  signupSuccess: false,
+  signoutSuccess: false,
   token: '',
   user: userData,
   message: '',
@@ -24,7 +26,9 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         isError: false,
-        isSuccess: false,
+        signinSuccess: false,
+        signupSuccess: false,
+        signoutSuccess: false,
         message: '',
       };
     }
@@ -33,7 +37,9 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
-        isSuccess: false,
+        signinSuccess: false,
+        signupSuccess: false,
+        signoutSuccess: false,
         message: action.payload.message,
       };
     }
@@ -42,7 +48,9 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        isSuccess: true,
+        signinSuccess: true,
+        signupSuccess: false,
+        signoutSuccess: false,
         token: action.payload.user.token,
         user: action.payload.user,
         message: action.payload.message,
@@ -53,7 +61,9 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        isSuccess: true,
+        signinSuccess: false,
+        signupSuccess: true,
+        signoutSuccess: false,
         message: action.payload.message,
       };
     }
@@ -62,7 +72,9 @@ export const UserReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        isSuccess: true,
+        signinSuccess: false,
+        signupSuccess: false,
+        signoutSuccess: true,
         token: '',
         user: {},
         message: action.payload.message,
