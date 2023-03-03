@@ -1,17 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({handleShowSignin}) => {
   const [open, setOpen] = useState(false);
-  const {user} = useSelector((state) => state.UserReducer);
+  const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
+    useSelector((state) => state.UserReducer);
+
+  const alertMessage = () => {
+    console.log(isError);
+    (signinSuccess || signupSuccess || signoutSuccess) &&
+      toast.success(message, {});
+
+    isError && toast.error(message, {});
+  };
+
+  useEffect(() => {
+    message && alertMessage();
+  }, [message]);
 
   return (
     <nav className={styles.navbar}>
+      <ToastContainer />
       <section className={styles.left}>
         <Link to={'/'} className={styles.link}>
           <img className={styles.logo} src={logo} alt='Flipkart logo' />
