@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
   const dispatch = useDispatch();
-  const {signinSuccess, message, isError} = useSelector(
+  const {signinSuccess} = useSelector(
     (state) => state.UserReducer
   );
 
@@ -28,8 +28,7 @@ const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
 
   useEffect(() => {
     signinSuccess && handleCloseSignin();
-    isError && alert(message);
-  }, []);
+  }, [signinSuccess]);
 
   return (
     <div className={styles.signinContainer}>

@@ -28,8 +28,7 @@ const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
       handleCloseSignup();
       handleShowSignin();
     }
-    isError && alert(message);
-  }, [signupSuccess, isError]);
+  }, [signupSuccess]);
 
   return (
     <div className={styles.signupContainer}>
