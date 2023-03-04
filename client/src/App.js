@@ -8,14 +8,16 @@ import CartPage from './Pages/CartPage/CartPage';
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import {useEffect, useState} from 'react';
 import {getPrducts} from './Services/Actions/ProductAction';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
+import {getWishlistProducts} from './Services/Actions/WishlistAction';
 
 function App() {
   const dispatch = useDispatch();
   const [showSignin, setShowSignin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const {user} = useSelector((state) => state.UserReducer);
 
   const handleCloseSignin = () => setShowSignin(false);
   const handleShowSignin = () => setShowSignin(true);
@@ -24,6 +26,7 @@ function App() {
 
   useEffect(() => {
     getPrducts(dispatch);
+    getWishlistProducts(dispatch, user.userId);
   }, []);
   return (
     <div className='App'>
