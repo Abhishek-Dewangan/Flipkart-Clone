@@ -39,6 +39,7 @@ export const signout = async (dispatch, token) => {
   dispatch({type: IS_LOADING});
   try {
     const res = await axios.post(`http://localhost:8080/api/signout`, token);
+    localStorage.removeItem('user');
     dispatch({type: SIGNOUT, payload: res});
   } catch (error) {
     dispatch({type: IS_ERROR, payload: error});
