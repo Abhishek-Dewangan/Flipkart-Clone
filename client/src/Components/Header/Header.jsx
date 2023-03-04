@@ -1,30 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import {BiChevronDown, BiChevronUp, BiLogOutCircle } from 'react-icons/bi';
+import {useDispatch, useSelector} from 'react-redux';
+import {BiChevronDown, BiChevronUp, BiLogOutCircle} from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Dropdown} from 'react-bootstrap';
+import {signout} from '../../Services/Actions/UserAction';
 
 const Header = ({handleShowSignin}) => {
+  const distpatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
     useSelector((state) => state.UserReducer);
 
   const alertMessage = () => {
-    console.log(isError);
     (signinSuccess || signupSuccess || signoutSuccess) &&
       toast.success(message, {});
 
     isError && toast.error(message, {});
-  };
-
-  const signout = () => {
-    console.log('signout');
   };
 
   useEffect(() => {
@@ -58,7 +55,7 @@ const Header = ({handleShowSignin}) => {
               {user.first_name}
             </Dropdown.Toggle>
             <Dropdown.Menu show={show} className={styles.dropdownMenu}>
-              <Dropdown.Item onClick={signout}>
+              <Dropdown.Item onClick={() => signout(distpatch, user.token)}>
                 <BiLogOutCircle className={styles.signoutIcon} /> SignOut
               </Dropdown.Item>
             </Dropdown.Menu>
