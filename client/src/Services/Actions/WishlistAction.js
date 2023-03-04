@@ -26,30 +26,37 @@ export const addToWishlist = async (dispatch, product) => {
 
 // Get wishlist products
 export const getWishlistProducts = async (dispatch, userId) => {
+  dispatch({type: IS_LOADING});
   try {
-    const wishlistData = await axios.get(
+    const res = await axios.get(
       `http://localhost:8080/api/getwishlistproducts/${userId}`
     );
-    dispatch({type: GET_WISHLIST_PRODUCTS, payload: wishlistData});
+    // console.log(res.data);
+    dispatch({type: GET_WISHLIST_PRODUCTS, payload: res.data});
   } catch (error) {
-    dispatch({type: IS_ERROR, payload: error});
+    // console.log(error);
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
 
 // Remove from wishlist
 export const removeFromWishlist = async (dispatch, productId) => {
+  dispatch({type: IS_LOADING});
   try {
     const res = await axios.delete(
       `http://localhost:8080/api/removefromwishlist/${productId}`
     );
-    dispatch({type: REMOVE_FROM_WISHLIST, payload: res});
+    console.log(res.data);
+    dispatch({type: REMOVE_FROM_WISHLIST, payload: res.data});
   } catch (error) {
+    console.log(error.response.data);
     dispatch({type: IS_ERROR, payload: error});
   }
 };
 
 // Remove all form wishlist
 export const removeAllFromWishlist = async (dispatch, userId) => {
+  dispatch({type: IS_LOADING});
   try {
     const res = await axios.delete(`http://localhost:8080/api/${userId}`);
     dispatch({type: REMOVE_ALL_FROM_WISHLIST, payload: res});
