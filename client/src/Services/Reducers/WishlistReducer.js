@@ -35,6 +35,16 @@ export const WishlistReducer = (state = initialState, action) => {
         message: action.payload.message,
       };
     }
+    case GET_WISHLIST_PRODUCTS: {
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        isSuccess: false,
+        message: '',
+        wishlistData: action.payload.data,
+      };
+    }
     case ADD_TO_WISHLIST: {
       return {
         ...state,
@@ -47,7 +57,7 @@ export const WishlistReducer = (state = initialState, action) => {
     }
     case REMOVE_FROM_WISHLIST: {
       const updatedWishlistData = state.wishlistData.filter(
-        (elem) => elem.id !== action.payload.id
+        (elem) => elem._id !== action.payload._id
       );
       return {
         ...state,
@@ -58,15 +68,13 @@ export const WishlistReducer = (state = initialState, action) => {
         wishlistData: updatedWishlistData,
       };
     }
-    case GET_WISHLIST_PRODUCTS: {
-      return {
-        ...state,
-        wishlistData: action.payload,
-      };
-    }
     case REMOVE_ALL_FROM_WISHLIST: {
       return {
         ...state,
+        isError: false,
+        isLoading: false,
+        isSuccess: true,
+        message: action.payload.message,
         wishlistData: [],
       };
     }
