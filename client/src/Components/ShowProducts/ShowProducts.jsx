@@ -11,6 +11,7 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
+import {addToCart} from '../../Services/Actions/CartAction';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const ShowProducts = ({products}) => {
     isError && toast.error(message);
   };
 
-  // Adding product in wishlist
+  // Adding product into wishlist
   const addWishlist = (elem) => {
     const product = {
       userId: user.userId,
@@ -45,6 +46,23 @@ const ShowProducts = ({products}) => {
   // Removing product from wishlist
   const removeWishlist = (id) => {
     removeFromWishlist(dispatch, id);
+  };
+
+  //  Adding product into cart
+  const addCart = (elem) => {
+    const product = {
+      userId: user.userId,
+      productId: elem._id,
+      name: elem.name,
+      category: elem.category,
+      link: elem.link,
+      current_price: elem.current_price,
+      original_price: elem.original_price,
+      discounted: elem.discounted,
+      thumbnail: elem.thumbnail,
+      query_url: elem.query_url,
+    };
+    addToCart(dispatch, product);
   };
 
   useEffect(() => {
