@@ -36,12 +36,15 @@ export const signin = async (dispatch, user) => {
 
 // User Signout/Logout
 export const signout = async (dispatch, token) => {
+  console.log(token);
   dispatch({type: IS_LOADING});
   try {
-    const res = await axios.post(`http://localhost:8080/api/signout`, token);
+    const res = await axios.post(`http://localhost:8080/api/signout`, {token:token});
     localStorage.removeItem('user');
-    dispatch({type: SIGNOUT, payload: res});
+    console.log(res.data);
+    dispatch({type: SIGNOUT, payload: res.data});
   } catch (error) {
-    dispatch({type: IS_ERROR, payload: error});
+    console.log(error);
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
