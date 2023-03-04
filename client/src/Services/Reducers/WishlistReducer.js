@@ -52,12 +52,12 @@ export const WishlistReducer = (state = initialState, action) => {
         isError: false,
         isSuccess: true,
         message: action.payload.message,
-        wishlistData: [...state.wishlistData, action.payload],
+        wishlistData: [...state.wishlistData, action.payload.data],
       };
     }
     case REMOVE_FROM_WISHLIST: {
       const updatedWishlistData = state.wishlistData.filter(
-        (elem) => elem._id !== action.payload._id
+        (elem) => elem._id !== action.payload.data._id
       );
       return {
         ...state,
