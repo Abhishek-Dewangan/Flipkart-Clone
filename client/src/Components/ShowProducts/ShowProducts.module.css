@@ -7,14 +7,22 @@
   margin: 1em;
   border: 1px solid red;
 }
-.wishlistIcon {
+.addWishlistIcon {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
   border-radius: 50%;
 }
-.wishlistIcon:hover {
+.removeWishlistIcon {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
+  border-radius: 50%;
+  color: red;
+}
+.addWishlistIcon, .removeWishlistIcon:hover {
   cursor: pointer;
 }
 .productBox {

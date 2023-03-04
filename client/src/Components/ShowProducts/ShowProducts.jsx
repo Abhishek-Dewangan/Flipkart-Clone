@@ -1,29 +1,32 @@
-import React, {useEffect} from 'react';
-import axios from 'axios';
-import styles from './ShowProducts.module.css';
-import {Link} from 'react-router-dom';
-import fAssured from '../../Assets/Images/f-assured.png';
-import {AiOutlineHeart} from 'react-icons/ai';
-import {FaShoppingCart} from 'react-icons/fa';
-import {GiElectric} from 'react-icons/gi';
-import {addToWishlist} from '../../Services/Actions/WishlistAction';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {toast} from 'react-toastify';
+import {Link} from 'react-router-dom';
+import styles from './ShowProducts.module.css';
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from '../../Services/Actions/WishlistAction';
+import fAssured from '../../Assets/Images/f-assured.png';
+import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
+import {FaShoppingCart} from 'react-icons/fa';
+import {GiElectric} from 'react-icons/gi';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
-  const {wishlistData, isError, isSuccess, isLoading, message} = useSelector(
+  const {wishlistData, isError, isSuccess, message} = useSelector(
     (state) => state.WishlistReducer
   );
 
+  // Alert messages for wihslist actions
   const alertMessage = () => {
     isSuccess && toast.success(message);
     isError && toast.error(message);
   };
 
+  // Adding product in wishlist
   const addWishlist = (elem) => {
-    console.log(elem);
     const product = {
       userId: user.userId,
       productId: elem._id,
@@ -39,6 +42,12 @@ const ShowProducts = ({products}) => {
     addToWishlist(dispatch, product);
   };
 
+  // Removing product from wishlist
+  const removeWishlist = (id) => {
+    console.log(id)
+    removeFromWishlist(dispatch, id);
+  };
+
   useEffect(() => {
     message && alertMessage();
   }, [message]);
@@ -46,16 +55,32 @@ const ShowProducts = ({products}) => {
   return (
     <div className={styles.showProductsContainer}>
       {products.map((elem) => {
+        // Calculating discount percent
         const discount = Math.floor(
           100 - (elem.current_price * 100) / elem.original_price
         );
+
+        // Checking the product is added in wishlist or not
+        const isExistInWishlist = wishlistData.filter(
+          (element) =>
+            element.productId === elem._id && element.userId === user.userId
+        );
+        // isExistInWishlist.length && console.log(isExistInWishlist);
+
         return (
           <div key={elem._id} className={styles.productBox}>
-            <AiOutlineHeart
-              onClick={() => addWishlist(elem)}
-              className={styles.wishlistIcon}
-              style={{stroke: 'silver', strokeWidth: '50'}}
-            />
+            {isExistInWishlist.length ? (
+              <AiFillHeart
+                className={styles.removeWishlistIcon}
+                onClick={() => removeWishlist(isExistInWishlist[0]._id)}
+              />
+            ) : (
+              <AiOutlineHeart
+                onClick={() => addWishlist(elem)}
+                className={styles.addWishlistIcon}
+                style={{stroke: 'silver', strokeWidth: '50'}}
+              />
+            )}
             <div className={styles.productImageDiv}>
               <Link to={`/productdetail/${elem._id}`}>
                 <img
