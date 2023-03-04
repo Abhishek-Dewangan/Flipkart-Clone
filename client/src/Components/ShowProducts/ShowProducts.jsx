@@ -44,7 +44,6 @@ const ShowProducts = ({products}) => {
 
   // Removing product from wishlist
   const removeWishlist = (id) => {
-    console.log(id)
     removeFromWishlist(dispatch, id);
   };
 
