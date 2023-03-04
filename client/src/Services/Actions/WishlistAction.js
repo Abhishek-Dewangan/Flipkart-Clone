@@ -16,10 +16,10 @@ export const addToWishlist = async (dispatch, product) => {
       'http://localhost:8080/api/addtowishlist',
       product
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: ADD_TO_WISHLIST, payload: res.data});
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
@@ -46,10 +46,10 @@ export const removeFromWishlist = async (dispatch, productId) => {
     const res = await axios.delete(
       `http://localhost:8080/api/removefromwishlist/${productId}`
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: REMOVE_FROM_WISHLIST, payload: res.data});
   } catch (error) {
-    console.log(error.response.data);
+    // console.log(error.response.data);
     dispatch({type: IS_ERROR, payload: error});
   }
 };
