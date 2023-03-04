@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import styles from './ProductCategoryPage.module.css';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -10,7 +10,7 @@ const ProductCategoryPage = () => {
   const {category} = useParams();
   const dispatch = useDispatch();
   const {categoryProducts} = useSelector((state) => state.ProductReducer);
-  
+
   useEffect(() => {
     getProductsByCategory(dispatch, category);
   }, [category]);
