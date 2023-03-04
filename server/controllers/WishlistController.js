@@ -23,9 +23,10 @@ const addToWishlist = async (req, res) => {
       res.status(409).send({message: 'Product is already exist in wishlist'});
     } else {
       const response = await new Wishlist(req.body).save();
-      res
-        .status(201)
-        .send({message: 'Product successfully added into wishlist', response});
+      res.status(201).send({
+        message: 'Product successfully added into wishlist',
+        data: response,
+      });
     }
   } catch (error) {
     res.status(401).send({message: error.message, error});
@@ -37,9 +38,10 @@ const removeFromWishlist = async (req, res) => {
   try {
     const {id} = req.params;
     const response = await Wishlist.findByIdAndDelete({_id: id});
-    res
-      .status(201)
-      .send({message: 'Product removed successfully from wishlist', response});
+    res.status(201).send({
+      message: 'Product removed successfully from wishlist',
+      data: response,
+    });
   } catch (error) {
     res.status(401).send({message: error.message, error});
   }
@@ -52,7 +54,7 @@ const removeAllFromWishlist = async (req, res) => {
     const response = await Wishlist.deleteMany({userId: userid});
     res
       .status(201)
-      .send({message: 'All products removed from wishlist', response});
+      .send({message: 'All products removed from wishlist', data: response});
   } catch (error) {
     res.status(401).send({message: error.message, error});
   }
