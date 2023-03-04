@@ -19,9 +19,9 @@ const Header = ({handleShowSignin}) => {
 
   const alertMessage = () => {
     (signinSuccess || signupSuccess || signoutSuccess) &&
-      toast.success(message, {});
+      toast.success(message);
 
-    isError && toast.error(message, {});
+    isError && toast.error(message);
   };
 
   useEffect(() => {
