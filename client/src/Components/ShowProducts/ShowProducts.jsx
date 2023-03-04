@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import styles from './ShowProducts.module.css';
 import {Link} from 'react-router-dom';
@@ -6,9 +6,42 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
+import {addToWishlist} from '../../Services/Actions/WishlistAction';
+import {useDispatch, useSelector} from 'react-redux';
+import {toast} from 'react-toastify';
 
 const ShowProducts = ({products}) => {
-  // console.log(products);
+  const dispatch = useDispatch();
+  const {user} = useSelector((state) => state.UserReducer);
+  const {wishlistData, isError, isSuccess, isLoading, message} = useSelector(
+    (state) => state.WishlistReducer
+  );
+
+  const alertMessage = () => {
+    isSuccess && toast.success(message);
+    isError && toast.error(message);
+  };
+
+  const addWishlist = (elem) => {
+    console.log(elem);
+    const product = {
+      userId: user.userId,
+      productId: elem._id,
+      name: elem.name,
+      category: elem.category,
+      link: elem.link,
+      current_price: elem.current_price,
+      original_price: elem.original_price,
+      discounted: elem.discounted,
+      thumbnail: elem.thumbnail,
+      query_url: elem.query_url,
+    };
+    addToWishlist(dispatch, product);
+  };
+
+  useEffect(() => {
+    message && alertMessage();
+  }, [message]);
 
   return (
     <div className={styles.showProductsContainer}>
@@ -19,6 +52,7 @@ const ShowProducts = ({products}) => {
         return (
           <div key={elem._id} className={styles.productBox}>
             <AiOutlineHeart
+              onClick={() => addWishlist(elem)}
               className={styles.wishlistIcon}
               style={{stroke: 'silver', strokeWidth: '50'}}
             />
