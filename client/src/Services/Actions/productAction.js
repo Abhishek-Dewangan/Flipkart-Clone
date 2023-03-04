@@ -10,42 +10,49 @@ export const IS_LOADING = 'IS_LOADING';
 
 // Get products
 export const getPrducts = async (dispatch) => {
+  dispatch({type: IS_LOADING});
   try {
     const products = await axios.get('http://localhost:8080/api/getproducts');
-    dispatch({type: GET_PRODUCTS, payload: products.data.data});
+    // console.log(products.data);
+    dispatch({type: GET_PRODUCTS, payload: products.data});
   } catch (error) {
-    dispatch({type: IS_ERROR});
+    // console.log(error);
+    dispatch({type: IS_ERROR, payload: error});
   }
 };
 
 //  Get products by category
 export const getProductsByCategory = async (dispatch, category) => {
+  dispatch({type: IS_LOADING});
   try {
     const products = await axios.get(
       `http://localhost:8080/api/getproductsbycategory/${category}`
     );
-    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products.data.data});
+    // console.log(products);
+    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products.data});
   } catch (error) {
-    dispatch({type: IS_ERROR});
+    // console.log(error);
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
 
 // Get product by id
 export const getProductById = async (dispatch, id) => {
+  dispatch({type: IS_LOADING});
   try {
     const product = await axios.get(
       `http:/localhost:8080/api/getproductbyid/${id}`
     );
     dispatch({type: GET_PRODUCTS_BY_ID, payload: product});
   } catch (error) {
-    dispatch({type: IS_ERROR});
+    dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
 
 // Get prouduct details
 export const getProductDetails = async (dispatch, product) => {
+  dispatch({type: IS_LOADING});
   try {
-    console.log(product);
     const productDetails = await axios.get(product.query_url);
     dispatch({type: GET_PROUDUCT_DETAILS, payload: productDetails});
   } catch (error) {
