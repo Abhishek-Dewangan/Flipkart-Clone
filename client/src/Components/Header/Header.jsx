@@ -7,9 +7,11 @@ import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Dropdown} from 'react-bootstrap';
 
 const Header = ({handleShowSignin}) => {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
     useSelector((state) => state.UserReducer);
 
@@ -19,6 +21,10 @@ const Header = ({handleShowSignin}) => {
       toast.success(message, {});
 
     isError && toast.error(message, {});
+  };
+
+  const signout = () => {
+    console.log('signout');
   };
 
   useEffect(() => {
@@ -41,7 +47,18 @@ const Header = ({handleShowSignin}) => {
           <FaSearch className={styles.searchIcon} />
         </div>
         {user.first_name ? (
-          <button className={styles.loginBtn}>{user.first_name}</button>
+          <Dropdown
+            className={styles.dropdown}
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}
+          >
+            <Dropdown.Toggle className={styles.loginBtn}>
+              {user.first_name}
+            </Dropdown.Toggle>
+            <Dropdown.Menu show={show}>
+              <Dropdown.Item onClick={signout}>SignOut</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         ) : (
           <button className={styles.loginBtn} onClick={handleShowSignin}>
             Login
