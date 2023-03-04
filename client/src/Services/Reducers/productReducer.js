@@ -8,8 +8,9 @@ import {
 } from '../Actions/ProductAction';
 
 const initialState = {
-  isLoading: false,
   isError: false,
+  isLoading: false,
+  isSuccess: false,
   product: {},
   products: [],
   categoryProducts: [],
@@ -18,29 +19,55 @@ const initialState = {
 
 export const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
+    case IS_LOADING: {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+    }
+    case IS_ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+      };
+    }
     case GET_PRODUCTS: {
       return {
         ...state,
         isLoading: false,
         isError: false,
-        products: action.payload,
-      };
-    }
-    case GET_PROUDUCT_DETAILS: {
-      return {
-        ...state,
-        productDetails: action.payload,
+        isSuccess: true,
+        products: action.payload.data,
       };
     }
     case GET_PRODUCTS_BY_CATEGORY: {
       return {
         ...state,
-        categoryProducts: action.payload,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        categoryProducts: action.payload.data,
+      };
+    }
+    case GET_PROUDUCT_DETAILS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        productDetails: action.payload,
       };
     }
     case GET_PRODUCTS_BY_ID: {
       return {
         ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
         product: action.payload,
       };
     }
