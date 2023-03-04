@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
+import {BiChevronDown, BiChevronUp, BiLogOutCircle } from 'react-icons/bi';
 import {FaShoppingCart, FaSearch} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 import {toast, ToastContainer} from 'react-toastify';
@@ -49,14 +49,18 @@ const Header = ({handleShowSignin}) => {
         {user.first_name ? (
           <Dropdown
             className={styles.dropdown}
+            id={'dropdown-drop-down-centered'}
+            drop={'down-centered'}
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
           >
-            <Dropdown.Toggle className={styles.loginBtn}>
+            <Dropdown.Toggle className={styles.dropdownToggle}>
               {user.first_name}
             </Dropdown.Toggle>
-            <Dropdown.Menu show={show}>
-              <Dropdown.Item onClick={signout}>SignOut</Dropdown.Item>
+            <Dropdown.Menu show={show} className={styles.dropdownMenu}>
+              <Dropdown.Item onClick={signout}>
+                <BiLogOutCircle className={styles.signoutIcon} /> SignOut
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         ) : (
