@@ -25,6 +25,7 @@ export const ProductReducer = (state = initialState, action) => {
         isLoading: true,
         isError: false,
         isSuccess: false,
+        productDetails: {},
       };
     }
     case IS_ERROR: {
@@ -59,7 +60,7 @@ export const ProductReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         isSuccess: true,
-        productDetails: action.payload,
+        productDetails: action.payload.data,
       };
     }
     case GET_PRODUCTS_BY_ID: {
