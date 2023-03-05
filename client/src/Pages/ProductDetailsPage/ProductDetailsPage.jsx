@@ -7,17 +7,17 @@ import {getProductDetails} from '../../Services/Actions/ProductAction';
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const {productid} = useParams();
-  const {products, producDetails} = useSelector(
+  const {products, productDetails} = useSelector(
     (state) => state.ProductReducer
   );
-  // console.log(product);
   useEffect(() => {
     const product = products.filter((elem) => elem._id === productid);
-    getProductDetails(dispatch, product[0]);
-  }, []);
+    product.length && getProductDetails(dispatch, product[0]);
+  }, [products]);
+
   useEffect(() => {
-    console.log(producDetails);
-  }, [producDetails]);
+    console.log(productDetails);
+  }, [productDetails]);
   return (
     <div className={styles.productDetailsContainer}>
       <section className={styles.leftSection}></section>

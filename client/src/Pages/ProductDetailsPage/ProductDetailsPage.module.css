@@ -1,1 +1,4 @@
 /* Product details page styles */
+.productDetailsContainer{
+    min-height: 100vh;
+}
