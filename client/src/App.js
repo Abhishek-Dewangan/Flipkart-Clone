@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
 import {getWishlistProducts} from './Services/Actions/WishlistAction';
+import {getCartProducts} from './Services/Actions/CartAction';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
   useEffect(() => {
     getPrducts(dispatch);
     getWishlistProducts(dispatch, user.userId);
+    getCartProducts(dispatch, user.userId);
   }, []);
   return (
     <div className='App'>
