@@ -45,6 +45,17 @@ UserSchema.pre('save', async function (next) {
   }
 });
 
+// Capitalize first letter of firstname and lastname
+UserSchema.pre('save', function (next) {
+  try {
+    this.first_name = this.first_name.charAt(0).toUpperCase() + this.first_name.slice(1);
+    this.last_name = this.last_name.charAt(0).toUpperCase() + this.last_name.slice(1);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 //  Token generating for authentication
 UserSchema.methods.generateAuthToken = async function () {
   try {
