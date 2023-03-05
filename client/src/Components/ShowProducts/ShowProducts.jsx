@@ -16,15 +16,19 @@ import {addToCart, removeFromCart} from '../../Services/Actions/CartAction';
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
-  const wishlist = useSelector(
-    (state) => state.WishlistReducer
-  );
+  const wishlist = useSelector((state) => state.WishlistReducer);
+  const cart = useSelector((state) => state.CartReducer);
+  console.log(cart.cartData);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
     wishlist.isSuccess && toast.success(wishlist.message);
     wishlist.isError && toast.error(wishlist.message);
   };
+
+  useEffect(() => {
+    wishlist.message && alertWishlist();
+  }, [wishlist.message]);
 
   // Adding product into wishlist
   const addWishlist = (elem) => {
@@ -48,6 +52,16 @@ const ShowProducts = ({products}) => {
     removeFromWishlist(dispatch, id);
   };
 
+  // Alert message for cart actions
+  const alertCart = () => {
+    cart.isSuccess && toast.success(cart.message);
+    cart.isError && toast.error(cart.message);
+  };
+
+  useEffect(() => {
+    cart.message && alertCart();
+  }, [cart.message]);
+
   //  Adding product into cart
   const addCart = (elem) => {
     const product = {
@@ -70,10 +84,6 @@ const ShowProducts = ({products}) => {
     removeFromCart(dispatch, id);
   };
 
-  useEffect(() => {
-    wishlist.message && alertWishlist();
-  }, [wishlist.message]);
-
   return (
     <div className={styles.showProductsContainer}>
       {products.map((elem) => {
@@ -87,7 +97,12 @@ const ShowProducts = ({products}) => {
           (element) =>
             element.productId === elem._id && element.userId === user.userId
         );
-        // isExistInWishlist.length && console.log(isExistInWishlist);
+
+        // Checking the product is added in cart or not
+        const isExistInCart = cart.cartData.filter(
+          (element) =>
+            element.productId === elem._id && element.userId === user.userId
+        );
 
         return (
           <div key={elem._id} className={styles.productBox}>
@@ -131,10 +146,23 @@ const ShowProducts = ({products}) => {
               <span className={styles.discount}>{discount}% off</span>
             </p>
             <div className={styles.buttonDiv}>
-              <button className={styles.addToCartBtn}>
-                <FaShoppingCart />
-                Add to Cart
-              </button>
+              {isExistInCart.length ? (
+                <button
+                  className={styles.addToCartBtn}
+                  onClick={() => removeCart(elem._id)}
+                >
+                  <FaShoppingCart />
+                  Go to Cart
+                </button>
+              ) : (
+                <button
+                  className={styles.addToCartBtn}
+                  onClick={() => addCart(elem)}
+                >
+                  <FaShoppingCart />
+                  Add to Cart
+                </button>
+              )}
               <button className={styles.buyNowBtn}>
                 <GiElectric />
                 Buy Now
