@@ -11,6 +11,7 @@ const initialState = {
   isError: false,
   isLoading: false,
   isSuccess: false,
+  message: '',
   cartData: [],
 };
 
@@ -22,6 +23,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: true,
         isSuccess: false,
+        message: '',
       };
     }
     case IS_ERROR: {
@@ -30,6 +32,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: true,
         isLoading: false,
         isSuccess: false,
+        message: action.payload.message,
       };
     }
     case ADD_TO_CART: {
@@ -38,6 +41,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: false,
         isSuccess: true,
+        message: action.payload.message,
         cartData: [...state.cartData, action.payload.data],
       };
     }
@@ -59,6 +63,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: false,
         isSuccess: true,
+        message: action.payload.message,
         cartData: updatedCartData,
       };
     }
@@ -68,6 +73,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: false,
         isSuccess: true,
+        message: action.payload.message,
         cartData: [],
       };
     }
