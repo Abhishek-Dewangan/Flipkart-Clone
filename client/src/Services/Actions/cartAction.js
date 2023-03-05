@@ -16,10 +16,10 @@ export const addToCart = async (dispatch, product) => {
       'http://localhost:8080/api/addtocart',
       product
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: ADD_TO_CART, payload: res.data});
   } catch (error) {
-    console.log(error.response.data);
+    // console.log(error.response.data);
     dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
@@ -31,10 +31,10 @@ export const getCartProducts = async (dispatch, userId) => {
     const res = await axios.get(
       `http://localhost:8080/api/getcartproducts/${userId}`
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: GET_CART_DATA, payload: res.data});
   } catch (error) {
-    console.log(error);
+    // console.log(error.response.data);
     dispatch({type: IS_ERROR, payload: error.response.data});
   }
 };
