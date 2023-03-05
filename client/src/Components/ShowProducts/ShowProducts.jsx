@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import styles from './ShowProducts.module.css';
 import {
   addToWishlist,
@@ -15,10 +15,10 @@ import {addToCart, removeFromCart} from '../../Services/Actions/CartAction';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
-  console.log(cart.cartData);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
@@ -81,6 +81,7 @@ const ShowProducts = ({products}) => {
 
   // Remove product from cart
   const removeCart = (id) => {
+    console.log(id);
     removeFromCart(dispatch, id);
   };
 
@@ -149,7 +150,7 @@ const ShowProducts = ({products}) => {
               {isExistInCart.length ? (
                 <button
                   className={styles.addToCartBtn}
-                  onClick={() => removeCart(elem._id)}
+                  onClick={() => navigate('/cart')}
                 >
                   <FaShoppingCart />
                   Go to Cart
