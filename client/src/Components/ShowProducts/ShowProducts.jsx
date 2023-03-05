@@ -11,19 +11,19 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
-import {addToCart} from '../../Services/Actions/CartAction';
+import {addToCart, removeFromCart} from '../../Services/Actions/CartAction';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
-  const {wishlistData, isError, isSuccess, message} = useSelector(
+  const wishlist = useSelector(
     (state) => state.WishlistReducer
   );
 
   // Alert messages for wihslist actions
-  const alertMessage = () => {
-    isSuccess && toast.success(message);
-    isError && toast.error(message);
+  const alertWishlist = () => {
+    wishlist.isSuccess && toast.success(wishlist.message);
+    wishlist.isError && toast.error(wishlist.message);
   };
 
   // Adding product into wishlist
@@ -65,9 +65,14 @@ const ShowProducts = ({products}) => {
     addToCart(dispatch, product);
   };
 
+  // Remove product from cart
+  const removeCart = (id) => {
+    removeFromCart(dispatch, id);
+  };
+
   useEffect(() => {
-    message && alertMessage();
-  }, [message]);
+    wishlist.message && alertWishlist();
+  }, [wishlist.message]);
 
   return (
     <div className={styles.showProductsContainer}>
@@ -78,7 +83,7 @@ const ShowProducts = ({products}) => {
         );
 
         // Checking the product is added in wishlist or not
-        const isExistInWishlist = wishlistData.filter(
+        const isExistInWishlist = wishlist.wishlistData.filter(
           (element) =>
             element.productId === elem._id && element.userId === user.userId
         );
