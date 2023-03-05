@@ -53,9 +53,11 @@ export const getProductById = async (dispatch, id) => {
 export const getProductDetails = async (dispatch, product) => {
   dispatch({type: IS_LOADING});
   try {
-    const productDetails = await axios.get(product.query_url);
-    dispatch({type: GET_PROUDUCT_DETAILS, payload: productDetails});
+    const res = await axios.get(product.query_url);
+    console.log(res);
+    dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
   } catch (error) {
+    console.log(error);
     dispatch({type: IS_ERROR, payload: error});
   }
 };
