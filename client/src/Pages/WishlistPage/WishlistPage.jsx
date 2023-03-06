@@ -3,7 +3,7 @@ import styles from './WishlistPage.module.css';
 
 const WishlistPage = () => {
   return (
-    <div>WishlistPage</div>
+    <div className={styles.wishlistContainer}><h1>WishlistPage</h1></div>
   )
 }
 

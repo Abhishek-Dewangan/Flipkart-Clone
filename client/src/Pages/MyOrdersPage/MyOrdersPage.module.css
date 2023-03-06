@@ -1,1 +1,4 @@
 /* My orders page styles */
+.myOrderContainer {
+  min-height: 100vh;
+}
