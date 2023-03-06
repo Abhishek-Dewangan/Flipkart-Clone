@@ -17,7 +17,7 @@ import {signout} from '../../Services/Actions/UserAction';
 
 const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
@@ -57,17 +57,32 @@ const Header = ({handleShowSignin}) => {
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
           >
-            <Dropdown.Toggle className={styles.dropdownToggle}>
+            <Dropdown.Toggle className={styles.dropdownToggle} as={'div'}>
               {user.first_name}
             </Dropdown.Toggle>
-            <Dropdown.Menu show={show} className={styles.dropdownMenu}>
-              <Dropdown.Item onClick={()=>navigate('/wishlist')}>
-                <FaHeart /> Wishlist
+            <Dropdown.Menu
+              show={show}
+              as={'div'}
+              className={styles.dropdownMenu}
+            >
+              <Dropdown.Item
+                onClick={() => navigate('/wishlist')}
+                className={styles.menuItem}
+              >
+                <FaHeart className={styles.wishlistIcon} /> Wishlist
               </Dropdown.Item>
-              <Dropdown.Item onClick={()=>navigate('/myorders')}>
-                <FaArrowCircleUp /> Orders
+              <hr className={styles.hrLine} />
+              <Dropdown.Item
+                onClick={() => navigate('/myorders')}
+                className={styles.menuItem}
+              >
+                <FaArrowCircleUp className={styles.orderIcon} /> Orders
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => signout(distpatch, user.token)}>
+              <hr className={styles.hrLine} />
+              <Dropdown.Item
+                onClick={() => signout(distpatch, user.token)}
+                className={styles.menuItem}
+              >
                 <BiLogOutCircle className={styles.signoutIcon} /> SignOut
               </Dropdown.Item>
             </Dropdown.Menu>
@@ -79,7 +94,15 @@ const Header = ({handleShowSignin}) => {
         )}
       </section>
       <section className={styles.right}>
-        <Link className={styles.link}>Become a Seller</Link>
+        <Link
+          className={styles.link}
+          to={
+            'https://seller.flipkart.com/sell-online/?utm_source=fkwebsite&utm_medium=websitedirect'
+          }
+          target={'_blank'}
+        >
+          Become a Seller
+        </Link>
         <Link
           className={styles.link}
           onMouseEnter={() => setOpen(!open)}
