@@ -1,9 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {BiChevronDown, BiChevronUp, BiLogOutCircle} from 'react-icons/bi';
-import {FaShoppingCart, FaSearch} from 'react-icons/fa';
+import {
+  FaShoppingCart,
+  FaSearch,
+  FaHeart,
+  FaArrowCircleUp,
+} from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +17,7 @@ import {signout} from '../../Services/Actions/UserAction';
 
 const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
@@ -55,6 +61,12 @@ const Header = ({handleShowSignin}) => {
               {user.first_name}
             </Dropdown.Toggle>
             <Dropdown.Menu show={show} className={styles.dropdownMenu}>
+              <Dropdown.Item onClick={()=>navigate('/wishlist')}>
+                <FaHeart /> Wishlist
+              </Dropdown.Item>
+              <Dropdown.Item onClick={()=>navigate('/myorders')}>
+                <FaArrowCircleUp /> Orders
+              </Dropdown.Item>
               <Dropdown.Item onClick={() => signout(distpatch, user.token)}>
                 <BiLogOutCircle className={styles.signoutIcon} /> SignOut
               </Dropdown.Item>
