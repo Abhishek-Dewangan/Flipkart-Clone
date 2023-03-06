@@ -79,6 +79,9 @@
   font-weight: 600;
   color: white;
 }
+.dropdownToggle:hover{
+  cursor: pointer;
+}
 .menuItem {
   font-size: 14px;
 }
@@ -92,7 +95,7 @@
   font-size: small;
   margin-right: 10px;
 }
-.hrLine{
+.hrLine {
   padding: 0;
   margin: 5px 0;
 }

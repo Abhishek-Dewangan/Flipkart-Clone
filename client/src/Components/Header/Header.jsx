@@ -3,11 +3,13 @@ import styles from './Header.module.css';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {BiChevronDown, BiChevronUp, BiLogOutCircle} from 'react-icons/bi';
+import {GrApple} from 'react-icons/gr';
 import {
   FaShoppingCart,
   FaSearch,
   FaHeart,
   FaArrowCircleUp,
+  FaGooglePlay,
 } from 'react-icons/fa';
 import logo from '../../Assets/Images/flipkart-logo.png';
 import {toast, ToastContainer} from 'react-toastify';
@@ -19,7 +21,8 @@ const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showUser, setShowUser] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
     useSelector((state) => state.UserReducer);
 
@@ -54,14 +57,14 @@ const Header = ({handleShowSignin}) => {
             className={styles.dropdown}
             id={'dropdown-drop-down-centered'}
             drop={'down-centered'}
-            onMouseEnter={() => setShow(true)}
-            onMouseLeave={() => setShow(false)}
+            onMouseEnter={() => setShowUser(true)}
+            onMouseLeave={() => setShowUser(false)}
           >
             <Dropdown.Toggle className={styles.dropdownToggle} as={'div'}>
               {user.first_name}
             </Dropdown.Toggle>
             <Dropdown.Menu
-              show={show}
+              show={showUser}
               as={'div'}
               className={styles.dropdownMenu}
             >
@@ -103,18 +106,41 @@ const Header = ({handleShowSignin}) => {
         >
           Become a Seller
         </Link>
-        <Link
-          className={styles.link}
-          onMouseEnter={() => setOpen(!open)}
-          onMouseLeave={() => setOpen(!open)}
+        <Dropdown
+          className={styles.dropdown}
+          id={'dropdown-drop-down-centered'}
+          drop={'down-centered'}
+          onMouseEnter={() => setShowMore(true)}
+          onMouseLeave={() => setShowMore(false)}
         >
-          <div className={styles.more}>
+          <Dropdown.Toggle className={styles.dropdownToggle} as={'div'}>
             More
-            <label className={styles.openCloseIcon}>
-              {open ? <BiChevronUp /> : <BiChevronDown />}
-            </label>
-          </div>
-        </Link>
+          </Dropdown.Toggle>
+          <Dropdown.Menu
+            show={showMore}
+            as={'div'}
+            className={styles.dropdownMenu}
+          >
+            <Dropdown.ItemText>Download App</Dropdown.ItemText>
+            <Dropdown.Item
+              as={'a'}
+              href='https://apps.apple.com/in/app/flipkart/id742044692'
+              target={'_blank'}
+              className={styles.menuItem}
+            >
+              <GrApple className={styles.wishlistIcon} /> Apple Store
+            </Dropdown.Item>
+            <hr className={styles.hrLine} />
+            <Dropdown.Item
+              as={'a'}
+              href='https://play.google.com/store/apps/details?id=com.flipkart.android'
+              target={'_blank'}
+              className={styles.menuItem}
+            >
+              <FaGooglePlay className={styles.orderIcon} /> Google Play
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <Link to={'/cart'} className={styles.link}>
           <div className={styles.cart}>
             <FaShoppingCart className={styles.cartIcon} /> Cart
