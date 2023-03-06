@@ -20,8 +20,6 @@ const WishlistPage = () => {
           <hr />
           <Link to={'/cart'}>MY CART</Link>
           <hr />
-          <Link to={'/wishlist'}>MY WISHLIST</Link>
-          <hr />
         </div>
       </section>
       <section></section>
