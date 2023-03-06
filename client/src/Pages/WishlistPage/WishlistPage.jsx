@@ -36,13 +36,18 @@ const WishlistPage = () => {
           </div>
           <hr />
           <div>
-            <Link className={styles.link} onClick={() => signout(dispatch, user.token)}>
+            <Link
+              className={styles.link}
+              onClick={() => signout(dispatch, user.token)}
+            >
               <BiLogOutCircle className={styles.logoutIcon} /> LOGOUT
             </Link>
           </div>
         </div>
       </section>
-      <section className={styles.rightSection}></section>
+      <section className={styles.rightSection}>
+        <p>My Wishlist ({wishlist.wishlistData.length})</p>
+      </section>
     </div>
   );
 };

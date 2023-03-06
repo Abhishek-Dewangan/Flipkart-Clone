@@ -3,9 +3,11 @@
   min-height: 100vh;
   width: 90%;
   margin: 1em auto;
+  display: flex;
+  gap: 1em;
 }
 .leftSection {
-  width: 300px;
+  width: 25%;
 }
 .profile {
   display: flex;
@@ -13,7 +15,7 @@
   align-items: center;
   width: 100%;
   padding: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   margin-bottom: 1em;
 }
 .profileDetails p {
@@ -24,7 +26,7 @@
 }
 .otherLinks {
   padding: 10px 0;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .orderIcon,
 .cartIcon,
@@ -36,10 +38,13 @@
   transform: rotate(90deg);
 }
 .link {
-    color: #878787;
+  color: #878787;
   display: flex;
   align-items: center;
   text-decoration: none;
   font-size: large;
   padding: 0 10px;
+}
+.rightSection{
+    width: ;
 }

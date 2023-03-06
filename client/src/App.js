@@ -1,4 +1,4 @@
-// import './App.css';
+import styles from'./App.module.css';
 import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {getPrducts} from './Services/Actions/ProductAction';
@@ -39,7 +39,7 @@ function App() {
   }, [user]);
 
   return (
-    <div className='App'>
+    <div className={styles.app}>
       <Header handleShowSignin={handleShowSignin} />
       <SignIn
         show={showSignin}
@@ -51,7 +51,7 @@ function App() {
         handleCloseSignup={handleCloseSignup}
         handleShowSignin={handleShowSignin}
       />
-      <Routes>
+      <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
         <Route path='/cart' element={<CartPage />} />
