@@ -18,6 +18,7 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     console.log(productDetails);
   }, [productDetails]);
+  
   return (
     <div className={styles.productDetailsContainer}>
       <section className={styles.leftSection}></section>

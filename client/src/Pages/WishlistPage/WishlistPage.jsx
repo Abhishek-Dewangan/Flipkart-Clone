@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './WishlistPage.module.css';
 
-const Wishlist = () => {
+const WishlistPage = () => {
   return (
-    <div>Wishlist</div>
+    <div>WishlistPage</div>
   )
 }
 
-export default Wishlist
+export default WishlistPage
