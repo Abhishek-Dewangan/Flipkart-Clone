@@ -2,8 +2,10 @@ import React from 'react';
 import styles from './WishlistPage.module.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
+import { signout} from '../../Services/Actions/UserAction';
 
 const WishlistPage = () => {
+  const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
   return (
     <div className={styles.wishlistContainer}>
@@ -20,6 +22,7 @@ const WishlistPage = () => {
           <hr />
           <Link to={'/cart'}>MY CART</Link>
           <hr />
+          <p onClick={() => signout(dispatch, user.token)}>LOGOUT</p>
         </div>
       </section>
       <section></section>
