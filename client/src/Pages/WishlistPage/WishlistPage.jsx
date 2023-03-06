@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './WishlistPage.module.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import { signout} from '../../Services/Actions/UserAction';
+import {signout} from '../../Services/Actions/UserAction';
 
 const WishlistPage = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
+  const wishlist = useSelector((state) => state.WishlistReducer);
   return (
     <div className={styles.wishlistContainer}>
       <section>
