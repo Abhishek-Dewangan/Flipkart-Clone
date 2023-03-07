@@ -18,7 +18,7 @@ const WishlistSidebar = () => {
         <CgProfile className={styles.profileIcon} size={50} />
         <div className={styles.profileDetails}>
           <p className={styles.greet}>Hello,</p>
-          <p>{user.first_name + ' ' + user.last_name}</p>
+          <p className={styles.userName}>{user.first_name + ' ' + user.last_name}</p>
         </div>
       </div>
       <div className={styles.otherLinks}>
