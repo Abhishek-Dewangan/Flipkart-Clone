@@ -2,14 +2,17 @@
 .wishlistContainer {
   min-height: 100vh;
   width: 90%;
+  position: relative;
   margin: 1em auto;
   display: flex;
   gap: 1em;
 }
+.wishlistSidebarContainer {
+  position: sticky;
+  top: 4em;
+}
 .leftSection {
   width: 25%;
-  position: sticky;
-  top: 1em;
 }
 .profile {
   display: flex;
@@ -135,6 +138,6 @@
   font-size: x-large;
   color: #878787;
 }
-.deleteIcon:hover{
+.deleteIcon:hover {
   cursor: pointer;
 }

@@ -11,48 +11,19 @@ import {BiLogOutCircle} from 'react-icons/bi';
 import {GrNext} from 'react-icons/gr';
 import {MdDelete} from 'react-icons/md';
 import {removeFromWishlist} from '../../Services/Actions/WishlistAction';
+import WishlistSidebar from './WishlistSidebar';
 
 const WishlistPage = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
 
-  const alertMessage = () => {}
+  const alertMessage = () => {};
 
   return (
     <div className={styles.wishlistContainer}>
       <section className={styles.leftSection}>
-        <div className={styles.profile}>
-          <CgProfile className={styles.profileIcon} size={50} />
-          <div className={styles.profileDetails}>
-            <p className={styles.greet}>Hello,</p>
-            <p>{user.first_name + ' ' + user.last_name}</p>
-          </div>
-        </div>
-        <div className={styles.otherLinks}>
-          <div className={styles.linksDiv}>
-            <Link className={styles.link} to={'/myorders'}>
-              <BsFillArrowUpCircleFill className={styles.orderIcon} /> MY ORDERS{' '}
-              <GrNext className={styles.nextIcon} />
-            </Link>
-          </div>
-          <hr />
-          <div className={styles.linksDiv}>
-            <Link className={styles.link} to={'/cart'}>
-              <FaShoppingCart className={styles.cartIcon} /> MY CART{' '}
-              <GrNext className={styles.nextIcon} />
-            </Link>
-          </div>
-          <hr />
-          <div className={styles.linksDiv}>
-            <Link
-              className={styles.link}
-              onClick={() => signout(dispatch, user.token)}
-            >
-              <BiLogOutCircle className={styles.logoutIcon} /> LOGOUT
-            </Link>
-          </div>
-        </div>
+        <WishlistSidebar />
       </section>
       <section className={styles.rightSection}>
         <h5 className={styles.heading}>
