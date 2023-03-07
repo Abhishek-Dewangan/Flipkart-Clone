@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {signout} from '../../Services/Actions/UserAction';
 import fAssured from '../../Assets/Images/f-assured.png';
+import emptyImage from '../../Assets/Images/empty.png';
 import {CgProfile} from 'react-icons/cg';
 import {BsFillArrowUpCircleFill} from 'react-icons/bs';
 import {FaShoppingCart} from 'react-icons/fa';
@@ -26,10 +27,6 @@ const WishlistPage = () => {
         <WishlistSidebar />
       </section>
       <section className={styles.rightSection}>
-        <h5 className={styles.heading}>
-          My Wishlist ({wishlist.wishlistData.length})
-        </h5>
-        <hr />
         {wishlist.wishlistData.length ? (
           wishlist.wishlistData.map((elem) => {
             // Calculating discount percent of products
@@ -38,16 +35,23 @@ const WishlistPage = () => {
             );
             return (
               <div key={elem._id}>
+                <h5 className={styles.heading}>
+                  My Wishlist ({wishlist.wishlistData.length})
+                </h5>
+                <hr />
                 <div className={styles.productBox}>
-                  <div className={styles.imgDiv}>
+                  <Link
+                    to={`/productdetails/:${elem.productId}`}
+                    className={styles.imgDiv}
+                  >
                     <img
                       src={elem.thumbnail}
                       alt={elem.name}
                       className={styles.productImage}
                     />
-                  </div>
+                  </Link>
                   <div className={styles.productDetails}>
-                    <span className={styles.productNmae}>{elem.name}</span>
+                    <span className={styles.productName}>{elem.name}</span>
                     <img
                       className={styles.fAssured}
                       src={fAssured}
@@ -74,7 +78,11 @@ const WishlistPage = () => {
             );
           })
         ) : (
-          <h1>Your wishlist data is empty</h1>
+          <div className={styles.emptyWishlist}>
+            <img src={emptyImage} alt='Empty Item' />
+            <h4>Empty Wishlist</h4>
+            <p>You have no items in your wishlist. Start adding!</p>
+          </div>
         )}
       </section>
     </div>
