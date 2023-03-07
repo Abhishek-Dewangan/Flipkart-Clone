@@ -20,15 +20,7 @@ const ShowProducts = ({products}) => {
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
 
-  // Alert messages for wihslist actions
-  const alertWishlist = () => {
-    wishlist.isSuccess && toast.success(wishlist.message);
-    wishlist.isError && toast.error(wishlist.message);
-  };
-
-  useEffect(() => {
-    wishlist.message && alertWishlist();
-  }, [wishlist.message]);
+  
 
   // Adding product into wishlist
   const addWishlist = (elem) => {
@@ -52,15 +44,7 @@ const ShowProducts = ({products}) => {
     removeFromWishlist(dispatch, id);
   };
 
-  // Alert message for cart actions
-  const alertCart = () => {
-    cart.isSuccess && toast.success(cart.message);
-    cart.isError && toast.error(cart.message);
-  };
-
-  useEffect(() => {
-    cart.message && alertCart();
-  }, [cart.message]);
+  
 
   //  Adding product into cart
   const addCart = (elem) => {
