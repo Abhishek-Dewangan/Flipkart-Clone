@@ -1,4 +1,4 @@
-import styles from'./App.module.css';
+import styles from './App.module.css';
 import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {getPrducts} from './Services/Actions/ProductAction';
@@ -15,17 +15,40 @@ import CartPage from './Pages/CartPage/CartPage';
 import WishlistPage from './Pages/WishlistPage/WishlistPage';
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import MyOrdersPage from './Pages/MyOrdersPage/MyOrdersPage';
+import {toast} from 'react-toastify';
 
 function App() {
   const dispatch = useDispatch();
   const [showSignin, setShowSignin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const {user} = useSelector((state) => state.UserReducer);
+  const wishlist = useSelector((state) => state.WishlistReducer);
+  const cart = useSelector((state) => state.CartReducer);
 
   const handleCloseSignin = () => setShowSignin(false);
   const handleShowSignin = () => setShowSignin(true);
   const handleCloseSignup = () => setShowSignup(false);
   const handleShowSignup = () => setShowSignup(true);
+
+  // Alert messages for wihslist actions
+  const alertWishlist = () => {
+    wishlist.isSuccess && toast.success(wishlist.message);
+    wishlist.isError && toast.error(wishlist.message);
+  };
+
+  // Alert message for cart actions
+  const alertCart = () => {
+    cart.isSuccess && toast.success(cart.message);
+    cart.isError && toast.error(cart.message);
+  };
+
+  useEffect(() => {
+    wishlist.message && alertWishlist();
+  }, [wishlist.message]);
+
+  useEffect(() => {
+    cart.message && alertCart();
+  }, [cart.message]);
 
   // Calling getProduct fuction to store all product in redux store on first render
   useEffect(() => {
