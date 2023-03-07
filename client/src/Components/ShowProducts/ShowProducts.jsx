@@ -1,6 +1,4 @@
-import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {toast} from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom';
 import styles from './ShowProducts.module.css';
 import {
@@ -11,7 +9,7 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
-import {addToCart, removeFromCart} from '../../Services/Actions/CartAction';
+import {addToCart} from '../../Services/Actions/CartAction';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
@@ -19,8 +17,6 @@ const ShowProducts = ({products}) => {
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
-
-  
 
   // Adding product into wishlist
   const addWishlist = (elem) => {
@@ -44,8 +40,6 @@ const ShowProducts = ({products}) => {
     removeFromWishlist(dispatch, id);
   };
 
-  
-
   //  Adding product into cart
   const addCart = (elem) => {
     const product = {
@@ -61,11 +55,6 @@ const ShowProducts = ({products}) => {
       query_url: elem.query_url,
     };
     addToCart(dispatch, product);
-  };
-
-  // Remove product from cart
-  const removeCart = (id) => {
-    removeFromCart(dispatch, id);
   };
 
   return (
@@ -112,7 +101,7 @@ const ShowProducts = ({products}) => {
               </Link>
             </div>
             <Link
-              to={`/productdetails/${elem._id}`}
+              to={`/productdetail/${elem._id}`}
               className={styles.productTitle}
             >
               <p className={styles.productName}>{elem.name}</p>
