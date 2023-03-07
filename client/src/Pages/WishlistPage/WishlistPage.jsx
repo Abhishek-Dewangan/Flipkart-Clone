@@ -28,6 +28,16 @@ const WishlistPage = () => {
       </section>
       <section className={styles.rightSection}>
         {wishlist.wishlistData.length ? (
+          <div>
+            <h5 className={styles.heading}>
+              My Wishlist ({wishlist.wishlistData.length})
+            </h5>
+            <hr />
+          </div>
+        ) : (
+          ''
+        )}
+        {wishlist.wishlistData.length ? (
           wishlist.wishlistData.map((elem) => {
             // Calculating discount percent of products
             const discount = Math.floor(
@@ -35,10 +45,6 @@ const WishlistPage = () => {
             );
             return (
               <div key={elem._id}>
-                <h5 className={styles.heading}>
-                  My Wishlist ({wishlist.wishlistData.length})
-                </h5>
-                <hr />
                 <div className={styles.productBox}>
                   <Link
                     to={`/productdetails/:${elem.productId}`}
