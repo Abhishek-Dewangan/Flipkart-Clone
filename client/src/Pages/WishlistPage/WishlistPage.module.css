@@ -81,7 +81,7 @@
 }
 .productImage {
   max-width: 95%;
-  height: 130px;
+  height: 100px;
   padding: 10px;
   transition: transform 0.2s;
 }
