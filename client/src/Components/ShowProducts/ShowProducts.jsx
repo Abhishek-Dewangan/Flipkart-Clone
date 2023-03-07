@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {toast} from 'react-toastify';
-import {Link,useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from './ShowProducts.module.css';
 import {
   addToWishlist,
@@ -15,7 +15,7 @@ import {addToCart, removeFromCart} from '../../Services/Actions/CartAction';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
@@ -81,7 +81,6 @@ const ShowProducts = ({products}) => {
 
   // Remove product from cart
   const removeCart = (id) => {
-    console.log(id);
     removeFromCart(dispatch, id);
   };
 
