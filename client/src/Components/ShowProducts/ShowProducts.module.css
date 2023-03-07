@@ -22,7 +22,8 @@
   border-radius: 50%;
   color: red;
 }
-.addWishlistIcon, .removeWishlistIcon:hover {
+.addWishlistIcon,
+.removeWishlistIcon:hover {
   cursor: pointer;
 }
 .productBox {
