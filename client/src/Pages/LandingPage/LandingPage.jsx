@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './LandingPage.module.css';
 import BannerSlider from '../../Components/BannerSlider/BannerSlider';
 import SubHeader from '../../Components/SubHeader/SubHeader';
