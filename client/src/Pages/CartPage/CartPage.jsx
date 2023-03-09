@@ -79,6 +79,10 @@ const CartPage = () => {
       </section>
       <section className={styles.rightSection}>
         <p className={styles.rightSecHeading}>PRICE DETAILS</p>
+        <hr />
+        <div>
+          <p>Price ({cart.cartData.length} items)</p>
+        </div>
       </section>
     </div>
   );
