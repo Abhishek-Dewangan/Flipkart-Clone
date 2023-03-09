@@ -20,7 +20,6 @@ import {signout} from '../../Services/Actions/UserAction';
 const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
