@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import {removeFromCart} from '../../Services/Actions/CartAction';
 
 const CartPage = () => {
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.CartReducer);
 
   return (
