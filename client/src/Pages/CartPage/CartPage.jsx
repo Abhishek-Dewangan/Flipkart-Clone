@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import {removeFromCart} from '../../Services/Actions/CartAction';
 
 const CartPage = () => {
   const cart = useSelector((state) => state.CartReducer);
@@ -53,7 +54,12 @@ const CartPage = () => {
                       <span className={styles.discount}>{discount}% off</span>
                     </p>
                     <div className={styles.btnDiv}>
-                      <Button variant='outline-danger'>Remove</Button>
+                      <Button
+                        variant='outline-danger'
+                        onClick={() => removeFromCart(elem._id)}
+                      >
+                        Remove
+                      </Button>
                       <Button variant='outline-warning'>Buy this now</Button>
                     </div>
                   </div>
