@@ -84,6 +84,10 @@ const CartPage = () => {
           <p>Price ({cart.cartData.length} items)</p>
           <p>TOtal price</p>
         </div>
+        <div>
+          <p>Discount ({cart.cartData.length} items)</p>
+          <p>TOtal Discount</p>
+        </div>
       </section>
     </div>
   );
