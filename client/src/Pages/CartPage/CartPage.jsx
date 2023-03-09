@@ -77,7 +77,9 @@ const CartPage = () => {
             );
           })}
       </section>
-      <section className={styles.rightSection}>Right Section</section>
+      <section className={styles.rightSection}>
+        <p className={styles.rightSecHeading}>PRICE DETAILS</p>
+      </section>
     </div>
   );
 };
