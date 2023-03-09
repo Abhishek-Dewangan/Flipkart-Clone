@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CartPage.module.css';
 import {useSelector} from 'react-redux';
 import fAssured from '../../Assets/Images/f-assured.png';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import {removeFromCart} from '../../Services/Actions/CartAction';
 
