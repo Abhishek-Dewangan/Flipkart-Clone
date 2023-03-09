@@ -93,8 +93,8 @@ const CartPage = () => {
           <p>TOtal Delivery charget</p>
         </div>
         <div>
-          <p>Delivery charget ({cart.cartData.length} items)</p>
-          <p>TOtal Delivery charget</p>
+          <p>Total amount  ({cart.cartData.length} items)</p>
+          <p>TOtal amoubn charget</p>
         </div>
       </section>
     </div>
