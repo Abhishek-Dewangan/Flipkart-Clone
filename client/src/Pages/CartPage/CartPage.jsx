@@ -61,7 +61,14 @@ const CartPage = () => {
                       >
                         Remove
                       </Button>
-                      <Button variant='outline-warning'>Buy this now</Button>
+                      <Button
+                        variant='outline-warning'
+                        onClick={() =>
+                          navigate(`'productdetail/:${elem.productId}`)
+                        }
+                      >
+                        Buy this now
+                      </Button>
                     </div>
                   </div>
                 </div>
