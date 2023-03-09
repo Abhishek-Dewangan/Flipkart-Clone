@@ -82,6 +82,7 @@ const CartPage = () => {
         <hr />
         <div>
           <p>Price ({cart.cartData.length} items)</p>
+          <p>TOtal price</p>
         </div>
       </section>
     </div>
