@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './CartPage.module.css';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link, useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import {removeFromCart} from '../../Services/Actions/CartAction';
+import CartSidebar from './CartSidebar';
 
 const CartPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
 
   return (
     <div className={styles.cartPageContainer}>
       <section className={styles.leftSection}>
-        <h1>cartpage</h1>
         {cart.cartData.length &&
           cart.cartData.map((elem) => {
             // Calculating discount percent of products
@@ -57,7 +58,7 @@ const CartPage = () => {
                     <div className={styles.btnDiv}>
                       <Button
                         variant='outline-danger'
-                        onClick={() => removeFromCart(elem._id)}
+                        onClick={() => removeFromCart(dispatch, elem._id)}
                       >
                         Remove
                       </Button>
@@ -78,24 +79,7 @@ const CartPage = () => {
           })}
       </section>
       <section className={styles.rightSection}>
-        <p className={styles.rightSecHeading}>PRICE DETAILS</p>
-        <hr />
-        <div>
-          <p>Price ({cart.cartData.length} items)</p>
-          <p>TOtal price</p>
-        </div>
-        <div>
-          <p>Discount ({cart.cartData.length} items)</p>
-          <p>TOtal Discount</p>
-        </div>
-        <div>
-          <p>Delivery charget ({cart.cartData.length} items)</p>
-          <p>TOtal Delivery charget</p>
-        </div>
-        <div>
-          <p>Total amount  ({cart.cartData.length} items)</p>
-          <p>TOtal amoubn charget</p>
-        </div>
+        <CartSidebar />
       </section>
     </div>
   );

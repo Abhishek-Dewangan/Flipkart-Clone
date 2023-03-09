@@ -83,3 +83,35 @@
   margin-top: 0;
   margin-right: 5px;
 }
+.rightSection {
+  position: sticky;
+  top: 4em;
+  width: 30%;
+  height: fit-content;
+  padding: 1em;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.cartSidebarContainer div {
+  display: flex;
+  justify-content: space-between;
+}
+.totalAmount {
+  font-size: 18px;
+  font-weight: 600;
+}
+.discountNote {
+  color: #388e3c;
+  font-size: 16px;
+  font-weight: 600;
+}
+.discountAmount p:last-child,
+.deleveryCharges p:last-child {
+  color: #388e3c;
+}
+.rightSecHeading {
+  color: #878787;
+  font-size: 16px;
+  font-weight: 600;
+}
