@@ -19,8 +19,6 @@ const WishlistPage = () => {
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
 
-  const alertMessage = () => {};
-
   return (
     <div className={styles.wishlistContainer}>
       <section className={styles.leftSection}>
