@@ -10,7 +10,6 @@ import {Button} from 'react-bootstrap';
 
 const ProductSlider = ({products, heading, link}) => {
   const navigate = useNavigate();
-  console.log(products);
   return (
     <div className={styles.sliderDiv}>
       <div className={styles.productHeading}>
@@ -54,7 +53,12 @@ const ProductSlider = ({products, heading, link}) => {
                   src={elem.thumbnail}
                   alt=''
                 />
-                <p className={styles.productName}>{elem.name}</p>
+                <p
+                  className={styles.productName}
+                  onClick={() => navigate(`productdetail/${elem._id}`)}
+                >
+                  {elem.name}
+                </p>
                 <p>Under ₹{elem.current_price}</p>
               </SwiperSlide>
             );
