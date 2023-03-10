@@ -1,16 +1,23 @@
 import React from 'react';
 import styles from './ProductSlider.module.css';
+import {useNavigate} from 'react-router-dom';
 import {Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import {Button} from 'react-bootstrap';
 
-const ProductSlider = ({products, heading}) => {
+const ProductSlider = ({products, heading, link}) => {
+  const navigate = useNavigate();
+  console.log(products);
   return (
     <div className={styles.sliderDiv}>
       <div className={styles.productHeading}>
         <h2>{heading}</h2>
+        <Button variant='primary' onClick={() => navigate(link)}>
+          VIEW ALL
+        </Button>
       </div>
       <Swiper
         className={styles.swiper}
@@ -43,6 +50,7 @@ const ProductSlider = ({products, heading}) => {
               <SwiperSlide key={elem._id} className={styles.swiperSlider}>
                 <img
                   className={styles.productImage}
+                  onClick={() => navigate(`/productdetail/${elem._id}`)}
                   src={elem.thumbnail}
                   alt=''
                 />

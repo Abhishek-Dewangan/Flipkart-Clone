@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './LandingPage.module.css';
+import {useSelector} from 'react-redux';
 import BannerSlider from '../../Components/BannerSlider/BannerSlider';
 import SubHeader from '../../Components/SubHeader/SubHeader';
-import {useSelector} from 'react-redux';
 import ProductSlider from '../../Components/ProductSlider/ProductSlider';
 
 const LandingPage = () => {
@@ -46,15 +46,36 @@ const LandingPage = () => {
     <div className={styles.container}>
       <SubHeader />
       <BannerSlider />
-      <ProductSlider products={bestMobiles} heading={'Best Of Mobiles'} />
-      <ProductSlider products={bestHomes} heading={'Best of Homes'} />
+      <ProductSlider
+        products={bestMobiles}
+        heading={'Best Of Mobiles'}
+        link={'/category/mobile'}
+      />
+      <ProductSlider
+        products={bestHomes}
+        heading={'Best of Homes'}
+        link={'/category/home'}
+      />
       <ProductSlider
         products={bestAppliances}
         heading={'Best of Applicances'}
+        link={'/category/appliance'}
       />
-      <ProductSlider products={bestBabycares} heading={'Best of BabyCares'} />
-      <ProductSlider products={bestBeauty} heading={'Best of Beauty'} />
-      <ProductSlider products={bestSports} heading={'Best of Sports'} />
+      <ProductSlider
+        products={bestBabycares}
+        heading={'Best of BabyCares'}
+        link={'/category/babycare'}
+      />
+      <ProductSlider
+        products={bestBeauty}
+        heading={'Best of Beauty'}
+        link={'/category/beauty'}
+      />
+      <ProductSlider
+        products={bestSports}
+        heading={'Best of Sports'}
+        link={'/category/sports'}
+      />
     </div>
   );
 };
