@@ -25,7 +25,6 @@ export const ProductReducer = (state = initialState, action) => {
         isLoading: true,
         isError: false,
         isSuccess: false,
-        productDetails: {},
       };
     }
     case IS_ERROR: {
