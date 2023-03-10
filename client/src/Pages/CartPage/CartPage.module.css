@@ -12,6 +12,12 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+.leftSecHeading{
+  padding: 10px 2em;
+  margin: 10px;
+  color: #878787;
+  vertical-align: middle;
+}
 .productBox {
   position: relative;
   display: flex;
@@ -82,6 +88,23 @@
   border: none;
   margin-top: 0;
   margin-right: 5px;
+}
+.emptyCart {
+  width: 100%;
+  margin: 6em auto;
+  text-align: center;
+  line-height: 1.4;
+  color: #212121;
+}
+.emptyCart h4 {
+  margin-top: 1em;
+}
+.emptyCart p {
+  font-size: small;
+}
+.emptyCart button{
+  width: 200px;
+  border-radius: 0;
 }
 .rightSection {
   position: sticky;
