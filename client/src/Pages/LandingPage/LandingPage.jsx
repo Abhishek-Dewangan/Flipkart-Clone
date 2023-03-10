@@ -19,27 +19,27 @@ const LandingPage = () => {
   const sports = product.products.filter((elem) => elem.category === 'sports');
 
   const bestMobiles = mobiles.splice(
-    Math.floor(Math.random() * mobiles.length - 10),
+    Math.floor(Math.random() * (mobiles.length - 10)),
     10
   );
   const bestHomes = homes.splice(
-    Math.floor(Math.random() * homes.length - 10),
+    Math.floor(Math.random() * (homes.length - 10)),
     10
   );
   const bestAppliances = appliances.splice(
-    Math.floor(Math.random() * appliances.length - 10),
+    Math.floor(Math.random() * (appliances.length - 10)),
     10
   );
   const bestBabycares = babycares.splice(
-    Math.floor(Math.random() * babycares.length - 10),
+    Math.floor(Math.random() * (babycares.length - 10)),
     10
   );
   const bestBeauty = beauty.splice(
-    Math.floor(Math.random() * beauty.length - 10),
+    Math.floor(Math.random() * (beauty.length - 10)),
     10
   );
   const bestSports = sports.splice(
-    Math.floor(Math.random() * sports.length - 10),
+    Math.floor(Math.random() * (sports.length - 10)),
     10
   );
   return (
