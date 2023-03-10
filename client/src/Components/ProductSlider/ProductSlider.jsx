@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductSlider = ({bestMobiles}) => {
+const ProductSlider = ({products}) => {
   return (
     <Swiper
       className={styles.swiper}
@@ -33,8 +33,8 @@ const ProductSlider = ({bestMobiles}) => {
         },
       }}
     >
-      {bestMobiles.length &&
-        bestMobiles.map((elem) => {
+      {products.length &&
+        products.map((elem) => {
           return (
             <SwiperSlide key={elem._id} className={styles.swiperSlider}>
               <img

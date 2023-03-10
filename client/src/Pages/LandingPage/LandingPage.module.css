@@ -2,7 +2,7 @@
 .container {
   min-height: 100vh;
 }
-.bestOfMobiles {
+.sliderDiv {
   display: flex;
   gap: 2em;
   padding: 1em;
