@@ -43,35 +43,63 @@ const ProductDetailsPage = () => {
         </div>
       </section>
       <section className={styles.rightSection}>
-        <p className={styles.productName}>{productDetails.name}</p>
-        <div className={styles.ratingDiv}>
-          <p className={styles.rating}>
-            {productDetails.rating} <AiFillStar className={styles.starIcon} />
+        <div className={styles.highlightsBox}>
+          <p className={styles.productName}>{productDetails.name}</p>
+          <div className={styles.ratingDiv}>
+            <p className={styles.rating}>
+              {productDetails.rating} <AiFillStar className={styles.starIcon} />
+            </p>
+            {productDetails.f_assured ? (
+              <img className={styles.fAssured} src={fAssured} alt='F-Assured' />
+            ) : (
+              ''
+            )}
+          </div>
+          <span className={styles.specialPrice}>Special price</span>
+          <p className={styles.price}>
+            <span className={styles.currentPrice}>
+              ₹{productDetails.current_price}
+            </span>{' '}
+            <strike className={styles.originalPrice}>
+              ₹{productDetails.original_price}
+            </strike>
+            <span className={styles.discount}>
+              {productDetails.discount_percent}% off
+            </span>
           </p>
-          {productDetails.f_assured ? (
-            <img className={styles.fAssured} src={fAssured} alt='F-Assured' />
-          ) : (
-            ''
-          )}
+          <p>Highlights</p>
+          <ul>
+            {productDetails.highlights &&
+              productDetails.highlights.map((elem, i) => {
+                return <li key={i}>{elem}</li>;
+              })}
+          </ul>
         </div>
-        <span className={styles.specialPrice}>Special price</span>
-        <p className={styles.price}>
-          <span className={styles.currentPrice}>
-            ₹{productDetails.current_price}
-          </span>{' '}
-          <strike className={styles.originalPrice}>
-            ₹{productDetails.original_price}
-          </strike>
-          <span className={styles.discount}>
-            {productDetails.discount_percent}% off
-          </span>
-        </p>
-        <p>Highlights</p>
-        <ul>
-          {productDetails.highlights.map((elem) => {
-            return <li>{elem}</li>;
-          })}
-        </ul>
+        {productDetails.specs ? (
+          <div className={styles.specificationBox}>
+            <h4>Specification</h4>
+            <hr />
+            {productDetails.specs.map((element) => {
+              return element.details ? (
+                <div>
+                  <h5>{element.title}</h5>
+                  {element.details.map((elem) => {
+                    return (
+                      <div>
+                        <span>{elem.property}</span> - <span>{elem.value}</span>
+                      </div>
+                    );
+                  })}
+                  <hr />
+                </div>
+              ) : (
+                ''
+              );
+            })}
+          </div>
+        ) : (
+          ''
+        )}
       </section>
     </div>
   );
