@@ -1,0 +1,29 @@
+/* Product slider styles */
+.swiperSlider {
+    text-align: center;
+  }
+  .swiperSlider p:last-child{
+      color: #388e3c;
+      font-size: 16px;
+  }
+  .productImage {
+    max-width: 95%;
+    height: 200px;
+    padding: 10px;
+    transition: transform 0.2s;
+  }
+  .productImage:hover {
+    transform: scale(1.1);
+  }
+  .productName {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5e5e5e;
+    max-width: 200px;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
