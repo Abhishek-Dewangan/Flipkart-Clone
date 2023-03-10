@@ -16,6 +16,7 @@ const LandingPage = () => {
     (elem) => elem.category === 'babycare'
   );
   const beauty = product.products.filter((elem) => elem.category === 'beauty');
+  const sports = product.products.filter((elem) => elem.category === 'sports');
 
   const bestMobiles = mobiles.splice(
     Math.floor(Math.random() * mobiles.length - 10),
@@ -37,6 +38,10 @@ const LandingPage = () => {
     Math.floor(Math.random() * beauty.length - 10),
     10
   );
+  const bestSports = sports.splice(
+    Math.floor(Math.random() * sports.length - 10),
+    10
+  );
   return (
     <div className={styles.container}>
       <SubHeader />
@@ -47,8 +52,9 @@ const LandingPage = () => {
         products={bestAppliances}
         heading={'Best of Applicances'}
       />
-      <ProductSlider products={bestBabycares} heading={'Best of Baby Cares'} />
+      <ProductSlider products={bestBabycares} heading={'Best of BabyCares'} />
       <ProductSlider products={bestBeauty} heading={'Best of Beauty'} />
+      <ProductSlider products={bestSports} heading={'Best of Sports'} />
     </div>
   );
 };
