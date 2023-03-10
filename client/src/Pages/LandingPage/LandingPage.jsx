@@ -15,6 +15,7 @@ const LandingPage = () => {
   const babycares = product.products.filter(
     (elem) => elem.category === 'babycare'
   );
+  const beauty = product.products.filter((elem) => elem.category === 'beauty');
 
   const bestMobiles = mobiles.splice(
     Math.floor(Math.random() * mobiles.length - 10),
@@ -32,34 +33,22 @@ const LandingPage = () => {
     Math.floor(Math.random() * babycares.length - 10),
     10
   );
+  const bestBeauty = beauty.splice(
+    Math.floor(Math.random() * beauty.length - 10),
+    10
+  );
   return (
     <div className={styles.container}>
       <SubHeader />
       <BannerSlider />
-      <div className={styles.sliderDiv}>
-        <div className={styles.productHeading}>
-          <h2>Best of Mobiles</h2>
-        </div>
-        <ProductSlider products={bestMobiles} />
-      </div>
-      <div className={styles.sliderDiv}>
-        <div className={styles.productHeading}>
-          <h2>Best of Homes</h2>
-        </div>
-        <ProductSlider products={bestHomes} />
-      </div>
-      <div className={styles.sliderDiv}>
-        <div className={styles.productHeading}>
-          <h2>Best of Appliances</h2>
-        </div>
-        <ProductSlider products={bestAppliances} />
-      </div>
-      <div className={styles.sliderDiv}>
-        <div className={styles.productHeading}>
-          <h2>Best of Babycares</h2>
-        </div>
-        <ProductSlider products={bestBabycares} />
-      </div>
+      <ProductSlider products={bestMobiles} heading={'Best Of Mobiles'} />
+      <ProductSlider products={bestHomes} heading={'Best of Homes'} />
+      <ProductSlider
+        products={bestAppliances}
+        heading={'Best of Applicances'}
+      />
+      <ProductSlider products={bestBabycares} heading={'Best of Baby Cares'} />
+      <ProductSlider products={bestBeauty} heading={'Best of Beauty'} />
     </div>
   );
 };
