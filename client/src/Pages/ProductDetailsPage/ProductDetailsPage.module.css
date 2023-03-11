@@ -25,6 +25,11 @@
 .productImage {
   width: 100%;
   max-height: 400px;
+  transition: transform 0.2s;
+}
+.productImage:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 .buttonDiv {
   display: flex;
