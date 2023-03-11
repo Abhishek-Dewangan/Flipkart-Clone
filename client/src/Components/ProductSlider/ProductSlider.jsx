@@ -6,7 +6,8 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import {Button, Placeholder} from 'react-bootstrap';
+import {Button, Card, Placeholder} from 'react-bootstrap';
+import placeholderImage from '../../Assets/Images/placeholder-image.png';
 
 const ProductSlider = ({products, heading, link}) => {
   console.log(products);
@@ -68,10 +69,65 @@ const ProductSlider = ({products, heading, link}) => {
       </Swiper>
     </div>
   ) : (
-    <Placeholder className={styles.sliderDiv} styles={{background: 'white'}}>
-      <Placeholder className={styles.productHeading} />
-      <Placeholder className={styles.swiper} />
-    </Placeholder>
+    <div className={styles.sliderDiv}>
+      <Card style={{width: '18rem', textAlign: 'center', paddingTop: '2em'}}>
+        <Card.Body>
+          <Placeholder
+            as={Card.Title}
+            animation='glow'
+            style={{marginBottom: '2em'}}
+          >
+            <Placeholder xs={10} />
+            <Placeholder xs={6} />
+          </Placeholder>
+          <Placeholder.Button variant='primary' xs={6} />
+        </Card.Body>
+      </Card>
+      <Card style={{width: '15rem', textAlign: 'center'}}>
+        <Card.Img variant='top' src={placeholderImage} />
+        <Card.Body>
+          <Placeholder as={Card.Title} animation='glow'>
+            <Placeholder xs={10} />
+          </Placeholder>
+          <Placeholder as={Card.Text} animation='glow'>
+            <Placeholder xs={6} />
+          </Placeholder>
+        </Card.Body>
+      </Card>
+      <Card style={{width: '15rem', textAlign: 'center'}}>
+        <Card.Img variant='top' src={placeholderImage} />
+        <Card.Body>
+          <Placeholder as={Card.Title} animation='glow'>
+            <Placeholder xs={10} />
+          </Placeholder>
+          <Placeholder as={Card.Text} animation='glow'>
+            <Placeholder xs={6} />
+          </Placeholder>
+        </Card.Body>
+      </Card>
+      <Card style={{width: '15rem', textAlign: 'center'}}>
+        <Card.Img variant='top' src={placeholderImage} />
+        <Card.Body>
+          <Placeholder as={Card.Title} animation='glow'>
+            <Placeholder xs={10} />
+          </Placeholder>
+          <Placeholder as={Card.Text} animation='glow'>
+            <Placeholder xs={6} />
+          </Placeholder>
+        </Card.Body>
+      </Card>
+      <Card style={{width: '15rem', textAlign: 'center'}}>
+        <Card.Img variant='top' src={placeholderImage} />
+        <Card.Body>
+          <Placeholder as={Card.Title} animation='glow'>
+            <Placeholder xs={10} />
+          </Placeholder>
+          <Placeholder as={Card.Text} animation='glow'>
+            <Placeholder xs={6} />
+          </Placeholder>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 
