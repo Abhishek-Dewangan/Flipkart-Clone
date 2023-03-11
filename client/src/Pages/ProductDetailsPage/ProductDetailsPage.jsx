@@ -67,7 +67,7 @@ const ProductDetailsPage = () => {
               {productDetails.discount_percent}% off
             </span>
           </p>
-          <p>Highlights</p>
+          <h5>Highlights</h5>
           <ul>
             {productDetails.highlights &&
               productDetails.highlights.map((elem, i) => {
@@ -85,8 +85,13 @@ const ProductDetailsPage = () => {
                   <h5>{element.title}</h5>
                   {element.details.map((elem, index) => {
                     return (
-                      <div key={index}>
-                        <span>{elem.property}</span> - <span>{elem.value}</span>
+                      <div key={index} className={styles.property}>
+                        <div>
+                          <span>{elem.property}</span>
+                        </div>
+                        <div>
+                          <span>{elem.value}</span>
+                        </div>
                       </div>
                     );
                   })}
