@@ -13,7 +13,8 @@ const ProductSlider = ({products, heading, link}) => {
   return (
     <div className={styles.sliderDiv}>
       <div className={styles.productHeading}>
-        <h2>{heading}</h2>
+        <h3>Top Deals on</h3>
+        <h3>{heading}</h3>
         <Button variant='primary' onClick={() => navigate(link)}>
           VIEW ALL
         </Button>

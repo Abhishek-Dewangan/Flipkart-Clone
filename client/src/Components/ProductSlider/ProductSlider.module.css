@@ -15,11 +15,20 @@
 }
 .productHeading {
   width: 20%;
-  padding: 1em;
+  padding: 2.5em 1em;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-.productHeading p {
-  width: 100%;
+.productHeading h3 {
+  margin: 0;
+  line-height: 0.9;
+}
+.productHeading button {
+  width: fit-content;
+  border-radius: 0;
+  margin: 1em auto;
 }
 .swiperSlider p:last-child {
   color: #388e3c;
