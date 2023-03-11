@@ -48,32 +48,32 @@ const LandingPage = () => {
       <BannerSlider />
       <ProductSlider
         products={bestMobiles}
-        heading={'Best Of Mobiles'}
+        heading={'Mobiles'}
         link={'/category/mobile'}
       />
       <ProductSlider
         products={bestHomes}
-        heading={'Best of Homes'}
+        heading={'Homes'}
         link={'/category/home'}
       />
       <ProductSlider
         products={bestAppliances}
-        heading={'Best of Applicances'}
+        heading={'Applicances'}
         link={'/category/appliance'}
       />
       <ProductSlider
         products={bestBabycares}
-        heading={'Best of BabyCares'}
+        heading={'BabyCares'}
         link={'/category/babycare'}
       />
       <ProductSlider
         products={bestBeauty}
-        heading={'Best of Beauty'}
+        heading={'Beauty'}
         link={'/category/beauty'}
       />
       <ProductSlider
         products={bestSports}
-        heading={'Best of Sports'}
+        heading={'Sports'}
         link={'/category/sports'}
       />
     </div>
