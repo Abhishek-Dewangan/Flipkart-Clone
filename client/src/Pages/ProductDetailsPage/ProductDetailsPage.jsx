@@ -16,7 +16,7 @@ const ProductDetailsPage = () => {
   );
   useEffect(() => {
     const product = products.filter((elem) => elem._id === productid);
-    product.length && getProductDetails(dispatch, product[0].query_url);
+    product.length && getProductDetails(dispatch, product[0]);
   }, [products]);
 
   useEffect(() => {
