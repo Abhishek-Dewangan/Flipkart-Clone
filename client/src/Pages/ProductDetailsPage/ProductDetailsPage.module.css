@@ -54,7 +54,7 @@
 }
 .highlightsBox,
 .specificationBox {
-  padding: 2em 1em 1em;
+  padding: 1em 1.5em;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
@@ -114,18 +114,36 @@
   font-family: Roboto, Arial, sans-serif;
   font-weight: 600;
 }
-.property{
+.highlightsList {
+  font-size: 14px;
+}
+.property {
   width: 95%;
   display: flex;
   justify-content: space-between;
   gap: 1em;
   margin: auto;
 }
-.property div:first-child{
-  width: 50%;
-  margin: 2px;
+.property div:first-child {
+  width: 40%;
+  margin: 5px;
+  color: #878787;
+  font-size: 14px;
 }
-.property div:last-child{
+.property div:last-child {
   width: 100%;
   margin: 2px;
+  font-size: 14px;
+}
+hr {
+  margin: 1em -1.5em;
+}
+.empty{
+  width: 100%;
+  margin: 2em auto 0;
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 0.3px;
+  color: #878787;
+  font-size: 14px;
 }
