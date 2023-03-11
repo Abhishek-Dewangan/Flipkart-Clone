@@ -37,7 +37,7 @@ const CartPage = () => {
                 <div key={elem._id}>
                   <div className={styles.productBox}>
                     <Link
-                      to={`/productdetail/:${elem.productId}`}
+                      to={`/productdetail/${elem.productId}`}
                       className={styles.imgDiv}
                     >
                       <img
@@ -48,7 +48,7 @@ const CartPage = () => {
                     </Link>
                     <div className={styles.productDetails}>
                       <Link
-                        to={`/productdetail/:${elem.productId}`}
+                        to={`/productdetail/${elem.productId}`}
                         className={styles.productName}
                       >
                         <span>{elem.name}</span>
@@ -77,7 +77,7 @@ const CartPage = () => {
                         <Button
                           variant='outline-warning'
                           onClick={() =>
-                            navigate(`'productdetail/:${elem.productId}`)
+                            navigate(`/productdetail/${elem.productId}`)
                           }
                         >
                           Buy this now
