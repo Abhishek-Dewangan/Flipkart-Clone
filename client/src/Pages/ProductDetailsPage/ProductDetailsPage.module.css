@@ -134,11 +134,12 @@
   width: 100%;
   margin: 2px;
   font-size: 14px;
+  text-align: justify;
 }
 hr {
   margin: 1em -1.5em;
 }
-.empty{
+.empty {
   width: 100%;
   margin: 2em auto 0;
   text-align: center;
@@ -146,4 +147,16 @@ hr {
   letter-spacing: 0.3px;
   color: #878787;
   font-size: 14px;
+}
+ul {
+  list-style: none;
+}
+li::before {
+  content: '\2022';
+  color: #878787;
+  font-weight: bolder;
+  display: inline-block;
+  width: 1em;
+  margin-left: -2em;
+  line-height: 2;
 }
