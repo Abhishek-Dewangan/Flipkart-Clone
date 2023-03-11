@@ -10,7 +10,6 @@ import {Button, Card, Placeholder} from 'react-bootstrap';
 import placeholderImage from '../../Assets/Images/placeholder-image.png';
 
 const ProductSlider = ({products, heading, link}) => {
-  console.log(products);
   const navigate = useNavigate();
   return products.length ? (
     <div className={styles.sliderDiv}>
