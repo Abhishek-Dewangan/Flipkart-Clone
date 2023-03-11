@@ -70,7 +70,14 @@ const ProductSlider = ({products, heading, link}) => {
     </div>
   ) : (
     <div className={styles.sliderDiv}>
-      <Card style={{width: '18rem', textAlign: 'center', paddingTop: '2em'}}>
+      <Card
+        style={{
+          width: '18rem',
+          textAlign: 'center',
+          paddingTop: '2em',
+          border: 'none',
+        }}
+      >
         <Card.Body>
           <Placeholder
             as={Card.Title}
@@ -83,7 +90,7 @@ const ProductSlider = ({products, heading, link}) => {
           <Placeholder.Button variant='primary' xs={6} />
         </Card.Body>
       </Card>
-      <Card style={{width: '15rem', textAlign: 'center'}}>
+      <Card style={{width: '15rem', textAlign: 'center', border: 'none'}}>
         <Card.Img variant='top' src={placeholderImage} />
         <Card.Body>
           <Placeholder as={Card.Title} animation='glow'>
@@ -94,7 +101,7 @@ const ProductSlider = ({products, heading, link}) => {
           </Placeholder>
         </Card.Body>
       </Card>
-      <Card style={{width: '15rem', textAlign: 'center'}}>
+      <Card style={{width: '15rem', textAlign: 'center', border: 'none'}}>
         <Card.Img variant='top' src={placeholderImage} />
         <Card.Body>
           <Placeholder as={Card.Title} animation='glow'>
@@ -105,7 +112,7 @@ const ProductSlider = ({products, heading, link}) => {
           </Placeholder>
         </Card.Body>
       </Card>
-      <Card style={{width: '15rem', textAlign: 'center'}}>
+      <Card style={{width: '15rem', textAlign: 'center', border: 'none'}}>
         <Card.Img variant='top' src={placeholderImage} />
         <Card.Body>
           <Placeholder as={Card.Title} animation='glow'>
@@ -116,7 +123,7 @@ const ProductSlider = ({products, heading, link}) => {
           </Placeholder>
         </Card.Body>
       </Card>
-      <Card style={{width: '15rem', textAlign: 'center'}}>
+      <Card style={{width: '15rem', textAlign: 'center', border: 'none'}}>
         <Card.Img variant='top' src={placeholderImage} />
         <Card.Body>
           <Placeholder as={Card.Title} animation='glow'>
