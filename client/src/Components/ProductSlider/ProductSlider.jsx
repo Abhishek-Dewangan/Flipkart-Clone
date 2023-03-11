@@ -6,11 +6,12 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import {Button} from 'react-bootstrap';
+import {Button, Placeholder} from 'react-bootstrap';
 
 const ProductSlider = ({products, heading, link}) => {
+  console.log(products);
   const navigate = useNavigate();
-  return (
+  return products.length ? (
     <div className={styles.sliderDiv}>
       <div className={styles.productHeading}>
         <h3>Top Deals on</h3>
@@ -66,6 +67,11 @@ const ProductSlider = ({products, heading, link}) => {
           })}
       </Swiper>
     </div>
+  ) : (
+    <Placeholder className={styles.sliderDiv} styles={{background: 'white'}}>
+      <Placeholder className={styles.productHeading} />
+      <Placeholder className={styles.swiper} />
+    </Placeholder>
   );
 };
 
