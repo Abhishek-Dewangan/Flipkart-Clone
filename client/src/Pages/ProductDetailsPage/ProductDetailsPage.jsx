@@ -79,13 +79,13 @@ const ProductDetailsPage = () => {
           <div className={styles.specificationBox}>
             <h4>Specification</h4>
             <hr />
-            {productDetails.specs.map((element) => {
+            {productDetails.specs.map((element, i) => {
               return element.details ? (
-                <div>
+                <div key={i}>
                   <h5>{element.title}</h5>
-                  {element.details.map((elem) => {
+                  {element.details.map((elem, index) => {
                     return (
-                      <div>
+                      <div key={index}>
                         <span>{elem.property}</span> - <span>{elem.value}</span>
                       </div>
                     );
