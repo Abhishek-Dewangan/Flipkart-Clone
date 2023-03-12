@@ -49,7 +49,7 @@ export const removeFromWishlist = async (dispatch, productId) => {
     // console.log(res.data);
     dispatch({type: REMOVE_FROM_WISHLIST, payload: res.data});
   } catch (error) {
-    // console.log(error.response.data);
+    // console.log(error);
     dispatch({type: IS_ERROR, payload: error});
   }
 };
