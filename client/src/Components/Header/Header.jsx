@@ -22,6 +22,7 @@ const Header = ({handleShowSignin}) => {
   const navigate = useNavigate();
   const [showUser, setShowUser] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const cart = useSelector((state) => state.CartReducer);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
     useSelector((state) => state.UserReducer);
 
@@ -142,6 +143,9 @@ const Header = ({handleShowSignin}) => {
         </Dropdown>
         <Link to={'/cart'} className={styles.link}>
           <div className={styles.cart}>
+            <p className={styles.cartItemCount}>
+              {cart.cartData.length ? cart.cartData.length : ''}
+            </p>
             <FaShoppingCart className={styles.cartIcon} /> Cart
           </div>
         </Link>
