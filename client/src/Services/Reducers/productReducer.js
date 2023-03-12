@@ -14,6 +14,7 @@ const initialState = {
   product: {},
   products: [],
   categoryProducts: [],
+  offerProducts: [],
   productDetails: {},
 };
 
@@ -36,12 +37,17 @@ export const ProductReducer = (state = initialState, action) => {
       };
     }
     case GET_PRODUCTS: {
+      const topOfferProducts = action.payload.data.splice(
+        Math.floor(Math.random() * (action.payload.data.length - 20)),
+        20
+      );
       return {
         ...state,
         isLoading: false,
         isError: false,
         isSuccess: true,
         products: action.payload.data,
+        offerProducts: topOfferProducts,
       };
     }
     case GET_PRODUCTS_BY_CATEGORY: {
