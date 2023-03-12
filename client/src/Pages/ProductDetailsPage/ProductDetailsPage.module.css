@@ -40,6 +40,7 @@
 }
 .productImageDiv {
   width: fit-content;
+  min-height: 400px;
   padding: 4em 2em 2em;
 }
 .productImage {
@@ -167,6 +168,9 @@
   letter-spacing: 0.3px;
   color: #878787;
   font-size: 14px;
+}
+.empty img{
+  width: 100px;
 }
 .ul {
   list-style: none;
