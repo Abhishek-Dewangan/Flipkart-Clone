@@ -45,7 +45,7 @@ const WishlistPage = () => {
               <div key={elem._id}>
                 <div className={styles.productBox}>
                   <Link
-                    to={`/productdetail/:${elem.productId}`}
+                    to={`/productdetail/${elem.productId}`}
                     className={styles.imgDiv}
                   >
                     <img
@@ -56,7 +56,7 @@ const WishlistPage = () => {
                   </Link>
                   <div className={styles.productDetails}>
                     <Link
-                      to={`/productdetail/:${elem.productId}`}
+                      to={`/productdetail/${elem.productId}`}
                       className={styles.productName}
                     >
                       <span>{elem.name}</span>
