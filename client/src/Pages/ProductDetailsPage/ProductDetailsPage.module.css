@@ -136,7 +136,7 @@
   font-size: 14px;
   text-align: justify;
 }
-hr {
+.hr {
   margin: 1em -1.5em;
 }
 .empty {
@@ -148,10 +148,10 @@ hr {
   color: #878787;
   font-size: 14px;
 }
-ul {
+.ul {
   list-style: none;
 }
-li::before {
+.ul li::before {
   content: '\2022';
   color: #878787;
   font-weight: bolder;

@@ -75,8 +75,8 @@ const ProductDetailsPage = () => {
               </span>
             </p>
             <h5>Highlights</h5>
-            <hr />
-            <ul>
+            <hr className={styles.hr} />
+            <ul className={styles.ul}>
               {productDetails.highlights.length ? (
                 productDetails.highlights.map((elem, i) => {
                   return (
@@ -96,7 +96,7 @@ const ProductDetailsPage = () => {
           {
             <div className={styles.specificationBox}>
               <h4>Specification</h4>
-              <hr />
+              <hr className={styles.hr} />
               {productDetails.specs.length ? (
                 productDetails.specs.map((element, i) => {
                   return element.details ? (
@@ -114,7 +114,7 @@ const ProductDetailsPage = () => {
                           </div>
                         );
                       })}
-                      <hr />
+                      <hr className={styles.hr} />
                     </div>
                   ) : (
                     ''
