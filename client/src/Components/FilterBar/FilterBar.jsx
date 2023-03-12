@@ -3,7 +3,7 @@ import styles from './FilterBar.module.css';
 
 const FilterBar = () => {
   return (
-    <div>FilterBar</div>
+    <div className={styles.filterBarContainer}>FilterBar</div>
   )
 }
 
