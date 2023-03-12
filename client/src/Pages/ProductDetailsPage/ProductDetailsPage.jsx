@@ -8,12 +8,12 @@ import {GiElectric} from 'react-icons/gi';
 import {AiFillHeart, AiFillStar, AiOutlineHeart} from 'react-icons/ai';
 import fAssured from '../../Assets/Images/f-assured.png';
 import emptyImage from '../../Assets/Images/empty.png';
-import {addToCart} from '../../Services/Actions/CartAction';
 import {useNavigate} from 'react-router-dom';
 import {
-  addToWishlist,
-  removeFromWishlist,
-} from '../../Services/Actions/WishlistAction';
+  addCart,
+  addWishlist,
+  removeWishlist,
+} from '../../Assets/ReusableFuctions';
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -29,45 +29,6 @@ const ProductDetailsPage = () => {
     (state) => state.ProductReducer
   );
 
-  //  Adding product into cart
-  const addCart = (elem) => {
-    const product = {
-      userId: user.userId,
-      productId: elem._id,
-      name: elem.name,
-      category: elem.category,
-      link: elem.link,
-      current_price: elem.current_price,
-      original_price: elem.original_price,
-      discounted: elem.discounted,
-      thumbnail: elem.thumbnail,
-      query_url: elem.query_url,
-    };
-    addToCart(dispatch, product);
-  };
-
-  // Adding product into wishlist
-  const addWishlist = (elem) => {
-    const product = {
-      userId: user.userId,
-      productId: elem._id,
-      name: elem.name,
-      category: elem.category,
-      link: elem.link,
-      current_price: elem.current_price,
-      original_price: elem.original_price,
-      discounted: elem.discounted,
-      thumbnail: elem.thumbnail,
-      query_url: elem.query_url,
-    };
-    addToWishlist(dispatch, product);
-  };
-
-  // Removing product from wishlist
-  const removeWishlist = (id) => {
-    removeFromWishlist(dispatch, id);
-  };
-
   useEffect(() => {
     const filteredProduct = products.filter((elem) => elem._id === productid);
     filteredProduct.length && getProductDetails(dispatch, filteredProduct[0]);
@@ -81,7 +42,9 @@ const ProductDetailsPage = () => {
         (element) =>
           element.productId === productid && element.userId === user.userId
       );
-      existInCart.length && setIsExistInCart(existInCart[0]);
+      existInCart.length
+        ? setIsExistInCart(existInCart[0])
+        : setIsExistInCart({});
 
       // Checking the product is added in wishlist or not
       const existInWishlist = wishlist.wishlistData.filter(
@@ -101,11 +64,11 @@ const ProductDetailsPage = () => {
           {isExistInWishlist.name ? (
             <AiFillHeart
               className={styles.removeWishlistIcon}
-              onClick={() => removeWishlist(isExistInWishlist._id)}
+              onClick={() => removeWishlist(dispatch, isExistInWishlist._id)}
             />
           ) : (
             <AiOutlineHeart
-              onClick={() => addWishlist(product)}
+              onClick={() => addWishlist(dispatch, product, user)}
               className={styles.addWishlistIcon}
               style={{stroke: 'silver', strokeWidth: '50'}}
             />
@@ -124,7 +87,7 @@ const ProductDetailsPage = () => {
               <FaShoppingCart /> GO TO CART
             </button>
           ) : (
-            <button onClick={() => addCart(product)}>
+            <button onClick={() => addCart(dispatch, product, user)}>
               <FaShoppingCart /> ADD TO CART
             </button>
           )}
