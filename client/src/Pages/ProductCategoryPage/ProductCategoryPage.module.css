@@ -2,3 +2,7 @@
 .productCategoryContainer{
     min-height: 100vh;
 }
+.categoryBox{
+    display: flex;
+    justify-content: space-between;
+}
