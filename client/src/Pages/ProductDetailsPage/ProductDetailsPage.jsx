@@ -5,21 +5,26 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getProductDetails} from '../../Services/Actions/ProductAction';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
-import {AiFillStar} from 'react-icons/ai';
+import {AiFillHeart, AiFillStar, AiOutlineHeart} from 'react-icons/ai';
 import fAssured from '../../Assets/Images/f-assured.png';
 import emptyImage from '../../Assets/Images/empty.png';
 import {addToCart} from '../../Services/Actions/CartAction';
 import {useNavigate} from 'react-router-dom';
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from '../../Services/Actions/WishlistAction';
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {productid} = useParams();
   const [product, setProduct] = useState({});
-  const [isExistInCart, setIsExistInCart] = useState(false);
-  const [isExistInWishlist, setIsExistInWishlist] = useState(false);
+  const [isExistInCart, setIsExistInCart] = useState({});
+  const [isExistInWishlist, setIsExistInWishlist] = useState({});
   const {user} = useSelector((state) => state.UserReducer);
   const cart = useSelector((state) => state.CartReducer);
+  const wishlist = useSelector((state) => state.WishlistReducer);
   const {products, productDetails} = useSelector(
     (state) => state.ProductReducer
   );
@@ -41,6 +46,28 @@ const ProductDetailsPage = () => {
     addToCart(dispatch, product);
   };
 
+  // Adding product into wishlist
+  const addWishlist = (elem) => {
+    const product = {
+      userId: user.userId,
+      productId: elem._id,
+      name: elem.name,
+      category: elem.category,
+      link: elem.link,
+      current_price: elem.current_price,
+      original_price: elem.original_price,
+      discounted: elem.discounted,
+      thumbnail: elem.thumbnail,
+      query_url: elem.query_url,
+    };
+    addToWishlist(dispatch, product);
+  };
+
+  // Removing product from wishlist
+  const removeWishlist = (id) => {
+    removeFromWishlist(dispatch, id);
+  };
+
   useEffect(() => {
     const filteredProduct = products.filter((elem) => elem._id === productid);
     filteredProduct.length && getProductDetails(dispatch, filteredProduct[0]);
@@ -50,19 +77,42 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     // productDetails.name && console.log(productDetails);
     // product.name && console.log(product);
-    if (product.name) {
+    if (productDetails.name) {
       // Checking the product is added in cart or not
-      const isExistInCart = cart.cartData.filter(
+      const existInCart = cart.cartData.filter(
         (element) =>
-          element.productId === product._id && element.userId === user.userId
+          element.productId === productid && element.userId === user.userId
       );
-      isExistInCart.length && setIsExistInCart(true);
+      existInCart.length && setIsExistInCart(existInCart[0]);
+
+      // Checking the product is added in wishlist or not
+      const existInWishlist = wishlist.wishlistData.filter(
+        (element) =>
+          element.productId === productid && element.userId === user.userId
+      );
+      existInWishlist.length
+        ? setIsExistInWishlist(existInWishlist[0])
+        : setIsExistInWishlist({});
     }
-  }, [product, cart.cartData]);
+  }, [productDetails, cart.cartData, wishlist.wishlistData]);
 
   return productDetails.name ? (
     <div className={styles.productDetailsContainer}>
       <section className={styles.leftSection}>
+        <div className={styles.wishlist}>
+          {isExistInWishlist.name ? (
+            <AiFillHeart
+              className={styles.removeWishlistIcon}
+              onClick={() => removeWishlist(isExistInWishlist._id)}
+            />
+          ) : (
+            <AiOutlineHeart
+              onClick={() => addWishlist(product)}
+              className={styles.addWishlistIcon}
+              style={{stroke: 'silver', strokeWidth: '50'}}
+            />
+          )}
+        </div>
         <div className={styles.productImageDiv}>
           <img
             className={styles.productImage}
@@ -71,7 +121,7 @@ const ProductDetailsPage = () => {
           />
         </div>
         <div className={styles.buttonDiv}>
-          {isExistInCart ? (
+          {isExistInCart.name ? (
             <button onClick={() => navigate('/cart')}>
               <FaShoppingCart /> GO TO CART
             </button>
