@@ -10,6 +10,11 @@ import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiElectric} from 'react-icons/gi';
 import {addToCart} from '../../Services/Actions/CartAction';
+import {
+  addCart,
+  addWishlist,
+  removeWishlist,
+} from '../../Assets/ReusableFuctions';
 
 const ShowProducts = ({products}) => {
   const dispatch = useDispatch();
@@ -17,45 +22,6 @@ const ShowProducts = ({products}) => {
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
-
-  // Adding product into wishlist
-  const addWishlist = (elem) => {
-    const product = {
-      userId: user.userId,
-      productId: elem._id,
-      name: elem.name,
-      category: elem.category,
-      link: elem.link,
-      current_price: elem.current_price,
-      original_price: elem.original_price,
-      discounted: elem.discounted,
-      thumbnail: elem.thumbnail,
-      query_url: elem.query_url,
-    };
-    addToWishlist(dispatch, product);
-  };
-
-  // Removing product from wishlist
-  const removeWishlist = (id) => {
-    removeFromWishlist(dispatch, id);
-  };
-
-  //  Adding product into cart
-  const addCart = (elem) => {
-    const product = {
-      userId: user.userId,
-      productId: elem._id,
-      name: elem.name,
-      category: elem.category,
-      link: elem.link,
-      current_price: elem.current_price,
-      original_price: elem.original_price,
-      discounted: elem.discounted,
-      thumbnail: elem.thumbnail,
-      query_url: elem.query_url,
-    };
-    addToCart(dispatch, product);
-  };
 
   return (
     <div className={styles.showProductsContainer}>
@@ -82,11 +48,13 @@ const ShowProducts = ({products}) => {
             {isExistInWishlist.length ? (
               <AiFillHeart
                 className={styles.removeWishlistIcon}
-                onClick={() => removeWishlist(isExistInWishlist[0]._id)}
+                onClick={() =>
+                  removeWishlist(dispatch, isExistInWishlist[0]._id)
+                }
               />
             ) : (
               <AiOutlineHeart
-                onClick={() => addWishlist(elem)}
+                onClick={() => addWishlist(dispatch, elem, user)}
                 className={styles.addWishlistIcon}
                 style={{stroke: 'silver', strokeWidth: '50'}}
               />
@@ -130,7 +98,7 @@ const ShowProducts = ({products}) => {
               ) : (
                 <button
                   className={styles.addToCartBtn}
-                  onClick={() => addCart(elem)}
+                  onClick={() => addCart(dispatch, elem, user)}
                 >
                   <FaShoppingCart />
                   Add to Cart
