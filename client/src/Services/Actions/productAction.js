@@ -55,7 +55,7 @@ export const getProductDetails = async (dispatch, product) => {
   dispatch({type: IS_LOADING});
   try {
     const res = await axios.get(product.query_url);
-    console.log(res);
+    // console.log(res);
     if (!res.data.thumbnails.length) res.data.thumbnails = [product.thumbnail];
     dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
   } catch (error) {
