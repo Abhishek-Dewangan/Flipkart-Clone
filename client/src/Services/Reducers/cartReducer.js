@@ -1,6 +1,6 @@
 import {
-  IS_ERROR,
-  IS_LOADING,
+  IS_ERROR_IN_CART,
+  IS_LOADING_IN_CART,
   ADD_TO_CART,
   GET_CART_DATA,
   REMOVE_ALL_FROM_CART,
@@ -17,7 +17,7 @@ const initialState = {
 
 export const CartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOADING: {
+    case IS_LOADING_IN_CART: {
       return {
         ...state,
         isError: false,
@@ -26,7 +26,7 @@ export const CartReducer = (state = initialState, action) => {
         message: '',
       };
     }
-    case IS_ERROR: {
+    case IS_ERROR_IN_CART: {
       return {
         ...state,
         isError: true,

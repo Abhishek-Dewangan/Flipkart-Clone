@@ -3,8 +3,8 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   GET_PRODUCTS_BY_ID,
   GET_PROUDUCT_DETAILS,
-  IS_LOADING,
-  IS_ERROR,
+  IS_LOADING_IN_PRODUCT,
+  IS_ERROR_IN_PRODUCT,
 } from '../Actions/ProductAction';
 
 const initialState = {
@@ -20,7 +20,8 @@ const initialState = {
 
 export const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOADING: {
+    case IS_LOADING_IN_PRODUCT: {
+      console.log(action.type);
       return {
         ...state,
         isLoading: true,
@@ -28,7 +29,7 @@ export const ProductReducer = (state = initialState, action) => {
         isSuccess: false,
       };
     }
-    case IS_ERROR: {
+    case IS_ERROR_IN_PRODUCT: {
       return {
         ...state,
         isLoading: false,
@@ -78,7 +79,7 @@ export const ProductReducer = (state = initialState, action) => {
       };
     }
     default: {
-      return state;
+      return {...state, isLoading: false};
     }
   }
 };

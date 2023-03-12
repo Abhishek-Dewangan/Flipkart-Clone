@@ -1,10 +1,10 @@
 import {
   ADD_TO_WISHLIST,
-  IS_ERROR,
+  IS_ERROR_IN_WISHLIST,
   GET_WISHLIST_PRODUCTS,
   REMOVE_ALL_FROM_WISHLIST,
   REMOVE_FROM_WISHLIST,
-  IS_LOADING,
+  IS_LOADING_IN_WISHLIST,
 } from '../Actions/WishlistAction';
 
 const initialState = {
@@ -17,7 +17,7 @@ const initialState = {
 
 export const WishlistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOADING: {
+    case IS_LOADING_IN_WISHLIST: {
       return {
         ...state,
         isError: false,
@@ -26,7 +26,7 @@ export const WishlistReducer = (state = initialState, action) => {
         message: '',
       };
     }
-    case IS_ERROR: {
+    case IS_ERROR_IN_WISHLIST: {
       return {
         ...state,
         isError: true,

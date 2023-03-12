@@ -1,6 +1,6 @@
 import {
-  IS_ERROR,
-  IS_LOADING,
+  IS_ERROR_IN_USER,
+  IS_LOADING_IN_USER,
   SIGNIN,
   SIGNOUT,
   SIGNUP,
@@ -21,7 +21,7 @@ const initialState = {
 
 export const UserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOADING: {
+    case IS_LOADING_IN_USER: {
       return {
         ...state,
         isLoading: true,
@@ -32,7 +32,7 @@ export const UserReducer = (state = initialState, action) => {
         message: '',
       };
     }
-    case IS_ERROR: {
+    case IS_ERROR_IN_USER: {
       return {
         ...state,
         isLoading: false,

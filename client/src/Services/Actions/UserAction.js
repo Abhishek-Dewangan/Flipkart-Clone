@@ -4,25 +4,25 @@ import axios from 'axios';
 export const SIGNUP = 'SIGNUP';
 export const SIGNIN = 'SIGNIN';
 export const SIGNOUT = 'SIGNOUT';
-export const IS_ERROR = 'IS_ERROR';
-export const IS_LOADING = 'IS_LOADING';
+export const IS_ERROR_IN_USER = 'IS_ERROR_IN_USER';
+export const IS_LOADING_IN_USER = 'IS_LOADING_IN_USER';
 
 // User Signup/Register
 export const signup = async (dispatch, user) => {
-  dispatch({type: IS_LOADING});
+  dispatch({type: IS_LOADING_IN_USER});
   try {
     const res = await axios.post(`http://localhost:8080/api/signup`, user);
     // console.log(res.data);
     dispatch({type: SIGNUP, payload: res.data});
   } catch (error) {
     // console.log(error.response.data);
-    dispatch({type: IS_ERROR, payload: error.response.data});
+    dispatch({type: IS_ERROR_IN_USER, payload: error.response.data});
   }
 };
 
 // User Signin/Login
 export const signin = async (dispatch, user) => {
-  dispatch({type: IS_LOADING});
+  dispatch({type: IS_LOADING_IN_USER});
   try {
     const res = await axios.post(`http://localhost:8080/api/signin`, user);
     // console.log(res.data);
@@ -30,14 +30,14 @@ export const signin = async (dispatch, user) => {
     dispatch({type: SIGNIN, payload: res.data});
   } catch (error) {
     // console.log(error.response.data);
-    dispatch({type: IS_ERROR, payload: error.response.data});
+    dispatch({type: IS_ERROR_IN_USER, payload: error.response.data});
   }
 };
 
 // User Signout/Logout
 export const signout = async (dispatch, token) => {
   console.log(token);
-  dispatch({type: IS_LOADING});
+  dispatch({type: IS_LOADING_IN_USER});
   try {
     const res = await axios.post(`http://localhost:8080/api/signout`, {token:token});
     localStorage.removeItem('user');
@@ -45,6 +45,6 @@ export const signout = async (dispatch, token) => {
     dispatch({type: SIGNOUT, payload: res.data});
   } catch (error) {
     // console.log(error.response.data);
-    dispatch({type: IS_ERROR, payload: error.response.data});
+    dispatch({type: IS_ERROR_IN_USER, payload: error.response.data});
   }
 };
