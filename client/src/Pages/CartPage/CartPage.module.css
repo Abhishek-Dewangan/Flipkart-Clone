@@ -12,7 +12,7 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.leftSecHeading{
+.leftSecHeading {
   padding: 10px 2em;
   margin: 10px;
   color: #878787;
@@ -68,7 +68,6 @@
   gap: 1em;
   align-items: center;
   margin: 0;
-
   width: 100%;
 }
 .discount {
@@ -102,9 +101,21 @@
 .emptyCart p {
   font-size: small;
 }
-.emptyCart button{
+.emptyCart button {
   width: 200px;
   border-radius: 0;
+}
+.placeOrder {
+}
+.placeOrderBtn {
+  background-color: #fb641b;
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+}
+.placeOrderBtn:hover {
+  background-color: #fb641b;
+  opacity: 0.9;
 }
 .rightSection {
   position: sticky;

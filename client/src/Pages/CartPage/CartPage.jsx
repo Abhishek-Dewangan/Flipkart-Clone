@@ -101,6 +101,9 @@ const CartPage = () => {
       </section>
       <section className={styles.rightSection}>
         <CartSidebar />
+        <div className={styles.placeOrder}>
+          <Button className={styles.placeOrderBtn}>PLACE ORDER</Button>
+        </div>
       </section>
     </div>
   );
