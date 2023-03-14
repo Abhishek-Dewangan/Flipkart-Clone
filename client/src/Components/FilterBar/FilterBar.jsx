@@ -5,7 +5,8 @@ import {Accordion} from 'react-bootstrap';
 const FilterBar = () => {
   const [sortby, setSortby] = useState('');
   const submit = (e) => {
-    console.log(e.target.value);
+    const {value, checked, name} = e.target;
+    console.log(name, value, checked);
   };
   return (
     <div className={styles.filterBarContainer}>
@@ -20,6 +21,7 @@ const FilterBar = () => {
                   id='popularity'
                   name='sortby'
                   value='popularity'
+                  defaultChecked
                 />{' '}
                 <label htmlFor='popularity'>Popularity</label>
               </div>
@@ -37,31 +39,31 @@ const FilterBar = () => {
             <Accordion.Header>Discount</Accordion.Header>
             <Accordion.Body>
               <div>
-                <input type='checkbox' id='50%' name='upTo50' />{' '}
-                <label htmlFor='50%'>Up to 50% or more</label>
+                <input type='checkbox' id='50%' name='discount' value={50} />{' '}
+                <label htmlFor='50%'>50% or more</label>
               </div>
               <div>
-                <input type='checkbox' id='40%' name='upTo40' />{' '}
-                <label htmlFor='40%'>Up to 40%</label>
+                <input type='checkbox' id='40%' name='discount' value={40} />{' '}
+                <label htmlFor='40%'>40% or more</label>
               </div>
               <div>
-                <input type='checkbox' id='30%' name='upTO30' />{' '}
-                <label htmlFor='30%'>Up to 30%</label>
+                <input type='checkbox' id='30%' name='discount' value={30} />{' '}
+                <label htmlFor='30%'>30% or more</label>
               </div>
               <div>
-                <input type='checkbox' id='20%' name='upTo20' />{' '}
-                <label htmlFor='20%'>Up to 20%</label>
+                <input type='checkbox' id='20%' name='discount' value={20} />{' '}
+                <label htmlFor='20%'>20% or more</label>
               </div>
               <div>
-                <input type='checkbox' id='10%' name='upTo10' />{' '}
-                <label htmlFor='10%'>Up to 10%</label>
+                <input type='checkbox' id='10%' name='discount' value={10} />{' '}
+                <label htmlFor='10%'>10% or more</label>
               </div>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item>
             <Accordion.Header>Price</Accordion.Header>
             <Accordion.Body>
-              <input type={'range'} />
+              <input type={'range'} name={'price'} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
