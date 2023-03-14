@@ -69,6 +69,7 @@ export const filterProducts = async (dispatch, event) => {
   dispatch({type: IS_LOADING_IN_PRODUCT});
   try {
     const {name, value, checked} = event.target;
+    console.log(name, value, checked);
   } catch (error) {
     dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
   }

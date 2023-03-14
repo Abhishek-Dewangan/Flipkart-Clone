@@ -1,6 +1,6 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import styles from './ProductCategoryPage.module.css';
-import {useParams,useLocation} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {getProductsByCategory} from '../../Services/Actions/ProductAction';
 import ShowProducts from '../../Components/ShowProducts/ShowProducts';
@@ -9,8 +9,10 @@ import FilterBar from '../../Components/FilterBar/FilterBar';
 
 const ProductCategoryPage = () => {
   const {category} = useParams();
-  const location = useLocation();
   const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
+  const [sortby, setSortby] = useState('');
+  const [discount, setDiscount] = useState();
   const {categoryProducts, offerProducts} = useSelector(
     (state) => state.ProductReducer
   );
@@ -18,6 +20,10 @@ const ProductCategoryPage = () => {
   useEffect(() => {
     category !== 'topoffers' && getProductsByCategory(dispatch, category);
   }, [category]);
+
+  useEffect(() => {
+    setProducts([...categoryProducts]);
+  }, [categoryProducts, category]);
 
   return (
     <div className={styles.productCategoryContainer}>
@@ -27,7 +33,7 @@ const ProductCategoryPage = () => {
         {category === 'topoffers' ? (
           <ShowProducts products={offerProducts} />
         ) : (
-          <ShowProducts products={categoryProducts} />
+          <ShowProducts products={products} />
         )}
       </div>
     </div>
