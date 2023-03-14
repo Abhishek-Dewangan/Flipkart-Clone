@@ -7,6 +7,7 @@ export const GET_PRODUCTS_BY_ID = 'GET_PRODUCTS_BY_ID';
 export const GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY';
 export const IS_ERROR_IN_PRODUCT = 'IS_ERROR_IN_PRODUCT';
 export const IS_LOADING_IN_PRODUCT = 'IS_LOADING_IN_PRODUCT';
+export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 
 // Get products
 export const getPrducts = async (dispatch) => {
@@ -59,6 +60,16 @@ export const getProductDetails = async (dispatch, product) => {
     dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
   } catch (error) {
     // console.log(error);
+    dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
+  }
+};
+
+// Filter products
+export const filterProducts = async (dispatch, event) => {
+  dispatch({type: IS_LOADING_IN_PRODUCT});
+  try {
+    const {name, value, checked} = event.target;
+  } catch (error) {
     dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
   }
 };
