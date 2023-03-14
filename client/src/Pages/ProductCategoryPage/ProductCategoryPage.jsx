@@ -17,6 +17,14 @@ const ProductCategoryPage = () => {
     (state) => state.ProductReducer
   );
 
+  const filterBySort = (products) => {
+    if (sortby === 'lth') {
+      return products.sort((a, b) => a.price - b.price);
+    } else if (sortby === 'htl') {
+      return products.sort((a, b) => b.price - a.price);
+    } else return products;
+  };
+
   useEffect(() => {
     category !== 'topoffers' && getProductsByCategory(dispatch, category);
   }, [category]);
