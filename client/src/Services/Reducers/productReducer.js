@@ -21,7 +21,6 @@ const initialState = {
 export const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case IS_LOADING_IN_PRODUCT: {
-      console.log(action.type);
       return {
         ...state,
         isLoading: true,
