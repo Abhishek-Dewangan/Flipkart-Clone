@@ -111,9 +111,9 @@
 .buttonDiv button:hover {
   cursor: pointer;
 }
-.addToCartBtn {
+.buttonDiv button:first-child {
   background-color: #ff9f00;
 }
-.buyNowBtn {
+.buttonDiv button:last-child {
   background-color: #fb641b;
 }

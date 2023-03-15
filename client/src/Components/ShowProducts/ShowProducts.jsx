@@ -10,17 +10,21 @@ import {
   addWishlist,
   removeWishlist,
 } from '../../Assets/ReusableFuctions';
+import {Button, Card, Placeholder} from 'react-bootstrap';
+import placeholderImage from '../../Assets/Images/placeholder-image.png';
 
-const ShowProducts = ({products}) => {
+const ShowProducts = ({products, isLoading}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {pathname} = useLocation();
+  const placeholderData = new Array(12).fill({name: 'Abhishek'});
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
-  // console.log(product.isLoading);
+  // const product = useSelector((state) => state.ProductReducer);
+  console.log(isLoading);
 
-  return (
+  return !isLoading && products.length ? (
     <div className={styles.showProductsContainer}>
       <p>Home{pathname.split('/').join(' > ')}</p>
       <div className={styles.productsContainer}>
@@ -113,6 +117,31 @@ const ShowProducts = ({products}) => {
                 </button>
               </div>
             </div>
+          );
+        })}
+      </div>
+    </div>
+  ) : (
+    <div className={styles.showProductsContainer}>
+      <p>Home{pathname.split('/').join(' > ')}</p>
+      <div className={styles.productsContainer}>
+        {placeholderData.map((elem) => {
+          return (
+            <Card className={styles.productBox}>
+              <Card.Body>
+                <Card.Img variant='top' src={placeholderImage} />
+                <Placeholder as={Card.Title} animation='glow'>
+                  <Placeholder xs={10} />
+                </Placeholder>
+                <Placeholder as={Card.Text} animation='glow'>
+                  <Placeholder xs={6} />
+                </Placeholder>
+              </Card.Body>
+              <div className={styles.buttonDiv}>
+                <Placeholder.Button></Placeholder.Button>
+                <Placeholder.Button></Placeholder.Button>
+              </div>
+            </Card>
           );
         })}
       </div>
