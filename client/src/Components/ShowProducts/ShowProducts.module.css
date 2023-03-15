@@ -117,3 +117,16 @@
 .buttonDiv button:last-child {
   background-color: #fb641b;
 }
+.emptyWishlist {
+  width: 100%;
+  margin: 6em auto;
+  text-align: center;
+  line-height: 1.4;
+  color: #212121;
+}
+.emptyWishlist h4 {
+  margin-top: 1em;
+}
+.emptyWishlist p {
+  font-size: small;
+}
