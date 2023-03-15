@@ -5,6 +5,7 @@ import {
   GET_PROUDUCT_DETAILS,
   IS_LOADING_IN_PRODUCT,
   IS_ERROR_IN_PRODUCT,
+  GET_TOP_OFFER_PRODUCTS,
 } from '../Actions/ProductAction';
 
 const initialState = {
@@ -37,17 +38,12 @@ export const ProductReducer = (state = initialState, action) => {
       };
     }
     case GET_PRODUCTS: {
-      const topOfferProducts = action.payload.data.splice(
-        Math.floor(Math.random() * (action.payload.data.length - 20)),
-        20
-      );
       return {
         ...state,
         isLoading: false,
         isError: false,
         isSuccess: true,
         products: action.payload.data,
-        offerProducts: topOfferProducts,
       };
     }
     case GET_PRODUCTS_BY_CATEGORY: {
@@ -57,6 +53,15 @@ export const ProductReducer = (state = initialState, action) => {
         isError: false,
         isSuccess: true,
         categoryProducts: action.payload.data,
+      };
+    }
+    case GET_TOP_OFFER_PRODUCTS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        offerProducts: action.payload.data,
       };
     }
     case GET_PROUDUCT_DETAILS: {
