@@ -8,6 +8,7 @@ export const GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY';
 export const IS_ERROR_IN_PRODUCT = 'IS_ERROR_IN_PRODUCT';
 export const IS_LOADING_IN_PRODUCT = 'IS_LOADING_IN_PRODUCT';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
+export const GET_TOP_OFFER_PRODUCTS = 'GET_TOP_OFFER_PRODUCTS';
 
 // Get products
 export const getPrducts = async (dispatch) => {
@@ -26,14 +27,22 @@ export const getPrducts = async (dispatch) => {
 export const getProductsByCategory = async (dispatch, category) => {
   dispatch({type: IS_LOADING_IN_PRODUCT});
   try {
-    const products = await axios.get(
-      `http://localhost:8080/api/getproductsbycategory/${category}`
-    );
-    // console.log(products);
-    dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products.data});
+    if (category === 'topoffers') {
+      const products = await axios.get(
+        `http://localhost:8080/api/getofferproducts`
+      );
+      // console.log(products);
+      dispatch({type: GET_TOP_OFFER_PRODUCTS, payload: products.data});
+    } else {
+      const products = await axios.get(
+        `http://localhost:8080/api/getproductsbycategory/${category}`
+      );
+      // console.log(products);
+      dispatch({type: GET_PRODUCTS_BY_CATEGORY, payload: products.data});
+    }
   } catch (error) {
-    // console.log(error);
-    dispatch({type: IS_ERROR_IN_PRODUCT, payload: error.response.data});
+    console.log(error);
+    dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
   }
 };
 
@@ -55,7 +64,7 @@ export const getProductDetails = async (dispatch, product) => {
   dispatch({type: IS_LOADING_IN_PRODUCT});
   try {
     const res = await axios.get(product.query_url);
-    // console.log(res);
+    console.log(res.data);
     if (!res.data.thumbnails.length) res.data.thumbnails = [product.thumbnail];
     dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
   } catch (error) {
