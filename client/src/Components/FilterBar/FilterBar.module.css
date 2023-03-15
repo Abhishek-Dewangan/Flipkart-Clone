@@ -1,9 +1,14 @@
 /* Filter bar styles */
 .filterBarContainer {
-  width: 15%;
+  width: 20%;
   height: fit-content;
   position: sticky;
   top: 4em;
   margin: 1em -0.5em 1em 1em;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.filterBarContainer label {
+  font-size: 14px;
+  color: #212121;
+  margin-left: 10px;
 }

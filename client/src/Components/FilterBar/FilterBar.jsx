@@ -4,8 +4,8 @@ import {Accordion} from 'react-bootstrap';
 import {filterProducts} from '../../Services/Actions/ProductAction';
 
 const FilterBar = ({variables}) => {
-  const [sortby, setSortby, discount, setDiscount] = variables;
-  // useEffect(() => console.log(sortby, discount), [sortby, discount]);
+  const [sortby, setSortby, discount, setDiscount, priceRange] = variables;
+  useEffect(() => console.log(priceRange), [priceRange]);
 
   return (
     <div className={styles.filterBarContainer}>
@@ -63,7 +63,51 @@ const FilterBar = ({variables}) => {
           <Accordion.Item>
             <Accordion.Header>Price</Accordion.Header>
             <Accordion.Body>
-              <input type={'range'} name={'price'} />
+              <div>
+                <input
+                  type='checkbox'
+                  id='1000'
+                  name='pricerange'
+                  value={'0-999'}
+                />{' '}
+                <label htmlFor='1000'>Rs. 999 and Below</label>
+              </div>
+              <div>
+                <input
+                  type='checkbox'
+                  id='5000'
+                  name='pricerange'
+                  value={'1000-4999'}
+                />{' '}
+                <label htmlFor='5000'>Rs. 1000 - Rs. 4999</label>
+              </div>
+              <div>
+                <input
+                  type='checkbox'
+                  id='10000'
+                  name='pricerange'
+                  value={'5000-9999'}
+                />{' '}
+                <label htmlFor='10000'>Rs. 5000 - Rs. 9999</label>
+              </div>
+              <div>
+                <input
+                  type='checkbox'
+                  id='20000'
+                  name='pricerange'
+                  value={'10001-19999'}
+                />{' '}
+                <label htmlFor='20%'>Rs. 10000 - Rs. 19999</label>
+              </div>
+              <div>
+                <input
+                  type='checkbox'
+                  id='20001'
+                  name='pricerange'
+                  value={'20000-300000'}
+                />{' '}
+                <label htmlFor='20001'>Rs. 20000 and Above</label>
+              </div>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
