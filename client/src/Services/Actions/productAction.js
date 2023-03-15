@@ -64,7 +64,7 @@ export const getProductDetails = async (dispatch, product) => {
   dispatch({type: IS_LOADING_IN_PRODUCT});
   try {
     const res = await axios.get(product.query_url);
-    console.log(res.data);
+    // console.log(res.data);
     if (!res.data.thumbnails.length) res.data.thumbnails = [product.thumbnail];
     dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
   } catch (error) {
@@ -92,7 +92,6 @@ export const filterProducts = async (event, variables) => {
     }
     case 'pricerange': {
       const [a, b] = value.split('-');
-      console.log(+a, +b);
       checked
         ? setPriceRange([...priceRange, +a, +b])
         : setPriceRange(
