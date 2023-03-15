@@ -4,8 +4,8 @@ import {Accordion} from 'react-bootstrap';
 import {filterProducts} from '../../Services/Actions/ProductAction';
 
 const FilterBar = ({variables}) => {
-  const [sortby, setSortby, discount, setDiscount, priceRange] = variables;
-  useEffect(() => console.log(priceRange), [priceRange]);
+  // const [sortby, setSortby, discount, setDiscount, priceRange] = variables;
+  // useEffect(() => console.log(priceRange), [priceRange]);
 
   return (
     <div className={styles.filterBarContainer}>
