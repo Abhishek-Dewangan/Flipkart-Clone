@@ -36,6 +36,7 @@ const ProductDetailsPage = () => {
   }, [products]);
 
   useEffect(() => {
+    // console.log(productDetails);
     if (productDetails.name) {
       // Checking the product is added in cart or not
       const existInCart = cart.cartData.filter(
