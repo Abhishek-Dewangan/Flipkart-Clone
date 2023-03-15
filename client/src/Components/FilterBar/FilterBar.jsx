@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './FilterBar.module.css';
 import {Accordion} from 'react-bootstrap';
+import {filterProducts} from '../../Services/Actions/ProductAction';
 
-const FilterBar = () => {
-  const [sortby, setSortby] = useState('');
-  const submit = (e) => {
-    const {value, checked, name} = e.target;
-    console.log(name, value, checked);
-  };
+const FilterBar = ({variables}) => {
+  const [sortby, setSortby, discount, setDiscount] = variables;
+  // useEffect(() => console.log(sortby, discount), [sortby, discount]);
+
   return (
     <div className={styles.filterBarContainer}>
-      <form onChange={submit}>
+      <form onChange={(e) => filterProducts(e, variables)}>
+        <h4>Filters</h4>
         <Accordion defaultActiveKey={['0']}>
           <Accordion.Item eventKey='0'>
             <Accordion.Header>Sort By</Accordion.Header>
