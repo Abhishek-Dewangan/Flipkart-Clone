@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import styles from './ProductCategoryPage.module.css';
-import {useParams, useLocation} from 'react-router-dom';
-import {Provider, useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 import {getProductsByCategory} from '../../Services/Actions/ProductAction';
 import ShowProducts from '../../Components/ShowProducts/ShowProducts';
 import SubHeader from '../../Components/SubHeader/SubHeader';
@@ -13,11 +13,20 @@ const ProductCategoryPage = () => {
   const [products, setProducts] = useState([]);
   const [sortby, setSortby] = useState('');
   const [discount, setDiscount] = useState([]);
-  const variables = [sortby, setSortby, discount, setDiscount];
+  const [priceRange, setPriceRange] = useState([]);
+  const variables = [
+    sortby,
+    setSortby,
+    discount,
+    setDiscount,
+    priceRange,
+    setPriceRange,
+  ];
   const {categoryProducts, offerProducts} = useSelector(
     (state) => state.ProductReducer
   );
 
+  // Filtering data base on sorting type
   const filterBySort = (products) => {
     if (sortby === 'lth') {
       return products.sort((a, b) => a.current_price - b.current_price);
@@ -29,9 +38,10 @@ const ProductCategoryPage = () => {
         : [...categoryProducts];
   };
 
+  // Filtering data bases on dicount
   const filterByDiscount = (products) => {
     const minDiscount = Math.min(...discount);
-    console.log(minDiscount);
+    // console.log(minDiscount);
     return products.filter(
       (elem) =>
         minDiscount <=
@@ -39,15 +49,16 @@ const ProductCategoryPage = () => {
     );
   };
 
+  // Calling filter fuctions
   useEffect(() => {
     let result =
       category === 'topoffers' ? [...offerProducts] : [...categoryProducts];
     if (sortby) result = filterBySort(result);
     if (discount.length) result = filterByDiscount(result);
-    console.log(result);
     setProducts([...result]);
   }, [sortby, discount, category]);
 
+  // Calling category product function
   useEffect(() => {
     getProductsByCategory(dispatch, category);
   }, [category]);
