@@ -32,5 +32,20 @@ const getProductsByCategory = async (req, res) => {
   }
 };
 
+// Getting 20 offerd products randomly
+const getOfferProducts = async (req, res) => {
+  try {
+    const offerProducts = await Product.aggregate([{$sample: {size: 20}}]);
+    res.status(201).send({data: offerProducts});
+  } catch (error) {
+    res.status(401).send({message: error.message, error});
+  }
+};
+
 // Exporting all products routes
-module.exports = {getProducts, getProductById, getProductsByCategory};
+module.exports = {
+  getProducts,
+  getProductById,
+  getProductsByCategory,
+  getOfferProducts,
+};
