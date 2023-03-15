@@ -76,11 +76,6 @@ const LandingPage = () => {
         heading={'Sports'}
         link={'/category/sports'}
       />
-      <ProductSlider
-        products={product.offerProducts}
-        heading={'Best Products'}
-        link={'/category/topoffers'}
-      />
     </div>
   );
 };
