@@ -44,20 +44,22 @@ const ShowProducts = ({products}) => {
 
           return (
             <div key={elem._id} className={styles.productBox}>
-              {isExistInWishlist.length ? (
-                <AiFillHeart
-                  className={styles.removeWishlistIcon}
-                  onClick={() =>
-                    removeWishlist(dispatch, isExistInWishlist[0]._id)
-                  }
-                />
-              ) : (
-                <AiOutlineHeart
-                  onClick={() => addWishlist(dispatch, elem, user)}
-                  className={styles.addWishlistIcon}
-                  style={{stroke: 'silver', strokeWidth: '50'}}
-                />
-              )}
+              <div className={styles.wishlist}>
+                {isExistInWishlist.length ? (
+                  <AiFillHeart
+                    className={styles.removeWishlistIcon}
+                    onClick={() =>
+                      removeWishlist(dispatch, isExistInWishlist[0]._id)
+                    }
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => addWishlist(dispatch, elem, user)}
+                    className={styles.addWishlistIcon}
+                    style={{stroke: 'silver', strokeWidth: '50'}}
+                  />
+                )}
+              </div>
               <div className={styles.productImageDiv}>
                 <Link to={`/productdetail/${elem._id}`}>
                   <img

@@ -1,12 +1,11 @@
 /* Show products styles */
 .showProductsContainer {
-  width: 85%;
+  width: 80%;
   margin: 1em;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .productsContainer {
   display: grid;
-  /* width: 100%; */
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
 }
@@ -14,14 +13,12 @@
   position: absolute;
   right: 0.5em;
   top: 0.5em;
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
   border-radius: 50%;
 }
 .removeWishlistIcon {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
   border-radius: 50%;
   color: red;
 }
@@ -32,10 +29,11 @@
 .productBox {
   position: relative;
   display: flex;
-  width: fit-content;
+  width: 250px;
   flex-direction: column;
+  text-align: center;
   align-items: center;
-  padding: 1.5em 1em;
+  padding: 1.5em 0.5em;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .productBox:hover {
