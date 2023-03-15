@@ -14,6 +14,7 @@ const {
   getProducts,
   getProductById,
   getProductsByCategory,
+  getOfferProducts,
 } = require('../controllers/ProductController');
 const {
   signin,
@@ -38,6 +39,7 @@ router.post('/authentication', authentication);
 
 // Product routes
 router.get('/getproducts', getProducts);
+router.get('/getofferproducts', getOfferProducts);
 router.get('/getproductbyid/:id', getProductById);
 router.get('/getproductsbycategory/:category', getProductsByCategory);
 
@@ -57,5 +59,6 @@ router.delete('/removeallfromwishlist/:userid', removeAllFromWishlist);
 router.get('/getaddress/:userid', getAddress);
 router.post('/addnewaddress', addNewAddress);
 router.delete('/removeaddress/:id', removeAddress);
+
 // Exporting router
 module.exports = router;
