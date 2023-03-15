@@ -72,6 +72,9 @@ const ProductCategoryPage = () => {
   // Calling category product function
   useEffect(() => {
     getProductsByCategory(dispatch, category);
+    setSortby('');
+    setDiscount([]);
+    setPriceRange([]);
   }, [category]);
 
   useEffect(() => {
