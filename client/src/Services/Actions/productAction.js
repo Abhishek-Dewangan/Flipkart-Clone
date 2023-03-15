@@ -74,12 +74,22 @@ export const getProductDetails = async (dispatch, product) => {
 };
 
 // Filter products
-export const filterProducts = async (dispatch, event) => {
-  dispatch({type: IS_LOADING_IN_PRODUCT});
-  try {
-    const {name, value, checked} = event.target;
-    console.log(name, value, checked);
-  } catch (error) {
-    dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
+export const filterProducts = async (event, variables) => {
+  const {name, value, checked} = event.target;
+  const [sortby, setSortby, discount, setDiscount] = variables;
+  // console.log(name, value, checked, sortby, discount);
+  switch (name) {
+    case 'sortby': {
+      setSortby(value);
+      break;
+    }
+    case 'discount': {
+      checked
+        ? setDiscount([...discount, +value])
+        : setDiscount(discount.filter((elem) => elem !== +value));
+      break;
+    }
+    default:
+      break;
   }
 };
