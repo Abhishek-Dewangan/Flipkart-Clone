@@ -26,12 +26,12 @@ const ProductCategoryPage = () => {
   };
 
   useEffect(() => {
-    category !== 'topoffers' && getProductsByCategory(dispatch, category);
+    getProductsByCategory(dispatch, category);
   }, [category]);
 
   useEffect(() => {
     setProducts([...categoryProducts]);
-  }, [categoryProducts, category]);
+  }, [categoryProducts, category, offerProducts]);
 
   return (
     <div className={styles.productCategoryContainer}>
