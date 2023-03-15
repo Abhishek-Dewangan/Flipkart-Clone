@@ -1,8 +1,10 @@
 /* Product category page styles */
-.productCategoryContainer{
-    min-height: 100vh;
+.productCategoryContainer {
+  min-height: 100vh;
 }
-.categoryBox{
-    display: flex;
-    justify-content: space-between;
+.categoryBox {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
+
