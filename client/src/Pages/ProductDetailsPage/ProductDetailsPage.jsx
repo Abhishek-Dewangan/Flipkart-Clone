@@ -8,12 +8,14 @@ import {GiElectric} from 'react-icons/gi';
 import {AiFillHeart, AiFillStar, AiOutlineHeart} from 'react-icons/ai';
 import fAssured from '../../Assets/Images/f-assured.png';
 import emptyImage from '../../Assets/Images/empty.png';
+import placeholderImage from '../../Assets/Images/placeholder-image.png';
 import {useNavigate} from 'react-router-dom';
 import {
   addCart,
   addWishlist,
   removeWishlist,
 } from '../../Assets/ReusableFuctions';
+import {Card, Placeholder} from 'react-bootstrap';
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const ProductDetailsPage = () => {
   const {user} = useSelector((state) => state.UserReducer);
   const cart = useSelector((state) => state.CartReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
-  const {products, productDetails} = useSelector(
+  const {products, productDetails, isLoading} = useSelector(
     (state) => state.ProductReducer
   );
 
@@ -36,7 +38,6 @@ const ProductDetailsPage = () => {
   }, [products]);
 
   useEffect(() => {
-    // console.log(productDetails);
     if (productDetails.name) {
       // Checking the product is added in cart or not
       const existInCart = cart.cartData.filter(
@@ -58,7 +59,7 @@ const ProductDetailsPage = () => {
     }
   }, [productDetails, cart.cartData, wishlist.wishlistData]);
 
-  return productDetails.name ? (
+  return productDetails.name && !isLoading ? (
     <div className={styles.productDetailsContainer}>
       <section className={styles.leftSection}>
         <div className={styles.wishlist}>
@@ -179,7 +180,75 @@ const ProductDetailsPage = () => {
       </section>
     </div>
   ) : (
-    <div className={styles.productDetailsContainer}></div>
+    <div className={styles.productDetailsContainer}>
+      <section className={styles.leftSection}>
+        <Card style={{width: '15rem', textAlign: 'center', border: 'none'}}>
+          <div className={styles.productImageDiv}>
+            <Card.Img variant='top' src={placeholderImage} />
+          </div>
+          <div className={styles.buttonDiv}>
+            <Placeholder.Button />
+            <Placeholder.Button />
+          </div>
+        </Card>
+      </section>
+      <section className={styles.rightSection}>
+        <div className={styles.highlightsBox}>
+          <Card>
+            <Card.Body>
+              <Placeholder as={Card.Title} animation='glow'>
+                <Placeholder xs={10} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Title} animation='glow'>
+                <Placeholder xs={10} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className={styles.specificationBox}>
+          <Card>
+            <Card.Body>
+              <Placeholder as={Card.Title} animation='glow'>
+                <Placeholder xs={10} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Title} animation='glow'>
+                <Placeholder xs={10} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+              <Placeholder as={Card.Text} animation='glow'>
+                <Placeholder xs={6} />
+              </Placeholder>
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+    </div>
   );
 };
 
