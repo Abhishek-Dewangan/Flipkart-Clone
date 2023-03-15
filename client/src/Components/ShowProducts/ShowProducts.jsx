@@ -18,7 +18,6 @@ const ShowProducts = ({products}) => {
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
-  const product = useSelector((state) => state.ProductReducer);
   // console.log(product.isLoading);
 
   return (
