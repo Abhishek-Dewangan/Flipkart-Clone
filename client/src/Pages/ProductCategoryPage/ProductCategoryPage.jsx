@@ -22,11 +22,11 @@ const ProductCategoryPage = () => {
     priceRange,
     setPriceRange,
   ];
-  const {categoryProducts, offerProducts} = useSelector(
+  const {categoryProducts, offerProducts, isLoading} = useSelector(
     (state) => state.ProductReducer
   );
 
-  // Filtering data base on sorting type
+  // Filtering products bases on sorting type
   const filterBySort = (products) => {
     if (sortby === 'lth') {
       return products.sort((a, b) => a.current_price - b.current_price);
@@ -38,7 +38,7 @@ const ProductCategoryPage = () => {
         : [...categoryProducts];
   };
 
-  // Filtering data bases on dicount
+  // Filtering products bases on dicount
   const filterByDiscount = (products) => {
     const minDiscount = Math.min(...discount);
     // console.log(minDiscount);
@@ -49,14 +49,25 @@ const ProductCategoryPage = () => {
     );
   };
 
+  // Filtering products bases on price ranges
+  const filterByPriceRange = (products) => {
+    const minPrice = Math.min(...priceRange);
+    const maxPrice = Math.max(...priceRange);
+    // console.log(minPrice, maxPrice);
+    return products.filter(
+      (elem) => elem.current_price >= minPrice && elem.current_price <= maxPrice
+    );
+  };
+
   // Calling filter fuctions
   useEffect(() => {
     let result =
       category === 'topoffers' ? [...offerProducts] : [...categoryProducts];
     if (sortby) result = filterBySort(result);
     if (discount.length) result = filterByDiscount(result);
+    if (priceRange.length) result = filterByPriceRange(result);
     setProducts([...result]);
-  }, [sortby, discount, category]);
+  }, [sortby, discount, priceRange, category]);
 
   // Calling category product function
   useEffect(() => {
@@ -74,7 +85,7 @@ const ProductCategoryPage = () => {
       <SubHeader />
       <div className={styles.categoryBox}>
         <FilterBar variables={variables} />
-        <ShowProducts products={products} />
+        <ShowProducts products={products} isLoading={isLoading} />
       </div>
     </div>
   );
