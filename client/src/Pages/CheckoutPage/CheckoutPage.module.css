@@ -1,1 +1,4 @@
 /* Styles for checkout page */
+.checkoutContainer {
+  min-height: 100vh;
+}
