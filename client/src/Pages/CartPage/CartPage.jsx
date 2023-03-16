@@ -7,6 +7,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import {removeFromCart} from '../../Services/Actions/CartAction';
 import CartSidebar from './CartSidebar';
+import {buyNow} from '../../Assets/ReusableFuctions';
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -76,9 +77,7 @@ const CartPage = () => {
                         </Button>
                         <Button
                           variant='outline-warning'
-                          onClick={() =>
-                            navigate(`/productdetail/${elem.productId}`)
-                          }
+                          onClick={() => buyNow([elem], navigate)}
                         >
                           Buy this now
                         </Button>
@@ -102,7 +101,12 @@ const CartPage = () => {
       <section className={styles.rightSection}>
         <CartSidebar />
         <div className={styles.placeOrder}>
-          <Button className={styles.placeOrderBtn}>PLACE ORDER</Button>
+          <Button
+            className={styles.placeOrderBtn}
+            onClick={() => buyNow(cart.cartData, navigate)}
+          >
+            PLACE ORDER
+          </Button>
         </div>
       </section>
     </div>
