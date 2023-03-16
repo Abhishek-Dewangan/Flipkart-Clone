@@ -22,7 +22,7 @@ const ProductCategoryPage = () => {
     priceRange,
     setPriceRange,
   ];
-  const {categoryProducts, offerProducts, isLoading} = useSelector(
+  const {categoryProducts, offerProducts, isLoading, isSuccess} = useSelector(
     (state) => state.ProductReducer
   );
 
@@ -61,6 +61,7 @@ const ProductCategoryPage = () => {
 
   // Calling filter fuctions
   useEffect(() => {
+    // console.log(category, priceRange);
     let result =
       category === 'topoffers' ? [...offerProducts] : [...categoryProducts];
     if (sortby) result = filterBySort(result);
@@ -72,9 +73,6 @@ const ProductCategoryPage = () => {
   // Calling category product function
   useEffect(() => {
     getProductsByCategory(dispatch, category);
-    setSortby('');
-    setDiscount([]);
-    setPriceRange([]);
   }, [category]);
 
   useEffect(() => {
@@ -88,7 +86,11 @@ const ProductCategoryPage = () => {
       <SubHeader />
       <div className={styles.categoryBox}>
         <FilterBar variables={variables} />
-        <ShowProducts products={products} isLoading={isLoading} />
+        <ShowProducts
+          products={products}
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+        />
       </div>
     </div>
   );
