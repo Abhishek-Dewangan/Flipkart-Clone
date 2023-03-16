@@ -118,11 +118,14 @@
   background-color: #fb641b;
 }
 .emptyWishlist {
-  width: 100%;
-  margin: 6em auto;
+  width: 80%;
+  min-height: 50vh;
+  margin: 1em;
+  padding-top: 3em;
   text-align: center;
   line-height: 1.4;
   color: #212121;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .emptyWishlist h4 {
   margin-top: 1em;
