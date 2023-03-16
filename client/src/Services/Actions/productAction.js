@@ -73,33 +73,4 @@ export const getProductDetails = async (dispatch, product) => {
   }
 };
 
-// Filter products
-export const filterProducts = async (event, variables) => {
-  const {name, value, checked} = event.target;
-  const [sortby, setSortby, discount, setDiscount, priceRange, setPriceRange] =
-    variables;
-  // console.log(name, value, checked);
-  switch (name) {
-    case 'sortby': {
-      setSortby(value);
-      break;
-    }
-    case 'discount': {
-      checked
-        ? setDiscount([...discount, +value])
-        : setDiscount(discount.filter((elem) => elem !== +value));
-      break;
-    }
-    case 'pricerange': {
-      const [a, b] = value.split('-');
-      checked
-        ? setPriceRange([...priceRange, +a, +b])
-        : setPriceRange(
-            priceRange.filter((elem) => elem !== +a && elem !== +b)
-          );
-      break;
-    }
-    default:
-      break;
-  }
-};
+
