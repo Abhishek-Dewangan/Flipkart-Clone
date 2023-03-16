@@ -13,6 +13,7 @@ import {useNavigate} from 'react-router-dom';
 import {
   addCart,
   addWishlist,
+  buyNow,
   removeWishlist,
 } from '../../Assets/ReusableFuctions';
 import {Card, Placeholder} from 'react-bootstrap';
@@ -30,6 +31,7 @@ const ProductDetailsPage = () => {
   const {products, productDetails, isLoading} = useSelector(
     (state) => state.ProductReducer
   );
+
 
   useEffect(() => {
     const filteredProduct = products.filter((elem) => elem._id === productid);
@@ -93,7 +95,7 @@ const ProductDetailsPage = () => {
               <FaShoppingCart /> ADD TO CART
             </button>
           )}
-          <button>
+          <button onClick={() => buyNow([product],navigate)}>
             <GiElectric /> BUY NOW
           </button>
         </div>
