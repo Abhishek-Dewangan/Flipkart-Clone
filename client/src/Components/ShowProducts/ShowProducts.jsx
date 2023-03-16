@@ -8,6 +8,7 @@ import {GiElectric} from 'react-icons/gi';
 import {
   addCart,
   addWishlist,
+  buyNow,
   removeWishlist,
 } from '../../Assets/ReusableFuctions';
 import fAssured from '../../Assets/Images/f-assured.png';
@@ -113,7 +114,10 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
                     Add to Cart
                   </button>
                 )}
-                <button className={styles.buyNowBtn}>
+                <button
+                  className={styles.buyNowBtn}
+                  onClick={() => buyNow([elem],navigate)}
+                >
                   <GiElectric />
                   Buy Now
                 </button>
