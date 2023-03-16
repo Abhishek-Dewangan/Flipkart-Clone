@@ -1,6 +1,6 @@
 import styles from './FilterBar.module.css';
 import {Accordion} from 'react-bootstrap';
-import {filterProducts} from '../../Services/Actions/ProductAction';
+import {filterProducts} from '../../Assets/FilterFuctions';
 
 const FilterBar = ({variables}) => {
   return (
