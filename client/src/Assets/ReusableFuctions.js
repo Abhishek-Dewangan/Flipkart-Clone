@@ -42,3 +42,9 @@ export const addWishlist = (dispatch, elem, user) => {
 export const removeWishlist = (dispatch, id) => {
   removeFromWishlist(dispatch, id);
 };
+
+// Buy Now fuction
+export const buyNow = (products, navigate) => {
+  localStorage.setItem('checkout', JSON.stringify(products));
+  navigate('/checkout');
+};
