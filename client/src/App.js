@@ -16,6 +16,7 @@ import WishlistPage from './Pages/WishlistPage/WishlistPage';
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import MyOrdersPage from './Pages/MyOrdersPage/MyOrdersPage';
 import {toast} from 'react-toastify';
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ function App() {
           path='/productdetail/:productid'
           element={<ProductDetailsPage />}
         />
+        <Route path='/checkout' element={<CheckoutPage />} />
       </Routes>
       <Footer />
     </div>
