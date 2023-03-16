@@ -6,6 +6,11 @@ import {getProductsByCategory} from '../../Services/Actions/ProductAction';
 import ShowProducts from '../../Components/ShowProducts/ShowProducts';
 import SubHeader from '../../Components/SubHeader/SubHeader';
 import FilterBar from '../../Components/FilterBar/FilterBar';
+import {
+  filterByDiscount,
+  filterByPriceRange,
+  filterBySort,
+} from '../../Assets/FilterFuctions';
 
 const ProductCategoryPage = () => {
   const {category} = useParams();
@@ -26,47 +31,26 @@ const ProductCategoryPage = () => {
     (state) => state.ProductReducer
   );
 
-  // Filtering products bases on sorting type
-  const filterBySort = (products) => {
-    if (sortby === 'lth') {
-      return products.sort((a, b) => a.current_price - b.current_price);
-    } else if (sortby === 'htl') {
-      return products.sort((a, b) => b.current_price - a.current_price);
-    } else
-      return category === 'topoffers'
-        ? [...offerProducts]
-        : [...categoryProducts];
-  };
-
-  // Filtering products bases on dicount
-  const filterByDiscount = (products) => {
-    const minDiscount = Math.min(...discount);
-    // console.log(minDiscount);
-    return products.filter(
-      (elem) =>
-        minDiscount <=
-        Math.floor(100 - (elem.current_price * 100) / elem.original_price)
-    );
-  };
-
-  // Filtering products bases on price ranges
-  const filterByPriceRange = (products) => {
-    const minPrice = Math.min(...priceRange);
-    const maxPrice = Math.max(...priceRange);
-    // console.log(minPrice, maxPrice);
-    return products.filter(
-      (elem) => elem.current_price >= minPrice && elem.current_price <= maxPrice
-    );
-  };
-
   // Calling filter fuctions
   useEffect(() => {
-    // console.log(category, priceRange);
     let result =
       category === 'topoffers' ? [...offerProducts] : [...categoryProducts];
-    if (sortby) result = filterBySort(result);
-    if (discount.length) result = filterByDiscount(result);
-    if (priceRange.length) result = filterByPriceRange(result);
+
+    if (sortby) {
+      result = filterBySort(
+        result,
+        sortby,
+        offerProducts,
+        categoryProducts,
+        category
+      );
+    }
+    if (discount.length) {
+      result = filterByDiscount(result, discount);
+    }
+    if (priceRange.length) {
+      result = filterByPriceRange(result, priceRange);
+    }
     setProducts([...result]);
   }, [sortby, discount, priceRange, category]);
 
