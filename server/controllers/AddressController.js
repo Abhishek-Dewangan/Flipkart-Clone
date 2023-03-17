@@ -12,8 +12,8 @@ const addNewAddress = async (req, res) => {
 const getAddress = async (req, res) => {
   try {
     const {userid} = req.params;
-    const addresses = await Address.find({userId: userid});
-    res.status(201).send({message: 'Successfully got the addres', addresses});
+    const response = await Address.find({userId: userid});
+    res.status(201).send({message: 'Successfully got the address', response});
     res.send;
   } catch (error) {
     res.status(401).send({message: error.message, error});
@@ -33,8 +33,8 @@ const removeAddress = async (req, res) => {
 const updateAddress = async (req, res) => {
   try {
     const {id} = req.params;
-    const {address} = req.body;
-    const response = await Address.findByIdAndUpdate({_id: id}, address);
+    const addressUpdates = req.body;
+    const response = await Address.findByIdAndUpdate({_id: id}, addressUpdates);
     res.status(201).send({message: 'Address updated', response});
   } catch (error) {
     res.status(400).send({message: error.message, error});
