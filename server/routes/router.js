@@ -3,6 +3,7 @@ const {
   getAddress,
   addNewAddress,
   removeAddress,
+  updateAddress,
 } = require('../controllers/AddressController');
 const {
   addToCart,
@@ -58,6 +59,7 @@ router.delete('/removeallfromwishlist/:userid', removeAllFromWishlist);
 // Address routes
 router.get('/getaddress/:userid', getAddress);
 router.post('/addnewaddress', addNewAddress);
+router.put('/updateaddress/:id', updateAddress);
 router.delete('/removeaddress/:id', removeAddress);
 
 // Exporting router
