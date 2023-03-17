@@ -99,7 +99,7 @@ const CartPage = () => {
         </div>
       </section>
       <section className={styles.rightSection}>
-        <CartSidebar />
+        <CartSidebar cartData={cart.cartData} />
         <div className={styles.placeOrder}>
           <Button
             className={styles.placeOrderBtn}
