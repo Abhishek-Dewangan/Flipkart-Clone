@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {BiChevronDown, BiChevronUp, BiLogOutCircle} from 'react-icons/bi';
+import {BiLogOutCircle} from 'react-icons/bi';
 import {GrApple} from 'react-icons/gr';
 import {
   FaShoppingCart,
