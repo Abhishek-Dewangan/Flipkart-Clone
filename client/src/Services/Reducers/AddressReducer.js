@@ -13,4 +13,50 @@ const initialState = {
   addressData: [],
 };
 
-
+export const AddressReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case IS_LOADING_IN_ADDRESS: {
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSucces: false,
+      };
+    }
+    case IS_ERROR_IN_ADDRESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSucces: false,
+      };
+    }
+    case GET_ADDRESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        addressData: action.payload.data,
+      };
+    }
+    case ADD_ADDRESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSucces: true,
+        addressData: [...state.addressData, action.paylod.data],
+      };
+    }
+    case UPDATE_ADDRESS: {
+      const index = state.addressData.findIndex(
+        (elem) => elem._id === action.payload.data._id
+      );
+      console.log(index);
+      break;
+    }
+    default:
+      return state;
+  }
+};
