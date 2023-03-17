@@ -17,3 +17,15 @@ export const addAddress = async (dispatch, address) => {
     dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
   }
 };
+
+// Get addresses
+export const getAddress = async (dispatch, userid) => {
+  dispatch({type: IS_LOADING_IN_ADDRESS});
+  try {
+    const response = await axios.get(`http:8080/api/getaddress/${userid}`);
+    console.log(response);
+    dispatch({type: GET_ADDRESS, payload: response});
+  } catch (error) {
+    dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
+  }
+};
