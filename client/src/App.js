@@ -17,14 +17,16 @@ import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import MyOrdersPage from './Pages/MyOrdersPage/MyOrdersPage';
 import {toast} from 'react-toastify';
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
-import Address from './Components/AddressForm/Address';
 import {getAddress} from './Services/Actions/AddressAction';
+import AddressForm from './Components/AddressForm/AddressForm';
+import EditAddress from './Components/EditAddress/EditAddress';
 
 function App() {
   const dispatch = useDispatch();
   const [showSignin, setShowSignin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
+  const [showEditAddress, setShowEditAdress] = useState(false);
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
@@ -35,6 +37,8 @@ function App() {
   const handleShowSignup = () => setShowSignup(true);
   const handleCloseAddress = () => setShowAddress(false);
   const handleShowAddress = () => setShowAddress(true);
+  const handleCloseEditAddress = () => setShowEditAdress(false);
+  const handleShowEditAddress = () => setShowEditAdress(true);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
@@ -81,7 +85,11 @@ function App() {
         handleCloseSignup={handleCloseSignup}
         handleShowSignin={handleShowSignin}
       />
-      <Address show={showAddress} handleCloseAddress={handleCloseAddress} />
+      <AddressForm show={showAddress} handleCloseAddress={handleCloseAddress} />
+      <EditAddress
+        show={showEditAddress}
+        handleCloseEditAddress={handleCloseEditAddress}
+      />
       <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
@@ -94,7 +102,12 @@ function App() {
         />
         <Route
           path='/checkout'
-          element={<CheckoutPage handleShowAddress={handleShowAddress} />}
+          element={
+            <CheckoutPage
+              handleShowAddress={handleShowAddress}
+              handleShowEditAddress={handleShowEditAddress}
+            />
+          }
         />
       </Routes>
       <Footer />
