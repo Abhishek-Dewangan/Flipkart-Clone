@@ -8,9 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
   const dispatch = useDispatch();
-  const {signinSuccess} = useSelector(
-    (state) => state.UserReducer
-  );
+  const {signinSuccess} = useSelector((state) => state.UserReducer);
 
   const submit = (e) => {
     e.preventDefault();
