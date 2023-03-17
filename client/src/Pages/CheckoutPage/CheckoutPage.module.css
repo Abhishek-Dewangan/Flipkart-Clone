@@ -1,4 +1,30 @@
 /* Styles for checkout page */
 .checkoutContainer {
   min-height: 100vh;
+  width: 90%;
+  position: relative;
+  margin: 1em auto;
+  display: flex;
+  gap: 1em;
+}
+.orderSummaryBox {
+  min-width: 70%;
+}
+.userDetails,
+.deleveryAddress,
+.orderSummary,
+.paymentOptions {
+  width: 100%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  margin-bottom: 1em;
+}
+.priceDetailBox {
+  position: sticky;
+  top: 4em;
+  width: 30%;
+  height: fit-content;
+  padding: 1em;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
