@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button} from 'react-bootstrap';
 import {useSelector} from 'react-redux';
 import CartSidebar from '../CartPage/CartSidebar';
 import styles from './CheckoutPage.module.css';
 
-const CheckoutPage = ({handleShowAddress}) => {
+const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
   const {user} = useSelector((state) => state.UserReducer);
   const {addressData} = useSelector((state) => state.AddressReducer);
-  console.log(addressData);
   const products = JSON.parse(localStorage.getItem('checkout')) || [];
+
   return (
     <div className={styles.checkoutContainer}>
       <div className={styles.orderSummaryBox}>
@@ -20,14 +20,18 @@ const CheckoutPage = ({handleShowAddress}) => {
         </section>
         <section className={styles.deleveryAddress}>
           <p>DELEVERY ADDRESS</p>
-          {addressData.length &&
-            addressData.map((elem) => {
-              return <div>{elem.houseAddress}</div>;
-            })}
-
-          <Button variant='outline-primary' onClick={handleShowAddress}>
-            Add Address
-          </Button>
+          {addressData.length ? (
+            <div>
+              <p>{addressData[0].houseAddress}</p>
+              <Button variant='outline-primary' onClick={handleShowEditAddress}>
+                Edit Address
+              </Button>
+            </div>
+          ) : (
+            <Button variant='outline-primary' onClick={handleShowAddress}>
+              Add Address
+            </Button>
+          )}
           <div></div>
         </section>
         <section className={styles.orderSummary}>
