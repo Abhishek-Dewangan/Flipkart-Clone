@@ -18,6 +18,7 @@ import MyOrdersPage from './Pages/MyOrdersPage/MyOrdersPage';
 import {toast} from 'react-toastify';
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
 import Address from './Components/AddressForm/Address';
+import {getAddress} from './Services/Actions/AddressAction';
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ function App() {
   useEffect(() => {
     user.userId && getWishlistProducts(dispatch, user.userId);
     user.userId && getCartProducts(dispatch, user.userId);
+    user.userId && getAddress(dispatch, user.userId);
   }, [user]);
 
   return (
