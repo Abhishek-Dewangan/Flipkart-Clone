@@ -1,1 +1,18 @@
 /* Address form styles */
+.madal {
+  width: 100%;
+  background-color: red;
+}
+.formDiv {
+  width: 100%;
+}
+.addressForm div {
+  display: flex;
+  /* width: 100%; */
+  /* margin: auto; */
+  /* gap: 1em; */
+}
+.addressForm div input{
+    width: 100%;
+    margin: 0.5em;
+}

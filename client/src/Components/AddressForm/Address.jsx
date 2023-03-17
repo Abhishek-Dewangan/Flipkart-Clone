@@ -20,21 +20,51 @@ const Address = ({show, handleCloseAddress}) => {
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={submit} className={styles.addressForm}>
-              <input
-                required
-                type={'text'}
-                placeholder='Email or Mobile'
-                name='emailormobile'
-              />{' '}
-              <br />
-              <input
-                required
-                type={'password'}
-                placeholder='Password'
-                name='password'
-              />{' '}
-              <br />
-              <input type={'submit'} value='Submit' /> <br />
+              <div>
+                <input required type={'text'} placeholder='Name' name='name' />{' '}
+                <input
+                  required
+                  type={'number'}
+                  placeholder='10-digit mobile number'
+                  name='mobile_number'
+                />
+              </div>
+              <div>
+                <input
+                  type={'number'}
+                  placeholder={'Pincode'}
+                  name={'pincode'}
+                  required
+                />
+                <input
+                  type={'text'}
+                  placeholder={'Locality'}
+                  name={'locality'}
+                />
+              </div>
+              <div>
+                <input
+                  type={'text'}
+                  placeholder={'Address (Area and Street)'}
+                  name={'houseAddress'}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type={'text'}
+                  placeholder={'City/District/Town'}
+                  name={'city'}
+                  required
+                />
+                <input
+                  type={''}
+                  placeholder={'State'}
+                  name={'state'}
+                  required
+                />
+              </div>
+              <input type={'submit'} value='Add Address' /> <br />
             </form>
           </Modal.Body>
           <Modal.Footer></Modal.Footer>
