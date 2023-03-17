@@ -30,5 +30,16 @@ const removeAddress = async (req, res) => {
   }
 };
 
+const updateAddress = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const {address} = req.body;
+    const response = await Address.findByIdAndUpdate({_id: id}, address);
+    res.status(201).send({message: 'Address updated', response});
+  } catch (error) {
+    res.status(400).send({message: error.message, error});
+  }
+};
+
 // Exporting all address routes
-module.exports = {addNewAddress, getAddress, removeAddress};
+module.exports = {addNewAddress, getAddress, removeAddress, updateAddress};
