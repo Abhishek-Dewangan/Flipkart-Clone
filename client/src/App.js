@@ -17,11 +17,13 @@ import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage';
 import MyOrdersPage from './Pages/MyOrdersPage/MyOrdersPage';
 import {toast} from 'react-toastify';
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
+import Address from './Components/AddressForm/Address';
 
 function App() {
   const dispatch = useDispatch();
   const [showSignin, setShowSignin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [showAddress, setShowAddress] = useState(false);
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
@@ -30,6 +32,8 @@ function App() {
   const handleShowSignin = () => setShowSignin(true);
   const handleCloseSignup = () => setShowSignup(false);
   const handleShowSignup = () => setShowSignup(true);
+  const handleCloseAddress = () => setShowAddress(false);
+  const handleShowAddress = () => setShowAddress(true);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
@@ -75,6 +79,7 @@ function App() {
         handleCloseSignup={handleCloseSignup}
         handleShowSignin={handleShowSignin}
       />
+      <Address show={showAddress} handleCloseAddress={handleCloseAddress} />
       <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
@@ -85,7 +90,10 @@ function App() {
           path='/productdetail/:productid'
           element={<ProductDetailsPage />}
         />
-        <Route path='/checkout' element={<CheckoutPage />} />
+        <Route
+          path='/checkout'
+          element={<CheckoutPage handleShowAddress={handleShowAddress} />}
+        />
       </Routes>
       <Footer />
     </div>
