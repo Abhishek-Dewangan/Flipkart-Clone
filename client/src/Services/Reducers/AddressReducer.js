@@ -5,3 +5,12 @@ import {
   IS_LOADING_IN_ADDRESS,
   UPDATE_ADDRESS,
 } from '../Actions/AddressAction';
+
+const initialState = {
+  isLoading: false,
+  isError: false,
+  isSucces: false,
+  addressData: [],
+};
+
+
