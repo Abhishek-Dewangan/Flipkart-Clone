@@ -1,12 +1,27 @@
-import React from 'react';
-import styles from './Address.module.css';
+import React, {useState} from 'react';
+import styles from './AddressForm.module.css';
 import {Modal} from 'react-bootstrap';
 import {addAddress} from '../../Services/Actions/AddressAction';
+import {useDispatch, useSelector} from 'react-redux';
 
-const Address = ({show, handleCloseAddress}) => {
+const AddressForm = ({show, handleCloseAddress}) => {
+  const dispatch = useDispatch();
+
   const submit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const address = {
+      userId: '640436b96bcbc8de4a214e97',
+      name: e.target.name.value,
+      number: e.target.mobile_number.value,
+      pincode: e.target.pincode.value,
+      locality: e.target.locality.value,
+      houseAddress: e.target.houseAddress.value,
+      city: e.target.city.value,
+      state: e.target.state.value,
+    };
+    console.log(address);
+    addAddress(dispatch, address);
+    handleCloseAddress();
   };
   return (
     <div className={styles.addressContainer}>
@@ -76,4 +91,4 @@ const Address = ({show, handleCloseAddress}) => {
   );
 };
 
-export default Address;
+export default AddressForm;
