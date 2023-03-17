@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Address.module.css';
 import {Modal} from 'react-bootstrap';
+import {addAddress} from '../../Services/Actions/AddressAction';
 
 const Address = ({show, handleCloseAddress}) => {
-  const submit = () => {
-    console.log('Form submitted');
+  const submit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
   };
   return (
     <div className={styles.addressContainer}>
