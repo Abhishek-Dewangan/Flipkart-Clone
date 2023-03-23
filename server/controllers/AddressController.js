@@ -41,6 +41,7 @@ const updateAddress = async (req, res) => {
     const {id} = req.params;
     const addressUpdates = req.body;
     const response = await Address.findByIdAndUpdate({_id: id}, addressUpdates);
+    // console.log(response);
     res.status(201).send({message: 'Address updated', data: response});
   } catch (error) {
     res.status(400).send({message: error.message, error});
