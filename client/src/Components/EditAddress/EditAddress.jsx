@@ -1,23 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './EditAddress.module.css';
 import {Modal} from 'react-bootstrap';
-import {addAddress} from '../../Services/Actions/AddressAction';
+import {addAddress, updateAddress} from '../../Services/Actions/AddressAction';
 import {useDispatch, useSelector} from 'react-redux';
 
 const EditAddress = ({show, handleCloseEditAddress}) => {
   const dispatch = useDispatch();
   const {addressData} = useSelector((state) => state.AddressReducer);
-  const [name, setName] = useState(
-    addressData.length ? addressData[0].name : ''
-  );
-  const [number, setNumber] = useState(
-    addressData.length ? addressData[0].number : ''
-  );
+  const {user} = useSelector((state) => state.UserReducer);
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState();
+  const [pincode, setPincode] = useState('');
+  const [locality, setLocality] = useState('');
+  const [houseAddress, setHouseAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
 
   const submit = (e) => {
     e.preventDefault();
     const address = {
-      userId: '640436b96bcbc8de4a214e97',
+      userId: user.userId,
       name: e.target.name.value,
       number: e.target.mobile_number.value,
       pincode: e.target.pincode.value,
@@ -26,10 +28,23 @@ const EditAddress = ({show, handleCloseEditAddress}) => {
       city: e.target.city.value,
       state: e.target.state.value,
     };
-    console.log(address);
-    addAddress(dispatch, address);
+    // console.log(address);
+    updateAddress(dispatch, addressData[0]._id, address);
     handleCloseEditAddress();
   };
+
+  useEffect(() => {
+    if (addressData.length) {
+      // console.log(addressData);
+      setName(addressData[0].name);
+      setNumber(addressData[0].number);
+      setPincode(addressData[0].pincode);
+      setLocality(addressData[0].locality);
+      setHouseAddress(addressData[0].houseAddress);
+      setCity(addressData[0].city);
+      setState(addressData[0].state);
+    }
+  }, [addressData]);
   return (
     <div className={styles.addressContainer}>
       <Modal
@@ -45,47 +60,66 @@ const EditAddress = ({show, handleCloseEditAddress}) => {
           <Modal.Body>
             <form onSubmit={submit} className={styles.addressForm}>
               <div>
-                <input required type={'text'} placeholder='Name' name='name' />{' '}
+                <input
+                  required
+                  type={'text'}
+                  placeholder='Name'
+                  name='name'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />{' '}
                 <input
                   required
                   type={'number'}
                   placeholder='10-digit mobile number'
                   name='mobile_number'
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
                 />
               </div>
               <div>
                 <input
+                  required
                   type={'number'}
                   placeholder={'Pincode'}
                   name={'pincode'}
-                  required
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
                 />
                 <input
                   type={'text'}
                   placeholder={'Locality'}
                   name={'locality'}
+                  value={locality}
+                  onChange={(e) => setLocality(e.target.value)}
                 />
               </div>
               <div>
                 <input
+                  required
                   type={'text'}
                   placeholder={'Address (Area and Street)'}
                   name={'houseAddress'}
-                  required
+                  value={houseAddress}
+                  onChange={(e) => setHouseAddress(e.target.value)}
                 />
               </div>
               <div>
                 <input
+                  required
                   type={'text'}
                   placeholder={'City/District/Town'}
                   name={'city'}
-                  required
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
                 <input
+                  required
                   type={''}
                   placeholder={'State'}
                   name={'state'}
-                  required
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
                 />
               </div>
               <input type={'submit'} value='Add Address' /> <br />
