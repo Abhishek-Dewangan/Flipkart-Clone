@@ -53,8 +53,16 @@ export const AddressReducer = (state = initialState, action) => {
       const index = state.addressData.findIndex(
         (elem) => elem._id === action.payload.data._id
       );
-      console.log(index);
-      break;
+      // console.log(action.payload.data);
+      // break;
+      // state.addressData[0] = ;
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSucces: true,
+        addressData: [action.payload.data],
+      };
     }
     default:
       return state;
