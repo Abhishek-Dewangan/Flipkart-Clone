@@ -37,14 +37,16 @@ export const getAddress = async (dispatch, userid) => {
 };
 
 // Update an address
-export const updateAddress = async (dispatch, userid, address) => {
+export const updateAddress = async (dispatch, addressId, address) => {
   dispatch({type: IS_LOADING_IN_ADDRESS});
   try {
     const response = await axios.put(
-      `http://localhost:8080/api/updateaddress/${userid}`,
+      `http://localhost:8080/api/updateaddress/${addressId}`,
       address
     );
-    console.log(response);
+    // console.log(response.data);
+    response.data.data = {_id: addressId, ...address};
+    // console.log(response.data);
     dispatch({type: UPDATE_ADDRESS, payload: response.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
