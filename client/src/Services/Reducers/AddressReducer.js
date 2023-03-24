@@ -37,7 +37,7 @@ export const AddressReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         isSuccess: true,
-        addressData: action.payload.data,
+        addressData: action.payload.data[0] ? [action.payload.data[0]] : [],
       };
     }
     case ADD_ADDRESS: {
@@ -46,7 +46,7 @@ export const AddressReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         isSucces: true,
-        addressData: [...state.addressData, action.paylod.data],
+        addressData: [action.payload.data],
       };
     }
     case UPDATE_ADDRESS: {
