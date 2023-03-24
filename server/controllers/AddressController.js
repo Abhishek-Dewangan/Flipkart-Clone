@@ -14,7 +14,9 @@ const addNewAddress = async (req, res) => {
 const getAddress = async (req, res) => {
   try {
     const {userid} = req.params;
+    console.log(userid);
     const response = await Address.find({userId: userid});
+    console.log(response);
     res
       .status(201)
       .send({message: 'Successfully got the address', data: response});
