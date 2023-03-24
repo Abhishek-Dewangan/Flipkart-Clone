@@ -32,7 +32,6 @@ const ProductDetailsPage = () => {
     (state) => state.ProductReducer
   );
 
-
   useEffect(() => {
     const filteredProduct = products.filter((elem) => elem._id === productid);
     filteredProduct.length && getProductDetails(dispatch, filteredProduct[0]);
@@ -95,7 +94,7 @@ const ProductDetailsPage = () => {
               <FaShoppingCart /> ADD TO CART
             </button>
           )}
-          <button onClick={() => buyNow([product],navigate)}>
+          <button onClick={() => buyNow([product], navigate)}>
             <GiElectric /> BUY NOW
           </button>
         </div>
