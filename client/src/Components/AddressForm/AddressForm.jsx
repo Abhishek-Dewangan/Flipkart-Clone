@@ -6,11 +6,12 @@ import {useDispatch, useSelector} from 'react-redux';
 
 const AddressForm = ({show, handleCloseAddress}) => {
   const dispatch = useDispatch();
+  const {user} = useSelector((state) => state.UserReducer);
 
   const submit = (e) => {
     e.preventDefault();
     const address = {
-      userId: '640436b96bcbc8de4a214e97',
+      userId: user.userId,
       name: e.target.name.value,
       number: e.target.mobile_number.value,
       pincode: e.target.pincode.value,
@@ -19,7 +20,7 @@ const AddressForm = ({show, handleCloseAddress}) => {
       city: e.target.city.value,
       state: e.target.state.value,
     };
-    console.log(address);
+    // console.log(address);
     addAddress(dispatch, address);
     handleCloseAddress();
   };
