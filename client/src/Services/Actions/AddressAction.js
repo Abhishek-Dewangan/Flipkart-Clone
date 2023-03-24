@@ -15,7 +15,7 @@ export const addAddress = async (dispatch, address) => {
       `http://localhost:8080/api/addnewaddress`,
       address
     );
-    console.log(response);
+    // console.log(response.data);
     dispatch({type: ADD_ADDRESS, payload: response.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
@@ -24,12 +24,13 @@ export const addAddress = async (dispatch, address) => {
 
 // Get all addresses
 export const getAddress = async (dispatch, userid) => {
+  // console.log(userid);
   dispatch({type: IS_LOADING_IN_ADDRESS});
   try {
     const response = await axios.get(
       `http://localhost:8080/api/getaddress/${userid}`
     );
-    // console.log(response);
+    // console.log(response.data);
     dispatch({type: GET_ADDRESS, payload: response.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
