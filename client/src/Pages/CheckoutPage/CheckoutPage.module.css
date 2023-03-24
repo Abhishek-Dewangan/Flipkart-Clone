@@ -20,6 +20,8 @@
   margin-bottom: 1em;
   padding: 16px 24px;
   position: relative;
+  min-height: 44px;
+  overflow: hidden;
 }
 .headingNumber {
   font-size: 12px;
@@ -80,6 +82,16 @@
   font-size: 14px;
   font-weight: 500;
   margin: 12px 2.5em;
+  padding: 10px 20px;
+  background-color: #fb641b;
+  color: #ffffff;
+  border-radius: 2px;
+}
+.continueBtn {
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  float: right;
   padding: 10px 20px;
   background-color: #fb641b;
   color: #ffffff;

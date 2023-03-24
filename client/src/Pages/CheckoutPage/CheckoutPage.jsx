@@ -149,6 +149,9 @@ const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
                 );
               })}
             </div>
+            <button className={styles.continueBtn} onClick={() => setStage(4)}>
+              CONTINUE
+            </button>
           </section>
         ) : (
           <section className={styles.orderSummary}>
@@ -157,13 +160,19 @@ const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
             </p>
           </section>
         )}
-        {
+        {stage === 4 ? (
+          <section className={styles.paymentOptions}>
+            <p className={styles.focusHeading}>
+              <span className={styles.headingNumber}>4</span>PAYMENT OPTIONS
+            </p>
+          </section>
+        ) : (
           <section className={styles.paymentOptions}>
             <p className={styles.sectionHeading}>
               <span className={styles.headingNumber}>4</span>PAYMENT OPTIONS
             </p>
           </section>
-        }
+        )}
       </div>
       <div className={styles.priceDetailBox}>
         <CartSidebar cartData={products} />
