@@ -31,7 +31,15 @@ export const OrderReducer = (state = initialState, action) => {
         isSuccess: false,
       };
     }
-    
+    case ADD_ORDER: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        ordersData: [...action.payload.data, ...state.ordersData],
+      };
+    }
     
     
     default: {
