@@ -1,5 +1,6 @@
 const Order = require('../models/OrderModel');
 
+// Adding order in database
 const addOrder = async (req, res) => {
   try {
     const response = await Order.insertMany(req.body).save();
@@ -10,6 +11,7 @@ const addOrder = async (req, res) => {
   }
 };
 
+// Getting ordres from database for user specific
 const getOrders = async (req, res) => {
   try {
     const {id} = req.params;
