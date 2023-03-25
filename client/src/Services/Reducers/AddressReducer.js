@@ -4,6 +4,7 @@ import {
   IS_ERROR_IN_ADDRESS,
   IS_LOADING_IN_ADDRESS,
   UPDATE_ADDRESS,
+  REFRESH_ADDRESS,
 } from '../Actions/AddressAction';
 
 const initialState = {
@@ -62,6 +63,14 @@ export const AddressReducer = (state = initialState, action) => {
         isError: false,
         isSucces: true,
         addressData: [action.payload.data],
+      };
+    }
+    case REFRESH_ADDRESS: {
+      return {
+        isLoading: false,
+        isError: false,
+        isSucces: false,
+        addressData: [],
       };
     }
     default:

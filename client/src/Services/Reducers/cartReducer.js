@@ -5,6 +5,7 @@ import {
   GET_CART_DATA,
   REMOVE_ALL_FROM_CART,
   REMOVE_FROM_CART,
+  REFRESH_CART,
 } from '../Actions/CartAction';
 
 const initialState = {
@@ -74,6 +75,15 @@ export const CartReducer = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
         message: action.payload.message,
+        cartData: [],
+      };
+    }
+    case REFRESH_CART: {
+      return {
+        isError: false,
+        isLoading: false,
+        isSuccess: false,
+        message: '',
         cartData: [],
       };
     }

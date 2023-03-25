@@ -37,7 +37,6 @@ export const signin = async (dispatch, user) => {
 
 // User Signout/Logout
 export const signout = async (dispatch, token) => {
-  console.log(token);
   dispatch({type: IS_LOADING_IN_USER});
   try {
     const res = await axios.post(`http://localhost:8080/api/signout`, {

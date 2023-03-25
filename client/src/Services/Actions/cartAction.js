@@ -7,6 +7,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const GET_CART_DATA = 'GET_CART_DATA';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART';
+export const REFRESH_CART = 'REFRESH_CART';
 
 // Add to cart
 export const addToCart = async (dispatch, product) => {
@@ -67,4 +68,9 @@ export const removeAllFromCart = async (dispatch, userId) => {
     console.log(error);
     dispatch({type: IS_ERROR_IN_CART, payload: error.response.data});
   }
+};
+
+// Refreshing or returning to initial state
+export const refreshCart = async (dispatch) => {
+  dispatch({type: REFRESH_CART});
 };

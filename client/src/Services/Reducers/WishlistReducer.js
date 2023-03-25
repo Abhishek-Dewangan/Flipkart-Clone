@@ -5,6 +5,7 @@ import {
   REMOVE_ALL_FROM_WISHLIST,
   REMOVE_FROM_WISHLIST,
   IS_LOADING_IN_WISHLIST,
+  REFRESH_WISHLIST,
 } from '../Actions/WishlistAction';
 
 const initialState = {
@@ -76,6 +77,15 @@ export const WishlistReducer = (state = initialState, action) => {
         isSuccess: true,
         message: action.payload.message,
         wishlistData: [],
+      };
+    }
+    case REFRESH_WISHLIST: {
+      return {
+        wishlistData: [],
+        isLoading: false,
+        isError: false,
+        isSuccess: false,
+        message: '',
       };
     }
     default: {

@@ -7,6 +7,7 @@ export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const GET_WISHLIST_PRODUCTS = 'GET_WISHLIST_PRODUCTS';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const REMOVE_ALL_FROM_WISHLIST = 'REMOVE_ALL_FROM_WISHLIST';
+export const REFRESH_WISHLIST = 'REFRESH_WISHLIST';
 
 // Add to wishlist
 export const addToWishlist = async (dispatch, product) => {
@@ -63,4 +64,9 @@ export const removeAllFromWishlist = async (dispatch, userId) => {
   } catch (error) {
     dispatch({type: IS_ERROR_IN_WISHLIST, payload: error});
   }
+};
+
+// Refreshing or returning to initial state
+export const refreshWishlist = async (dispatch) => {
+  dispatch({type: REFRESH_WISHLIST});
 };

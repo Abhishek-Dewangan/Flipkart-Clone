@@ -6,6 +6,7 @@ export const ADD_ADDRESS = 'ADD_ADDRESS';
 export const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
 export const IS_LOADING_IN_ADDRESS = 'IS_LOADING_IN_ADDRESS';
 export const IS_ERROR_IN_ADDRESS = 'IS_ERROR_IN_ADDRESS';
+export const REFRESH_ADDRESS = 'REFRESH_ADDRESS';
 
 // Add an address
 export const addAddress = async (dispatch, address) => {
@@ -52,4 +53,8 @@ export const updateAddress = async (dispatch, addressId, address) => {
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ADDRESS, payload: error});
   }
+};
+
+export const refreshAddress = async (dispatch) => {
+  dispatch({type: REFRESH_ADDRESS});
 };
