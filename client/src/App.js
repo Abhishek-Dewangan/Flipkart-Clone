@@ -27,7 +27,7 @@ function App() {
   const [showSignup, setShowSignup] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
   const [showEditAddress, setShowEditAdress] = useState(false);
-  const {user} = useSelector((state) => state.UserReducer);
+  const {user, signoutSuccess} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
 
