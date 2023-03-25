@@ -9,3 +9,14 @@ const addOrder = async (req, res) => {
     res.status(400).send({message: error.message, error});
   }
 };
+
+const getOrders = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const response = await Order.find({userId: id});
+    console.log(response);
+    res.status(200).send({message: 'Get orders successfully', data: response});
+  } catch (error) {
+    res.status(400).send({message: error.message, error});
+  }
+};
