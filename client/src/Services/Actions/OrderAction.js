@@ -20,3 +20,17 @@ export const addOrder = async (dispatch, products) => {
     dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
   }
 };
+
+// Get orders
+export const getOrders = async (dispatch, userid) => {
+  dispatch({type: IS_LOADING_IN_ORDER});
+  try {
+    const res = await axios.get(
+      `http://localhost:8080/api/getorders/${userid}`
+    );
+    console.log(res.data);
+    dispatch({type: GET_ORDERS, payload: res.data});
+  } catch (error) {
+    dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
+  }
+};
