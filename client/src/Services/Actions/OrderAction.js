@@ -5,6 +5,7 @@ export const IS_LOADING_IN_ORDER = 'IS_LOADING_IN_ORDER';
 export const IS_ERROR_IN_ORDER = 'IS_ERROR_IN_ORDER';
 export const ADD_ORDER = 'ADD_ORDER';
 export const GET_ORDERS = 'GET_ORDERS';
+export const REFRESH_ORDER = 'REFRESH_ORDER';
 
 // Add order
 export const addOrder = async (dispatch, products) => {
@@ -33,4 +34,9 @@ export const getOrders = async (dispatch, userid) => {
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
   }
+};
+
+// Refresh orders
+export const refreshOreders = (dispatch) => {
+  dispatch({type: REFRESH_ORDER});
 };
