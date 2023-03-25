@@ -40,7 +40,15 @@ export const OrderReducer = (state = initialState, action) => {
         ordersData: [...action.payload.data, ...state.ordersData],
       };
     }
-    
+    case GET_ORDERS: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        ordersData: action.payload.data,
+      };
+    }
     
     default: {
       return state;
