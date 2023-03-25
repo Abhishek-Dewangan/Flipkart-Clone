@@ -11,6 +11,7 @@ const {
   getCartProducts,
   removeAllFromCart,
 } = require('../controllers/CartController');
+const {getOrders, addOrder} = require('../controllers/OrderController');
 const {
   getProducts,
   getProductById,
@@ -61,6 +62,10 @@ router.get('/getaddress/:userid', getAddress);
 router.post('/addnewaddress', addNewAddress);
 router.put('/updateaddress/:id', updateAddress);
 router.delete('/removeaddress/:id', removeAddress);
+
+// Orders routes
+router.get('/getorders/:id', getOrders);
+router.post('/addorder', addOrder);
 
 // Exporting router
 module.exports = router;
