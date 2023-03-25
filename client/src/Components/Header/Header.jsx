@@ -91,6 +91,7 @@ const Header = ({handleShowSignin}) => {
                   refreshAddress(distpatch);
                   refreshCart(distpatch);
                   refreshWishlist(distpatch);
+                  localStorage.removeItem('checkout');
                 }}
                 className={styles.menuItem}
               >
