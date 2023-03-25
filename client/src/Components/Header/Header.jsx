@@ -16,6 +16,9 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Dropdown} from 'react-bootstrap';
 import {signout} from '../../Services/Actions/UserAction';
+import {refreshAddress} from '../../Services/Actions/AddressAction';
+import {refreshCart} from '../../Services/Actions/CartAction';
+import {refreshWishlist} from '../../Services/Actions/WishlistAction';
 
 const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
@@ -83,7 +86,12 @@ const Header = ({handleShowSignin}) => {
               </Dropdown.Item>
               <hr className={styles.hrLine} />
               <Dropdown.Item
-                onClick={() => signout(distpatch, user.token)}
+                onClick={() => {
+                  signout(distpatch, user.token);
+                  refreshAddress(distpatch);
+                  refreshCart(distpatch);
+                  refreshWishlist(distpatch);
+                }}
                 className={styles.menuItem}
               >
                 <BiLogOutCircle className={styles.signoutIcon} /> SignOut
