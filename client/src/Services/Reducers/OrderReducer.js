@@ -23,7 +23,17 @@ export const OrderReducer = (state = initialState, action) => {
         isSuccess: false,
       };
     }
-
+    case IS_ERROR_IN_ORDER: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+      };
+    }
+    
+    
+    
     default: {
       return state;
     }
