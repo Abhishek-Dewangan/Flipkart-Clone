@@ -5,4 +5,13 @@ import {
   GET_ORDERS,
 } from '../Actions/OrderAction';
 
+const initialState = {
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  ordersData: [],
+};
 
+export const OrderReducer = (state = initialState, action) => {
+    
+};
