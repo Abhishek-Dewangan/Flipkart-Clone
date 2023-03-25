@@ -9,11 +9,10 @@ export const IS_LOADING_IN_USER = 'IS_LOADING_IN_USER';
 
 // User Signup/Register
 export const signup = async (dispatch, user) => {
-  // consolw.log()
   dispatch({type: IS_LOADING_IN_USER});
   try {
     const res = await axios.post(`http://localhost:8080/api/signup`, user);
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: SIGNUP, payload: res.data});
   } catch (error) {
     // console.log(error.response.data);
