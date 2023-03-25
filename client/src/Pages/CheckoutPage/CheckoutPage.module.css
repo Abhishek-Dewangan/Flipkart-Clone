@@ -65,7 +65,8 @@
   font-size: 14px;
 }
 .focusOrderSummaryBody,
-.focusAddressBody {
+.focusAddressBody,
+.focusPaymentBody {
   position: relative;
   margin-top: 3em;
 }
@@ -87,7 +88,8 @@
   color: #ffffff;
   border-radius: 2px;
 }
-.continueBtn {
+.continueBtn,
+.confirmOrderBtn {
   border: none;
   font-size: 14px;
   font-weight: 500;

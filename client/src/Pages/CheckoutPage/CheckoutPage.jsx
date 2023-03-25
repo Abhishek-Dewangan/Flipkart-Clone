@@ -165,6 +165,19 @@ const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
             <p className={styles.focusHeading}>
               <span className={styles.headingNumber}>4</span>PAYMENT OPTIONS
             </p>
+            <div className={styles.focusPaymentBody}>
+              <div>
+                <input
+                  type={'radio'}
+                  id='payment'
+                  name='payment'
+                  value='cod'
+                  defaultChecked
+                />{' '}
+                <label htmlFor='payment'>Cash on delivery</label>
+              </div>
+              <button className={styles.confirmOrderBtn}>CONFIRM ORDER</button>
+            </div>
           </section>
         ) : (
           <section className={styles.paymentOptions}>
