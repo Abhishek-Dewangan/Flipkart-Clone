@@ -49,7 +49,14 @@ export const OrderReducer = (state = initialState, action) => {
         ordersData: action.payload.data,
       };
     }
-    
+    case REFRESH_ORDER: {
+      return {
+        isLoading: false,
+        isError: false,
+        isSuccess: false,
+        ordersData: [],
+      };
+    }
     default: {
       return state;
     }
