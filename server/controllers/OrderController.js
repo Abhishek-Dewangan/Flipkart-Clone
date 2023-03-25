@@ -22,3 +22,6 @@ const getOrders = async (req, res) => {
     res.status(400).send({message: error.message, error});
   }
 };
+
+// Exporting all orders related requests
+module.exports = {addOrder, getOrders};
