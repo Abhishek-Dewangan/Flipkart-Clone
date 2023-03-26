@@ -185,7 +185,7 @@ const CheckoutPage = ({
               <button
                 className={styles.confirmOrderBtn}
                 onClick={() => {
-                  addOrders(dispatch, products);
+                  addOrders(dispatch, products, user.userId);
                   handleShowOrderSuccess();
                 }}
               >
