@@ -45,11 +45,11 @@ export const removeWishlist = (dispatch, id) => {
 };
 
 // Add orders while ordering products
-export const addOrders = (dispatch, data) => {
+export const addOrders = (dispatch, data, userId) => {
   // console.log(data);
   const orderProducts = data.map((elem) => {
     return {
-      userId: elem.userId,
+      userId: userId,
       productId: elem._id,
       name: elem.name,
       category: elem.category,
