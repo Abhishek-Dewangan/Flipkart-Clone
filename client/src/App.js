@@ -20,6 +20,7 @@ import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
 import {getAddress} from './Services/Actions/AddressAction';
 import AddressForm from './Components/AddressForm/AddressForm';
 import EditAddress from './Components/EditAddress/EditAddress';
+import OrderSuccess from './Components/OrderSuccess/OrderSuccess';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App() {
   const handleCloseEditAddress = () => setShowEditAdress(false);
   const handleShowEditAddress = () => setShowEditAdress(true);
   const handleCloseOrderSuccess = () => setShowOrderSuccess(false);
-  const handleOpenOrderSuccess = () => setShowOrderSuccess(true);
+  const handleShowOrderSuccess = () => setShowOrderSuccess(true);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
@@ -94,6 +95,10 @@ function App() {
         show={showEditAddress}
         handleCloseEditAddress={handleCloseEditAddress}
       />
+      <OrderSuccess
+        showOrderSuccess={showOrderSuccess}
+        handleCloseOrderSuccess={handleCloseOrderSuccess}
+      />
       <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
@@ -110,6 +115,7 @@ function App() {
             <CheckoutPage
               handleShowAddress={handleShowAddress}
               handleShowEditAddress={handleShowEditAddress}
+              handleShowOrderSuccess={handleShowOrderSuccess}
             />
           }
         />
