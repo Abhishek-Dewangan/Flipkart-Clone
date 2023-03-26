@@ -27,10 +27,12 @@ function App() {
   const [showSignup, setShowSignup] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
   const [showEditAddress, setShowEditAdress] = useState(false);
-  const {user, signoutSuccess} = useSelector((state) => state.UserReducer);
+  const [showOrderSuccess, setShowOrderSuccess] = useState(false);
+  const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
   const cart = useSelector((state) => state.CartReducer);
 
+  // All modals set states true or false function
   const handleCloseSignin = () => setShowSignin(false);
   const handleShowSignin = () => setShowSignin(true);
   const handleCloseSignup = () => setShowSignup(false);
@@ -39,6 +41,8 @@ function App() {
   const handleShowAddress = () => setShowAddress(true);
   const handleCloseEditAddress = () => setShowEditAdress(false);
   const handleShowEditAddress = () => setShowEditAdress(true);
+  const handleCloseOrderSuccess = () => setShowOrderSuccess(false);
+  const handleOpenOrderSuccess = () => setShowOrderSuccess(true);
 
   // Alert messages for wihslist actions
   const alertWishlist = () => {
