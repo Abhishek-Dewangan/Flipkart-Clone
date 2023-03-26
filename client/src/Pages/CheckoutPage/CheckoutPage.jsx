@@ -1,16 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from 'react-bootstrap';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import CartSidebar from '../CartPage/CartSidebar';
 import styles from './CheckoutPage.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
+import {addOrder} from '../../Services/Actions/OrderAction';
 
 const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
+  const dispatch = useDispatch();
   const [stage, setStage] = useState(2);
   const {user} = useSelector((state) => state.UserReducer);
   const {addressData} = useSelector((state) => state.AddressReducer);
   const products = JSON.parse(localStorage.getItem('checkout')) || [];
+
+  const addOrders = (data) => {
+    // console.log(data);
+    const orderProducts = data.map((elem) => {
+      return {
+        userId: elem.userId,
+        productId: elem._id,
+        name: elem.name,
+        category: elem.category,
+        link: elem.link,
+        current_price: elem.current_price,
+        original_price: elem.original_price,
+        discounted: elem.discounted,
+        thumbnail: elem.thumbnail,
+        query_url: elem.query_url,
+      };
+    });
+    // console.log(orderProducts);
+    addOrder(dispatch, orderProducts);
+  };
 
   return (
     <div className={styles.checkoutContainer}>
@@ -176,7 +198,12 @@ const CheckoutPage = ({handleShowAddress, handleShowEditAddress}) => {
                 />{' '}
                 <label htmlFor='payment'>Cash on delivery</label>
               </div>
-              <button className={styles.confirmOrderBtn}>CONFIRM ORDER</button>
+              <button
+                className={styles.confirmOrderBtn}
+                onClick={() => addOrders(products)}
+              >
+                CONFIRM ORDER
+              </button>
             </div>
           </section>
         ) : (
