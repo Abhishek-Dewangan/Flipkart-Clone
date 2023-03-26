@@ -11,11 +11,12 @@ export const REFRESH_ORDER = 'REFRESH_ORDER';
 export const addOrder = async (dispatch, products) => {
   dispatch({type: IS_LOADING_IN_ORDER});
   try {
+    console.log(products);
     const res = await axios.post(
       'http://localhost:8080/api/addorder',
       products
     );
-    // console.log(res.data);
+    console.log(res.data);
     dispatch({type: ADD_ORDER, payload: res.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
