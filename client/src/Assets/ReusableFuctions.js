@@ -3,6 +3,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from '../Services/Actions/WishlistAction';
+import {addOrder} from '../Services/Actions/OrderAction';
 
 //  Adding product into cart
 export const addCart = (dispatch, elem, user) => {
@@ -41,6 +42,27 @@ export const addWishlist = (dispatch, elem, user) => {
 // Removing product from wishlist
 export const removeWishlist = (dispatch, id) => {
   removeFromWishlist(dispatch, id);
+};
+
+// Add orders while ordering products
+export const addOrders = (dispatch, data) => {
+  // console.log(data);
+  const orderProducts = data.map((elem) => {
+    return {
+      userId: elem.userId,
+      productId: elem._id,
+      name: elem.name,
+      category: elem.category,
+      link: elem.link,
+      current_price: elem.current_price,
+      original_price: elem.original_price,
+      discounted: elem.discounted,
+      thumbnail: elem.thumbnail,
+      query_url: elem.query_url,
+    };
+  });
+  // console.log(orderProducts);
+  addOrder(dispatch, orderProducts);
 };
 
 // Buy Now fuction
