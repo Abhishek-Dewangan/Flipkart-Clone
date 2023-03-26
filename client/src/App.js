@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import {useEffect, useState} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import {getPrducts} from './Services/Actions/ProductAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {getWishlistProducts} from './Services/Actions/WishlistAction';
@@ -24,6 +24,7 @@ import OrderSuccess from './Components/OrderSuccess/OrderSuccess';
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showSignin, setShowSignin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
@@ -42,7 +43,10 @@ function App() {
   const handleShowAddress = () => setShowAddress(true);
   const handleCloseEditAddress = () => setShowEditAdress(false);
   const handleShowEditAddress = () => setShowEditAdress(true);
-  const handleCloseOrderSuccess = () => setShowOrderSuccess(false);
+  const handleCloseOrderSuccess = () => {
+    setShowOrderSuccess(false);
+    navigate('/');
+  };
   const handleShowOrderSuccess = () => setShowOrderSuccess(true);
 
   // Alert messages for wihslist actions
