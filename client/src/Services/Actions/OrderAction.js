@@ -15,7 +15,7 @@ export const addOrder = async (dispatch, products) => {
       'http://localhost:8080/api/addorder',
       products
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: ADD_ORDER, payload: res.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
