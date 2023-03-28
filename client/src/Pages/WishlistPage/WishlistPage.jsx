@@ -13,6 +13,7 @@ import {GrNext} from 'react-icons/gr';
 import {MdDelete} from 'react-icons/md';
 import {removeFromWishlist} from '../../Services/Actions/WishlistAction';
 import WishlistSidebar from './WishlistSidebar';
+import LoginButton from '../../Components/LoginButton/LoginButton';
 
 const WishlistPage = ({handleShowSignin}) => {
   const dispatch = useDispatch();
@@ -96,16 +97,11 @@ const WishlistPage = ({handleShowSignin}) => {
       </section>
     </div>
   ) : (
-    <div className={styles.wishlistContainer}>
-      <div className={styles.emptyWishlist}>
-        <img src={emptyImage} alt='Empty Item' />
-        <h4>Missing Wishlist items?</h4>
-        <p>Login to see the items you added previously</p>
-        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
-          Login
-        </button>
-      </div>
-    </div>
+    <LoginButton
+      handleShowSignin={handleShowSignin}
+      heading={'Missing Wishlist items?'}
+      text={'Login to see the items you added previously'}
+    />
   );
 };
 

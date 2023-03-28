@@ -7,12 +7,13 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
 import {addOrders} from '../../Assets/ReusableFuctions';
 import emptyImage from '../../Assets/Images/empty.png';
+import LoginButton from '../../Components/LoginButton/LoginButton';
 
 const CheckoutPage = ({
   handleShowAddress,
   handleShowEditAddress,
   handleShowOrderSuccess,
-  handleShowSignin
+  handleShowSignin,
 }) => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(2);
@@ -208,16 +209,11 @@ const CheckoutPage = ({
       </div>
     </div>
   ) : (
-    <div className={styles.checkoutContainer}>
-      <div className={styles.emptyCheckout}>
-        <img src={emptyImage} alt='Empty Item' />
-        <h4>Want to Buy Something?</h4>
-        <p>Please login first to buy products</p>
-        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
-          Login
-        </button>
-      </div>
-    </div>
+    <LoginButton
+      handleShowSignin={handleShowSignin}
+      heading={'Want to Buy Something?'}
+      text={'Please login first to buy products'}
+    />
   );
 };
 

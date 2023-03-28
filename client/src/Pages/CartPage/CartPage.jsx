@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import {removeFromCart} from '../../Services/Actions/CartAction';
 import CartSidebar from './CartSidebar';
 import {buyNow} from '../../Assets/ReusableFuctions';
+import LoginButton from '../../Components/LoginButton/LoginButton';
 
 const CartPage = ({handleShowSignin}) => {
   const navigate = useNavigate();
@@ -112,16 +113,11 @@ const CartPage = ({handleShowSignin}) => {
       </section>
     </div>
   ) : (
-    <div className={styles.cartPageContainer}>
-      <div className={styles.emptyCart}>
-        <img src={emptyImage} alt='Empty Item' />
-        <h4>Missing Cart items?</h4>
-        <p>Login to see the items you added previously</p>
-        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
-          Login
-        </button>
-      </div>
-    </div>
+    <LoginButton
+      handleShowSignin={handleShowSignin}
+      heading={'Missing Cart items?'}
+      text={'Login to see the items you added previously'}
+    />
   );
 };
 

@@ -6,6 +6,7 @@ import {MdDelete, MdCircle} from 'react-icons/md';
 import fAssured from '../../Assets/Images/f-assured.png';
 import emptyImage from '../../Assets/Images/empty.png';
 import {Button} from 'react-bootstrap';
+import LoginButton from '../../Components/LoginButton/LoginButton';
 
 const MyOrdersPage = ({handleShowSignin}) => {
   const dispatch = useDispatch();
@@ -80,16 +81,11 @@ const MyOrdersPage = ({handleShowSignin}) => {
       )}
     </div>
   ) : (
-    <div className={styles.myOrderContainer}>
-      <div className={styles.emptyOrder}>
-        <img src={emptyImage} alt='Empty Item' />
-        <h4>Missing your orders?</h4>
-        <p>Login to see the items you ordered previously</p>
-        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
-          Login
-        </button>
-      </div>
-    </div>
+    <LoginButton
+      handleShowSignin={handleShowSignin}
+      heading={'Want to see your orders?'}
+      text={'Login to see the items you ordered previously'}
+    />
   );
 };
 
