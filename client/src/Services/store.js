@@ -4,6 +4,7 @@ import {UserReducer} from './Reducers/UserReducer';
 import {WishlistReducer} from './Reducers/WishlistReducer';
 import {CartReducer} from './Reducers/CartReducer';
 import {AddressReducer} from './Reducers/AddressReducer';
+import {OrderReducer} from './Reducers/OrderReducer';
 
 const rootReducer = combineReducers({
   ProductReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   WishlistReducer,
   CartReducer,
   AddressReducer,
+  OrderReducer,
 });
 
 export const store = createStore(rootReducer);
