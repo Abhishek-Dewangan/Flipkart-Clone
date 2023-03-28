@@ -30,7 +30,7 @@ export const getOrders = async (dispatch, userid) => {
     const res = await axios.get(
       `http://localhost:8080/api/getorders/${userid}`
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: GET_ORDERS, payload: res.data});
   } catch (error) {
     dispatch({type: IS_ERROR_IN_ORDER, payload: error.response.data});
