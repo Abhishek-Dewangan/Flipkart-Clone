@@ -6,11 +6,13 @@ import styles from './CheckoutPage.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
 import {addOrders} from '../../Assets/ReusableFuctions';
+import emptyImage from '../../Assets/Images/empty.png';
 
 const CheckoutPage = ({
   handleShowAddress,
   handleShowEditAddress,
   handleShowOrderSuccess,
+  handleShowSignin
 }) => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(2);
@@ -18,7 +20,7 @@ const CheckoutPage = ({
   const {addressData} = useSelector((state) => state.AddressReducer);
   const products = JSON.parse(localStorage.getItem('checkout')) || [];
 
-  return (
+  return user.userId ? (
     <div className={styles.checkoutContainer}>
       <div className={styles.orderSummaryBox}>
         {
@@ -203,6 +205,17 @@ const CheckoutPage = ({
       </div>
       <div className={styles.priceDetailBox}>
         <CartSidebar cartData={products} />
+      </div>
+    </div>
+  ) : (
+    <div className={styles.checkoutContainer}>
+      <div className={styles.emptyCheckout}>
+        <img src={emptyImage} alt='Empty Item' />
+        <h4>Want to Buy Something?</h4>
+        <p>Please login first to buy products</p>
+        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
+          Login
+        </button>
       </div>
     </div>
   );
