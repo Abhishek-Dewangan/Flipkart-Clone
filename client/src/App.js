@@ -112,7 +112,10 @@ function App() {
           path='/cart'
           element={<CartPage handleShowSignin={handleShowSignin} />}
         />
-        <Route path='/wishlist' element={<WishlistPage />} />
+        <Route
+          path='/wishlist'
+          element={<WishlistPage handleShowSignin={handleShowSignin} />}
+        />
         <Route path='/myorders' element={<MyOrdersPage />} />
         <Route
           path='/productdetail/:productid'
