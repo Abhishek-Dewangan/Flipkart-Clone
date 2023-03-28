@@ -1,28 +1,50 @@
 /* Signin styles */
 .signinContainer {
-  
 }
 .modal {
   margin-top: 3em;
 }
-.formTitle{
+.header{
+  padding: 10px 20px;
+}
+.formTitle {
   color: #2874f0;
+  font-size: 20px;
 }
 .imageDiv {
-
 }
-.signinSideImage{
+.signinSideImage {
   width: 200px;
 }
 .signinBody {
   display: flex;
 }
-.formDiv{
-    width: 100%;
+.formDiv {
+  width: 100%;
 }
-.signinForm{
+.signinForm {
+  min-height: 38vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.signinBtn {
+.signinForm input {
+  width: 100%;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  border: 1px solid silver;
+}
+.signinForm input[type='submit'] {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  margin-top: 20px;
+  color: #fff;
+  border: none;
+  background: #fb641b;
+}
+.signupBtn {
   border: none;
   color: #2874f0;
   font-size: 14px;

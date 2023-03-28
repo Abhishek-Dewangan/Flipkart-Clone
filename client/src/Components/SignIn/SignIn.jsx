@@ -41,7 +41,7 @@ const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
             <img src={signinImage} alt='' className={styles.signinSideImage} />
           </div>
           <div className={styles.formDiv}>
-            <Modal.Header closeButton>
+            <Modal.Header className={styles.header} closeButton>
               <Modal.Title className={styles.formTitle}>SignIn</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -52,20 +52,18 @@ const SignIn = ({show, handleCloseSignin, handleShowSignup}) => {
                   placeholder='Email or Mobile'
                   name='emailormobile'
                 />{' '}
-                <br />
                 <input
                   required
                   type={'password'}
                   placeholder='Password'
                   name='password'
                 />{' '}
-                <br />
-                <input type={'submit'} value='Submit' /> <br />
+                <input type={'submit'} value='Sign In' /> <br />
               </form>
             </Modal.Body>
             <Modal.Footer>
               <button
-                className={styles.signinBtn}
+                className={styles.signupBtn}
                 onClick={() => {
                   handleShowSignup();
                   handleCloseSignin();
