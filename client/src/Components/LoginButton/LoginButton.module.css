@@ -1,0 +1,26 @@
+/* Login button styles */
+.loginButtonContainer {
+  min-height: 100vh;
+}
+.emptyBox {
+  width: 100%;
+  margin: 6em auto;
+  text-align: center;
+  line-height: 1.4;
+  color: #212121;
+}
+.emptyBox h4 {
+  margin-top: 1em;
+}
+.emptyBox p {
+  font-size: small;
+}
+.loginBtn {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 72px;
+  margin-top: 20px;
+  color: #fff;
+  border: none;
+  background: #fb641b;
+}
