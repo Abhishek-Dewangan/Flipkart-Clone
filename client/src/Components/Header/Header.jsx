@@ -19,6 +19,7 @@ import {signout} from '../../Services/Actions/UserAction';
 import {refreshAddress} from '../../Services/Actions/AddressAction';
 import {refreshCart} from '../../Services/Actions/CartAction';
 import {refreshWishlist} from '../../Services/Actions/WishlistAction';
+import {refreshOreders} from '../../Services/Actions/OrderAction';
 
 const Header = ({handleShowSignin}) => {
   const distpatch = useDispatch();
@@ -91,6 +92,7 @@ const Header = ({handleShowSignin}) => {
                   refreshAddress(distpatch);
                   refreshCart(distpatch);
                   refreshWishlist(distpatch);
+                  refreshOreders(distpatch);
                   localStorage.removeItem('checkout');
                 }}
                 className={styles.menuItem}
