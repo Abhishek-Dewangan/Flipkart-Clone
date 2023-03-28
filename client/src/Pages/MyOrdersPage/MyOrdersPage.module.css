@@ -1,4 +1,98 @@
 /* My orders page styles */
 .myOrderContainer {
   min-height: 100vh;
+  width: 90%;
+  margin: 1em auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.heading {
+  padding: 10px 2em;
+  color: #878787;
+}
+.productContainer {
+}
+.productBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 2em;
+}
+.productBox div{
+  width: 25%;
+  /* border: 1px solid red; */
+}
+.productBox div:first-child{
+  text-align: center;
+}
+.imgDiv {
+  /* display: flex;
+  align-items: center; */
+}
+.productImage {
+  max-width: 95%;
+  height: 50px;
+  transition: transform 0.2s;
+}
+.productImage:hover {
+  transform: scale(1.1);
+}
+.productTitle {
+  display: flex;
+  text-decoration: none;
+}
+.productName {
+  font-size: 14px;
+  color: #212121;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.currentPrice {
+  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 600;
+  color: #212121;
+}
+.originalPrice {
+  font-size: 14px;
+  color: #878787;
+}
+.price {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-top: 0;
+  width: 100%;
+}
+.discount {
+  font-size: 12px;
+  color: #388e3c;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 600;
+}
+.fAssured {
+  width: 66px;
+  height: 20px;
+}
+.orderedAt {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+  cursor: pointer;
+}
+.emptyOrder {
+  min-height: 50vh;
+  margin: 1em;
+  padding-top: 3em;
+  text-align: center;
+  line-height: 1.4;
+  color: #212121;
+}
+.emptyOrder h4 {
+  margin-top: 1em;
+}
+.emptyOrder p {
+  font-size: small;
 }
