@@ -9,7 +9,7 @@ import {removeFromCart} from '../../Services/Actions/CartAction';
 import CartSidebar from './CartSidebar';
 import {buyNow} from '../../Assets/ReusableFuctions';
 
-const CartPage = () => {
+const CartPage = ({handleShowSignin}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
@@ -117,7 +117,7 @@ const CartPage = () => {
         <img src={emptyImage} alt='Empty Item' />
         <h4>Missing Cart items?</h4>
         <p>Login to see teh items you added previously</p>
-        <button className={styles.loginBtn} onClick={() => ''}>
+        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
           Login
         </button>
       </div>
