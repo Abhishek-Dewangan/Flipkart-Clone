@@ -21,6 +21,7 @@ import {getAddress} from './Services/Actions/AddressAction';
 import AddressForm from './Components/AddressForm/AddressForm';
 import EditAddress from './Components/EditAddress/EditAddress';
 import OrderSuccess from './Components/OrderSuccess/OrderSuccess';
+import {getOrders} from './Services/Actions/OrderAction';
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ function App() {
     user.userId && getWishlistProducts(dispatch, user.userId);
     user.userId && getCartProducts(dispatch, user.userId);
     user.userId && getAddress(dispatch, user.userId);
+    user.userId && getOrders(dispatch, user.userId);
   }, [user]);
 
   return (
