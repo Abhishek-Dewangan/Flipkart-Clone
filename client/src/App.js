@@ -108,7 +108,10 @@ function App() {
       <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
-        <Route path='/cart' element={<CartPage />} />
+        <Route
+          path='/cart'
+          element={<CartPage handleShowSignin={handleShowSignin} />}
+        />
         <Route path='/wishlist' element={<WishlistPage />} />
         <Route path='/myorders' element={<MyOrdersPage />} />
         <Route
