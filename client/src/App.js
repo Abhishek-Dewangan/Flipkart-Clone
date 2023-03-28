@@ -116,7 +116,10 @@ function App() {
           path='/wishlist'
           element={<WishlistPage handleShowSignin={handleShowSignin} />}
         />
-        <Route path='/myorders' element={<MyOrdersPage />} />
+        <Route
+          path='/myorders'
+          element={<MyOrdersPage handleShowSignin={handleShowSignin} />}
+        />
         <Route
           path='/productdetail/:productid'
           element={<ProductDetailsPage />}
