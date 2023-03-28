@@ -43,7 +43,7 @@ const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
             <img src={signupImage} alt='' className={styles.signupSideImage} />
           </div>
           <div className={styles.formDiv}>
-            <Modal.Header closeButton>
+            <Modal.Header className={styles.header} closeButton>
               <Modal.Title className={styles.formTitle}>SignUp</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -53,41 +53,32 @@ const SignUp = ({show, handleCloseSignup, handleShowSignin}) => {
                   type={'text'}
                   placeholder='Firstname'
                   name='firstname'
-                />{' '}
-                <br />
-                <input
-                  type={'text'}
-                  placeholder='Lastname'
-                  name='lastname'
-                />{' '}
-                <br />
+                />
+                <input type={'text'} placeholder='Lastname' name='lastname' />
                 <input
                   required
                   type={'email'}
                   placeholder='Email'
                   name='email'
-                />{' '}
-                <br />
+                />
                 <input
                   required
                   type={'number'}
                   placeholder='Mobile'
                   name='mobile_number'
-                />{' '}
-                <br />
+                />
                 <input
                   required
                   type={'password'}
                   placeholder='Password'
                   name='password'
-                />{' '}
-                <br />
-                <input type={'submit'} value='Submit' /> <br />
+                />
+                <input type={'submit'} value='Sign Up' />
               </form>
             </Modal.Body>
             <Modal.Footer>
               <button
-                className={styles.signupBtn}
+                className={styles.signinBtn}
                 onClick={() => {
                   handleShowSignin();
                   handleCloseSignup();
