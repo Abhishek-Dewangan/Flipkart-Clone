@@ -11,6 +11,7 @@ const Order = new mongoose.Schema({
   discounted: {type: Boolean, required: true},
   thumbnail: {type: String, required: true},
   query_url: {type: String, required: true},
+  date: {type: String, default: new Date()},
 });
 
 module.exports = mongoose.model('order', Order);
