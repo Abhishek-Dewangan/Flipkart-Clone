@@ -152,9 +152,7 @@ const Header = ({handleShowSignin}) => {
         </Dropdown>
         <Link to={'/cart'} className={styles.link}>
           <div className={styles.cart}>
-            <p className={styles.cartItemCount}>
-              {cart.cartData.length ? cart.cartData.length : ''}
-            </p>
+            <p className={styles.cartItemCount}>{cart.cartData.length}</p>
             <FaShoppingCart className={styles.cartIcon} /> Cart
           </div>
         </Link>
