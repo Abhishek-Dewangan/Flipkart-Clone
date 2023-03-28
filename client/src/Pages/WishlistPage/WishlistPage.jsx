@@ -14,12 +14,12 @@ import {MdDelete} from 'react-icons/md';
 import {removeFromWishlist} from '../../Services/Actions/WishlistAction';
 import WishlistSidebar from './WishlistSidebar';
 
-const WishlistPage = () => {
+const WishlistPage = ({handleShowSignin}) => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
 
-  return (
+  return user.userId ? (
     <div className={styles.wishlistContainer}>
       <section className={styles.leftSection}>
         <WishlistSidebar />
@@ -94,6 +94,17 @@ const WishlistPage = () => {
           </div>
         )}
       </section>
+    </div>
+  ) : (
+    <div className={styles.wishlistContainer}>
+      <div className={styles.emptyWishlist}>
+        <img src={emptyImage} alt='Empty Item' />
+        <h4>Missing Wishlist items?</h4>
+        <p>Login to see the items you added previously</p>
+        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
+          Login
+        </button>
+      </div>
     </div>
   );
 };
