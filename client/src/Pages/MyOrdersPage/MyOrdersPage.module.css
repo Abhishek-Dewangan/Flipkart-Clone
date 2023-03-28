@@ -18,11 +18,11 @@
   align-items: center;
   padding: 0 2em;
 }
-.productBox div{
+.productBox div {
   width: 25%;
   /* border: 1px solid red; */
 }
-.productBox div:first-child{
+.productBox div:first-child {
   text-align: center;
 }
 .imgDiv {
@@ -95,4 +95,13 @@
 }
 .emptyOrder p {
   font-size: small;
+}
+.loginBtn {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 72px;
+  margin-top: 20px;
+  color: #fff;
+  border: none;
+  background: #fb641b;
 }

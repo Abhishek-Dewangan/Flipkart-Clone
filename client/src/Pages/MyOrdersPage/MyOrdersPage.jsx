@@ -7,12 +7,13 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import emptyImage from '../../Assets/Images/empty.png';
 import {Button} from 'react-bootstrap';
 
-const MyOrdersPage = () => {
+const MyOrdersPage = ({handleShowSignin}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const order = useSelector((state) => state.OrderReducer);
+  const {user} = useSelector((state) => state.UserReducer);
 
-  return (
+  return user.userId ? (
     <div className={styles.myOrderContainer}>
       <h5 className={styles.heading}>My Orders ({order.ordersData.length})</h5>
       <hr />
@@ -77,6 +78,17 @@ const MyOrdersPage = () => {
           <Button onClick={() => navigate('/')}>Start Shopping</Button>
         </div>
       )}
+    </div>
+  ) : (
+    <div className={styles.myOrderContainer}>
+      <div className={styles.emptyOrder}>
+        <img src={emptyImage} alt='Empty Item' />
+        <h4>Missing your orders?</h4>
+        <p>Login to see the items you ordered previously</p>
+        <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
+          Login
+        </button>
+      </div>
     </div>
   );
 };
