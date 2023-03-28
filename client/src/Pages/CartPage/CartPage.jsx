@@ -13,9 +13,9 @@ const CartPage = ({handleShowSignin}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
-  const user = useSelector((state) => state.UserReducer);
+  const {user} = useSelector((state) => state.UserReducer);
 
-  return user.user.userId ? (
+  return user.userId ? (
     <div className={styles.cartPageContainer}>
       <section className={styles.leftSection}>
         {cart.cartData.length ? (
@@ -116,7 +116,7 @@ const CartPage = ({handleShowSignin}) => {
       <div className={styles.emptyCart}>
         <img src={emptyImage} alt='Empty Item' />
         <h4>Missing Cart items?</h4>
-        <p>Login to see teh items you added previously</p>
+        <p>Login to see the items you added previously</p>
         <button className={styles.loginBtn} onClick={() => handleShowSignin()}>
           Login
         </button>
