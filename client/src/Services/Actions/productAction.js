@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Actions types
 export const GET_PRODUCTS = 'GET_PRODUCTS';
-export const GET_PROUDUCT_DETAILS = 'GET_PROUDUCT_DETAILS';
+export const GET_PRODUCTS_ON_SEARCH = 'GET_PRODUCTS_ON_SEARCH';
+export const GET_PRODUCT_DETAILS = 'GET_PRODUCT_DETAILS';
 export const GET_PRODUCTS_BY_ID = 'GET_PRODUCTS_BY_ID';
 export const GET_PRODUCTS_BY_CATEGORY = 'GET_PRODUCTS_BY_CATEGORY';
 export const IS_ERROR_IN_PRODUCT = 'IS_ERROR_IN_PRODUCT';
@@ -66,11 +67,30 @@ export const getProductDetails = async (dispatch, product) => {
     const res = await axios.get(product.query_url);
     // console.log(res.data);
     if (!res.data.thumbnails.length) res.data.thumbnails = [product.thumbnail];
-    dispatch({type: GET_PROUDUCT_DETAILS, payload: res});
+    dispatch({type: GET_PRODUCT_DETAILS, payload: res});
   } catch (error) {
     // console.log(error);
     dispatch({type: IS_ERROR_IN_PRODUCT, payload: error});
   }
 };
 
-
+// Search prducts function
+export const searchProducts = (dispatch, products, query) => {
+  // console.log(query);
+  dispatch({type: IS_LOADING_IN_PRODUCT});
+  try {
+    const res = products.filter(
+      (elem) =>
+        elem.name.toLowerCase().includes(query.toLowerCase()) ||
+        elem.category.toLowerCase().includes(query.toLowerCase())
+    );
+    console.log(res);
+    dispatch({type: GET_PRODUCTS_ON_SEARCH, payload: res});
+  } catch (error) {
+    dispatch({type: IS_ERROR_IN_PRODUCT});
+  }
+  // return products.filter((elem) => {
+  //   // console.log(elem.name.toLowerCase());
+  //   return elem.name.toLowerCase().includes('samsung'.toLowerCase());
+  // });
+};
