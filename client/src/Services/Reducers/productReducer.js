@@ -2,10 +2,11 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_BY_CATEGORY,
   GET_PRODUCTS_BY_ID,
-  GET_PROUDUCT_DETAILS,
+  GET_PRODUCT_DETAILS,
   IS_LOADING_IN_PRODUCT,
   IS_ERROR_IN_PRODUCT,
   GET_TOP_OFFER_PRODUCTS,
+  GET_PRODUCTS_ON_SEARCH,
 } from '../Actions/ProductAction';
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   categoryProducts: [],
   offerProducts: [],
   productDetails: {},
+  searchProducts: [],
 };
 
 export const ProductReducer = (state = initialState, action) => {
@@ -29,6 +31,7 @@ export const ProductReducer = (state = initialState, action) => {
         isSuccess: false,
         categoryProducts: [],
         offerProducts: [],
+        searchProducts: [],
       };
     }
     case IS_ERROR_IN_PRODUCT: {
@@ -46,6 +49,15 @@ export const ProductReducer = (state = initialState, action) => {
         isError: false,
         isSuccess: true,
         products: action.payload.data,
+      };
+    }
+    case GET_PRODUCTS_ON_SEARCH: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        searchProducts: action.payload,
       };
     }
     case GET_PRODUCTS_BY_CATEGORY: {
@@ -66,7 +78,7 @@ export const ProductReducer = (state = initialState, action) => {
         offerProducts: action.payload.data,
       };
     }
-    case GET_PROUDUCT_DETAILS: {
+    case GET_PRODUCT_DETAILS: {
       return {
         ...state,
         isLoading: false,
