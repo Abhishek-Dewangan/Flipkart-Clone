@@ -1,12 +1,14 @@
 import {addToCart} from '../Services/Actions/CartAction';
+import {addOrder} from '../Services/Actions/OrderAction';
+import {toast} from 'react-toastify';
 import {
   addToWishlist,
   removeFromWishlist,
 } from '../Services/Actions/WishlistAction';
-import {addOrder} from '../Services/Actions/OrderAction';
 
 //  Adding product into cart
 export const addCart = (dispatch, elem, user) => {
+  if (!user.userId) return toast.error('Please login first');
   const product = {
     userId: user.userId,
     productId: elem._id,
@@ -24,6 +26,7 @@ export const addCart = (dispatch, elem, user) => {
 
 // Adding product into wishlist
 export const addWishlist = (dispatch, elem, user) => {
+  if (!user.userId) return toast.error('Please login first');
   const product = {
     userId: user.userId,
     productId: elem._id,
