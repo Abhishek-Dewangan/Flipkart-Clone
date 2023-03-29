@@ -17,6 +17,7 @@ import emptyImage from '../../Assets/Images/empty.png';
 import {useEffect} from 'react';
 
 const ShowProducts = ({products, isLoading, isSuccess}) => {
+  console.log(products, isLoading, isSuccess);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {pathname} = useLocation();
@@ -116,7 +117,7 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
                 )}
                 <button
                   className={styles.buyNowBtn}
-                  onClick={() => buyNow([elem],navigate)}
+                  onClick={() => buyNow([elem], navigate)}
                 >
                   <GiElectric />
                   Buy Now
@@ -156,7 +157,7 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
     <div className={styles.emptyWishlist}>
       <img src={emptyImage} alt='Empty Item' />
       <h4>Not Found</h4>
-      <p>Not matching any data with filtered values!</p>
+      <p>Not matching any products!</p>
     </div>
   );
 };
