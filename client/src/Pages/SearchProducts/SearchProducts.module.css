@@ -1,0 +1,6 @@
+/* Search products styles */
+.searchProductsContainer {
+  width: fit-content;
+  min-height: 100vh;
+  margin: auto;
+}
