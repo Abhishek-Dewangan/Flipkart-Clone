@@ -22,6 +22,7 @@ import AddressForm from './Components/AddressForm/AddressForm';
 import EditAddress from './Components/EditAddress/EditAddress';
 import OrderSuccess from './Components/OrderSuccess/OrderSuccess';
 import {getOrders} from './Services/Actions/OrderAction';
+import SearchProducts from './Pages/SearchProducts/SearchProducts';
 
 function App() {
   const dispatch = useDispatch();
@@ -108,6 +109,7 @@ function App() {
       <Routes className={styles.routes}>
         <Route path='/' element={<LandingPage />} />
         <Route path='/category/:category' element={<ProductCategoryPage />} />
+        <Route path='/products/:query' element={<SearchProducts />} />
         <Route
           path='/cart'
           element={<CartPage handleShowSignin={handleShowSignin} />}
