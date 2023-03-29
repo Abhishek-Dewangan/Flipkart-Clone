@@ -7,7 +7,7 @@ const getCartProducts = async (req, res) => {
     const response = await Cart.find({userId: userid});
     res
       .status(201)
-      .send({message: 'Cart data fetched successfully', data: response});
+      .send({message: 'Get cart data operation successful', data: response});
   } catch (error) {
     res.status(401).send({message: 'Unable to fetching cart data', error});
   }
@@ -19,11 +19,11 @@ const addToCart = async (req, res) => {
     const {productId, userId} = req.body;
     const isProductExist = await Cart.findOne({productId, userId});
     if (isProductExist) {
-      res.status(409).send({message: 'Product already added into cart'});
+      res.status(409).send({message: 'Already exist in cart'});
     } else {
       const response = await new Cart(req.body).save();
       res.status(201).send({
-        message: 'Product successfully added into cart',
+        message: 'Added into cart',
         data: response,
       });
     }
@@ -38,7 +38,7 @@ const removeFromCart = async (req, res) => {
     const {id} = req.params;
     const response = await Cart.findByIdAndDelete({_id: id});
     res.status(201).send({
-      message: 'Product successfully removed from cart',
+      message: 'Removed from cart',
       data: response,
     });
   } catch (error) {
@@ -52,7 +52,7 @@ const removeAllFromCart = async (req, res) => {
     const {userid} = req.params;
     const response = await Cart.deleteMany({userId: userid});
     res.status(201).send({
-      message: 'All products successfully removed from cart',
+      message: 'Removed all from cart',
       data: response,
     });
   } catch (error) {
