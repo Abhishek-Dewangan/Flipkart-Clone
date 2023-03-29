@@ -31,7 +31,7 @@
 }
 .searchBar {
   display: flex;
-  width: 400px;
+  width: 65%;
   padding: 0 10px;
   background-color: white;
   justify-content: space-between;
@@ -39,7 +39,7 @@
   border-radius: 2px;
 }
 .searchBar input {
-  width: 375px;
+  width: 100%;
   border: none;
 }
 .searchBar input:focus {
@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 .loginBtn {
-  width: 120px;
+  width: 15%;
   border: none;
   border-radius: 2px;
   font-size: 16px;

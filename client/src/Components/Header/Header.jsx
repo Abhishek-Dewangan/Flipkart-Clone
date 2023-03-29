@@ -26,6 +26,7 @@ const Header = ({handleShowSignin}) => {
   const navigate = useNavigate();
   const [showUser, setShowUser] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const cart = useSelector((state) => state.CartReducer);
   const {user, signinSuccess, signupSuccess, signoutSuccess, isError, message} =
     useSelector((state) => state.UserReducer);
@@ -48,14 +49,25 @@ const Header = ({handleShowSignin}) => {
         <Link to={'/'} className={styles.link}>
           <img className={styles.logo} src={logo} alt='Flipkart logo' />
         </Link>
-        <div className={styles.searchBar}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.target.search.value &&
+              navigate(`/products/${e.target.search.value}`);
+          }}
+          className={styles.searchBar}
+        >
           <input
             type={'text'}
-            name={'searchBar'}
+            name={'search'}
             placeholder={'Search for products, brand and more'}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
-          <FaSearch className={styles.searchIcon} />
-        </div>
+          <FaSearch
+            onClick={() => searchValue && navigate(`/products/${searchValue}`)}
+            className={styles.searchIcon}
+          />
+        </form>
         {user.first_name ? (
           <Dropdown
             className={styles.dropdown}
