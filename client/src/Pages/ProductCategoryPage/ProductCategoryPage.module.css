@@ -3,8 +3,10 @@
   min-height: 100vh;
 }
 .categoryBox {
+  width: 99.5%;
   display: flex;
   justify-content: space-between;
   position: relative;
+  gap: 1em;
 }
 
