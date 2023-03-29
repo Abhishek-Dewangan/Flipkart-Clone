@@ -20,11 +20,11 @@ const addToWishlist = async (req, res) => {
     const {userId, productId} = req.body;
     const isProductExist = await Wishlist.findOne({userId, productId});
     if (isProductExist) {
-      res.status(409).send({message: 'Product is already exist in wishlist'});
+      res.status(409).send({message: 'Already exist in wishlist!'});
     } else {
       const response = await new Wishlist(req.body).save();
       res.status(201).send({
-        message: 'Product successfully added into wishlist',
+        message: 'Added into wishlist',
         data: response,
       });
     }
@@ -39,7 +39,7 @@ const removeFromWishlist = async (req, res) => {
     const {id} = req.params;
     const response = await Wishlist.findByIdAndDelete({_id: id});
     res.status(201).send({
-      message: 'Product removed successfully from wishlist',
+      message: 'Removed from wishlist',
       data: response,
     });
   } catch (error) {
@@ -54,7 +54,7 @@ const removeAllFromWishlist = async (req, res) => {
     const response = await Wishlist.deleteMany({userId: userid});
     res
       .status(201)
-      .send({message: 'All products removed from wishlist', data: response});
+      .send({message: 'Removed all from wishlist', data: response});
   } catch (error) {
     res.status(401).send({message: error.message, error});
   }

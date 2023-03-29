@@ -15,7 +15,7 @@ const getOrders = async (req, res) => {
   try {
     const {id} = req.params;
     const response = await Order.find({userId: id});
-    res.status(200).send({message: 'Get orders successfully', data: response});
+    res.status(200).send({message: 'Get orders operation successful', data: response});
   } catch (error) {
     res.status(400).send({message: error.message, error});
   }
