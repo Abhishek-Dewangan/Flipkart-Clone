@@ -46,8 +46,10 @@ export const removeWishlist = (dispatch, id) => {
 
 // Add orders while ordering products
 export const addOrders = (dispatch, data, userId) => {
-  // console.log(data);
+  // console.log(new Date());
   const orderProducts = data.map((elem) => {
+    const date = new Date();
+    console.log(typeof date);
     return {
       userId: userId,
       productId: elem._id,
@@ -59,9 +61,10 @@ export const addOrders = (dispatch, data, userId) => {
       discounted: elem.discounted,
       thumbnail: elem.thumbnail,
       query_url: elem.query_url,
+      date: `${date}`,
     };
   });
-  // console.log(orderProducts);
+  console.log(orderProducts);
   addOrder(dispatch, orderProducts);
 };
 
