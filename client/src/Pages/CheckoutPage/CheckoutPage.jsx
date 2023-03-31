@@ -7,7 +7,7 @@ import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
 import {addOrders, removeProductsFromCart} from '../../Assets/ReusableFuctions';
 import LoginButton from '../../Components/LoginButton/LoginButton';
-import {RxCross2} from 'react-icons/rx';
+import {AiFillDelete} from 'react-icons/ai';
 
 const CheckoutPage = ({
   handleShowAddress,
@@ -152,7 +152,7 @@ const CheckoutPage = ({
                         </p>
                       </div>
                         <button className={styles.removeBtn}>
-                          <RxCross2 />
+                          <AiFillDelete />
                         </button>
                     </div>
                     <hr />
