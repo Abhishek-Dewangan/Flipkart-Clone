@@ -151,7 +151,7 @@ const CheckoutPage = ({
                           </span>
                         </p>
                       </div>
-                        <button className={styles.removeBtn}>
+                        <button className={styles.removeBtn} title='Remove'>
                           <AiFillDelete />
                         </button>
                     </div>
