@@ -6,8 +6,8 @@ const FilterBar = ({variables}) => {
   return (
     <div className={styles.filterBarContainer}>
       <form onChange={(e) => filterProducts(e, variables)} id='form'>
-        <h4>Filters</h4>
-        <Accordion defaultActiveKey={['0']}>
+        <p className={styles.heading}>Filters</p>
+        <Accordion defaultActiveKey={['0']} className={styles.accordion}>
           <Accordion.Item eventKey='0'>
             <Accordion.Header>Sort By</Accordion.Header>
             <Accordion.Body>

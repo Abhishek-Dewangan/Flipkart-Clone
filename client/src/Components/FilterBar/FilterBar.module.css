@@ -12,3 +12,13 @@
   color: #212121;
   margin-left: 10px;
 }
+.heading {
+  color: #212121;
+  font-size: 18px;
+  margin: 12px 0 12px 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.accordion {
+  border-radius: 0;
+}
