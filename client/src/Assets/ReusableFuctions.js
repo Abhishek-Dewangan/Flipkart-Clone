@@ -1,4 +1,7 @@
-import {addToCart} from '../Services/Actions/CartAction';
+import {
+  addToCart,
+  removeMultiplefromCart,
+} from '../Services/Actions/CartAction';
 import {addOrder} from '../Services/Actions/OrderAction';
 import {toast} from 'react-toastify';
 import {
@@ -22,6 +25,16 @@ export const addCart = (dispatch, elem, user) => {
     query_url: elem.query_url,
   };
   addToCart(dispatch, product);
+};
+
+// Removing multiple products from cart
+export const removeProductsFromCart = (dispatch, products, userId) => {
+  // console.log(userId, products);
+  let productsId = products.map((elem) =>
+    elem.productId ? elem.productId : elem._id
+  );
+  // console.log(productsId);
+  removeMultiplefromCart(dispatch, productsId, userId);
 };
 
 // Adding product into wishlist
@@ -52,7 +65,7 @@ export const addOrders = (dispatch, data, userId) => {
   // console.log(new Date());
   const orderProducts = data.map((elem) => {
     const date = new Date();
-    console.log(typeof date);
+    // console.log(typeof date);
     return {
       userId: userId,
       productId: elem._id,
@@ -67,7 +80,7 @@ export const addOrders = (dispatch, data, userId) => {
       date: `${date}`,
     };
   });
-  console.log(orderProducts);
+  // console.log(orderProducts);
   addOrder(dispatch, orderProducts);
 };
 
