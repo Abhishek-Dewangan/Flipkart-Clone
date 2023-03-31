@@ -6,6 +6,7 @@ import {
   REMOVE_ALL_FROM_CART,
   REMOVE_FROM_CART,
   REFRESH_CART,
+  REMOVE_MULTIPLE_FROM_CART,
 } from '../Actions/CartAction';
 
 const initialState = {
@@ -76,6 +77,19 @@ export const CartReducer = (state = initialState, action) => {
         isSuccess: true,
         message: action.payload.message,
         cartData: [],
+      };
+    }
+    case REMOVE_MULTIPLE_FROM_CART: {
+      const updatedCartData = state.cartData.filter(
+        (elem) => !action.payload.includes(elem.productId)
+      );
+      // console.log(updatedCartData);
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+        cartData: updatedCartData,
       };
     }
     case REFRESH_CART: {
