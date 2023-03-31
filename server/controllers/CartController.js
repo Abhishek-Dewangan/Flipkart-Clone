@@ -62,10 +62,28 @@ const removeAllFromCart = async (req, res) => {
   }
 };
 
+// Remove baught products from cart
+const removeMultipleFromCart = async (req, res) => {
+  try {
+    const {userid} = req.params;
+    const {productsId} = req.body;
+    const response = await Cart.deleteMany({
+      userId: userid,
+      productId: {$in: productsId},
+    });
+    res
+      .status(200)
+      .send({message: 'Removed baught items from cart', data: response});
+  } catch (error) {
+    res.status(400).send({message: error.message, error});
+  }
+};
+
 // Exporting all routes
 module.exports = {
   getCartProducts,
   addToCart,
   removeFromCart,
   removeAllFromCart,
+  removeMultipleFromCart,
 };
