@@ -17,7 +17,7 @@ import emptyImage from '../../Assets/Images/empty.png';
 import {useEffect} from 'react';
 
 const ShowProducts = ({products, isLoading, isSuccess}) => {
-  console.log(products, isLoading, isSuccess);
+  // console.log(products, isLoading, isSuccess);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {pathname} = useLocation();
@@ -30,7 +30,9 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
 
   return isSuccess && products.length ? (
     <div className={styles.showProductsContainer}>
-      <p>Home{pathname.split('/').join(' > ')}</p>
+      <p className={styles.pathname}>
+        Home{pathname.split('/').join(' > ').split('%20').join(' ')}
+      </p>
       <div className={styles.productsContainer}>
         {products.map((elem) => {
           // Calculating discount percent
@@ -130,7 +132,7 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
     </div>
   ) : isLoading ? (
     <div className={styles.showProductsContainer}>
-      <p>Home{pathname.split('/').join(' > ')}</p>
+      <p className={styles.pathname}>Home{pathname.split('/').join(' > ')}</p>
       <div className={styles.productsContainer}>
         {placeholderData.map((elem, i) => {
           return (
