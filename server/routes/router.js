@@ -10,6 +10,7 @@ const {
   removeFromCart,
   getCartProducts,
   removeAllFromCart,
+  removeMultipleFromCart,
 } = require('../controllers/CartController');
 const {getOrders, addOrder} = require('../controllers/OrderController');
 const {
@@ -50,6 +51,7 @@ router.get('/getcartproducts/:userid', getCartProducts);
 router.post('/addtocart', addToCart);
 router.delete('/removefromcart/:id', removeFromCart);
 router.delete('/removeallfromcart/:userid', removeAllFromCart);
+router.delete('/removemultiplefromcart/:userid', removeMultipleFromCart);
 
 // Wishlist routes
 router.get('/getwishlistproducts/:userid', getWishlistProducts);
