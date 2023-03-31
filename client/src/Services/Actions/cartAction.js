@@ -8,6 +8,7 @@ export const GET_CART_DATA = 'GET_CART_DATA';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART';
 export const REFRESH_CART = 'REFRESH_CART';
+export const REMOVE_MULTIPLE_FROM_CART = 'REMOVE_MULTIPLE_FROM_CART';
 
 // Add to cart
 export const addToCart = async (dispatch, product) => {
@@ -66,6 +67,23 @@ export const removeAllFromCart = async (dispatch, userId) => {
     dispatch({type: REMOVE_ALL_FROM_CART, payload: res.data});
   } catch (error) {
     console.log(error);
+    dispatch({type: IS_ERROR_IN_CART, payload: error.response.data});
+  }
+};
+
+// Removing multipe products from cart
+export const removeMultiplefromCart = async (dispatch, productsId, userId) => {
+  // console.log(productsId);
+  dispatch({type: IS_LOADING_IN_CART});
+  try {
+    const data = {productsId: productsId};
+    const res = await axios.delete(
+      `http://localhost:8080/api/removemultiplefromcart/${userId}`,
+      {data}
+    );
+    // console.log(res);
+    dispatch({type: REMOVE_MULTIPLE_FROM_CART, payload: productsId});
+  } catch (error) {
     dispatch({type: IS_ERROR_IN_CART, payload: error.response.data});
   }
 };
