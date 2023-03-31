@@ -5,7 +5,7 @@ import CartSidebar from '../CartPage/CartSidebar';
 import styles from './CheckoutPage.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
-import {addOrders} from '../../Assets/ReusableFuctions';
+import {addOrders, removeProductsFromCart} from '../../Assets/ReusableFuctions';
 import emptyImage from '../../Assets/Images/empty.png';
 import LoginButton from '../../Components/LoginButton/LoginButton';
 
@@ -189,6 +189,7 @@ const CheckoutPage = ({
                 className={styles.confirmOrderBtn}
                 onClick={() => {
                   addOrders(dispatch, products, user.userId);
+                  removeProductsFromCart(dispatch, products, user.userId);
                   handleShowOrderSuccess();
                 }}
               >
