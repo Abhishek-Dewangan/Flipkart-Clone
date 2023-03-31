@@ -6,8 +6,8 @@ import styles from './CheckoutPage.module.css';
 import fAssured from '../../Assets/Images/f-assured.png';
 import {Link} from 'react-router-dom';
 import {addOrders, removeProductsFromCart} from '../../Assets/ReusableFuctions';
-import emptyImage from '../../Assets/Images/empty.png';
 import LoginButton from '../../Components/LoginButton/LoginButton';
+import {RxCross2} from 'react-icons/rx';
 
 const CheckoutPage = ({
   handleShowAddress,
@@ -118,16 +118,15 @@ const CheckoutPage = ({
                 return (
                   <div key={elem._id}>
                     <div className={styles.productBox}>
-                      <Link
-                        to={`/productdetail/${elem.productId}`}
-                        className={styles.imgDiv}
-                      >
-                        <img
-                          src={elem.thumbnail}
-                          alt={elem.name}
-                          className={styles.productImage}
-                        />
-                      </Link>
+                      <div className={styles.imgDiv}>
+                        <Link to={`/productdetail/${elem.productId}`}>
+                          <img
+                            src={elem.thumbnail}
+                            alt={elem.name}
+                            className={styles.productImage}
+                          />
+                        </Link>
+                      </div>
                       <div className={styles.productDetails}>
                         <Link
                           to={`/productdetail/${elem.productId}`}
@@ -152,6 +151,9 @@ const CheckoutPage = ({
                           </span>
                         </p>
                       </div>
+                        <button className={styles.removeBtn}>
+                          <RxCross2 />
+                        </button>
                     </div>
                     <hr />
                   </div>
