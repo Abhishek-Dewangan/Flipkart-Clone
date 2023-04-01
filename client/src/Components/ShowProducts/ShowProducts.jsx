@@ -16,7 +16,7 @@ import placeholderImage from '../../Assets/Images/placeholder-image.png';
 import emptyImage from '../../Assets/Images/empty.png';
 import {useEffect} from 'react';
 
-const ShowProducts = ({products, isLoading, isSuccess}) => {
+const ShowProducts = ({products, isLoading, isSuccess, filterStatus}) => {
   // console.log(products, isLoading, isSuccess);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +28,32 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
   const cart = useSelector((state) => state.CartReducer);
   // const product = useSelector((state) => state.ProductReducer);
 
-  return isSuccess && products.length ? (
+  return isLoading ? (
+    <div className={styles.showProductsContainer}>
+      <p className={styles.pathname}>Home{pathname.split('/').join(' > ')}</p>
+      <div className={styles.productsContainer}>
+        {placeholderData.map((elem, i) => {
+          return (
+            <Card className={styles.productBox} key={i}>
+              <Card.Body>
+                <Card.Img variant='top' src={placeholderImage} />
+                <Placeholder as={Card.Title} animation='glow'>
+                  <Placeholder xs={10} />
+                </Placeholder>
+                <Placeholder as={Card.Text} animation='glow'>
+                  <Placeholder xs={6} />
+                </Placeholder>
+              </Card.Body>
+              <div className={styles.buttonDiv}>
+                <Placeholder.Button></Placeholder.Button>
+                <Placeholder.Button></Placeholder.Button>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+    </div>
+  ) : isSuccess && products.length ? (
     <div className={styles.showProductsContainer}>
       <p className={styles.pathname}>
         Home{pathname.split('/').join(' > ').split('%20').join(' ')}
@@ -130,37 +155,15 @@ const ShowProducts = ({products, isLoading, isSuccess}) => {
         })}
       </div>
     </div>
-  ) : isLoading ? (
-    <div className={styles.showProductsContainer}>
-      <p className={styles.pathname}>Home{pathname.split('/').join(' > ')}</p>
-      <div className={styles.productsContainer}>
-        {placeholderData.map((elem, i) => {
-          return (
-            <Card className={styles.productBox} key={i}>
-              <Card.Body>
-                <Card.Img variant='top' src={placeholderImage} />
-                <Placeholder as={Card.Title} animation='glow'>
-                  <Placeholder xs={10} />
-                </Placeholder>
-                <Placeholder as={Card.Text} animation='glow'>
-                  <Placeholder xs={6} />
-                </Placeholder>
-              </Card.Body>
-              <div className={styles.buttonDiv}>
-                <Placeholder.Button></Placeholder.Button>
-                <Placeholder.Button></Placeholder.Button>
-              </div>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
   ) : (
-    <div className={styles.emptyWishlist}>
-      <img src={emptyImage} alt='Empty Item' />
-      <h4>Not Found</h4>
-      <p>Not matching any products!</p>
-    </div>
+    filterStatus &&
+    !products.length && (
+      <div className={styles.emptyWishlist}>
+        <img src={emptyImage} alt='Empty Item' />
+        <h4>Not Found</h4>
+        <p>Not matching any products!</p>
+      </div>
+    )
   );
 };
 
