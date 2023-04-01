@@ -63,10 +63,10 @@ export const ProductReducer = (state = initialState, action) => {
     case GET_PRODUCTS_BY_CATEGORY: {
       return {
         ...state,
+        categoryProducts: action.payload.data,
         isLoading: false,
         isError: false,
         isSuccess: true,
-        categoryProducts: action.payload.data,
       };
     }
     case GET_TOP_OFFER_PRODUCTS: {
