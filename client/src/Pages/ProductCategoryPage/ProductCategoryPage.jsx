@@ -19,6 +19,7 @@ const ProductCategoryPage = () => {
   const [sortby, setSortby] = useState('');
   const [discount, setDiscount] = useState([]);
   const [priceRange, setPriceRange] = useState([]);
+  const [filterStatus, setFilterStatus] = useState(false);
   const variables = [
     sortby,
     setSortby,
@@ -57,6 +58,7 @@ const ProductCategoryPage = () => {
   // Calling category product function
   useEffect(() => {
     getProductsByCategory(dispatch, category);
+    setFilterStatus(false);
   }, [category]);
 
   useEffect(() => {
@@ -69,11 +71,12 @@ const ProductCategoryPage = () => {
     <div className={styles.productCategoryContainer}>
       <SubHeader />
       <div className={styles.categoryBox}>
-        <FilterBar variables={variables} />
+        <FilterBar variables={variables} setFilterStatus={setFilterStatus} />
         <ShowProducts
           products={products}
           isLoading={isLoading}
           isSuccess={isSuccess}
+          filterStatus={filterStatus}
         />
       </div>
     </div>
