@@ -17,9 +17,17 @@ const CheckoutPage = ({
 }) => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(2);
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem('checkout')) || []
+  );
   const {user} = useSelector((state) => state.UserReducer);
   const {addressData} = useSelector((state) => state.AddressReducer);
-  const products = JSON.parse(localStorage.getItem('checkout')) || [];
+
+  const removeFromCheckoutList = (id) => {
+    const filteredProducts = products.filter((elem) => elem._id !== id);
+    setProducts(filteredProducts);
+    localStorage.setItem('checkout', JSON.stringify(filteredProducts));
+  };
 
   return user.userId ? (
     <div className={styles.checkoutContainer}>
@@ -151,9 +159,13 @@ const CheckoutPage = ({
                           </span>
                         </p>
                       </div>
-                        <button className={styles.removeBtn} title='Remove'>
-                          <AiFillDelete />
-                        </button>
+                      <button
+                        className={styles.removeBtn}
+                        onClick={() => removeFromCheckoutList(elem._id)}
+                        title='Remove'
+                      >
+                        <AiFillDelete />
+                      </button>
                     </div>
                     <hr />
                   </div>
