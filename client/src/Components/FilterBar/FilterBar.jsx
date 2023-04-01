@@ -1,11 +1,21 @@
 import styles from './FilterBar.module.css';
 import {Accordion} from 'react-bootstrap';
 import {filterProducts} from '../../Assets/FilterFuctions';
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 
-const FilterBar = ({variables}) => {
+const FilterBar = ({variables, setFilterStatus}) => {
+  const {category} = useParams();
+
   return (
     <div className={styles.filterBarContainer}>
-      <form onChange={(e) => filterProducts(e, variables)} id='form'>
+      <form
+        onChange={(e) => {
+          filterProducts(e, variables);
+          setFilterStatus(true);
+        }}
+        id='form'
+      >
         <p className={styles.heading}>Filters</p>
         <Accordion defaultActiveKey={['0']} className={styles.accordion}>
           <Accordion.Item eventKey='0'>
