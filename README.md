@@ -5,3 +5,6 @@ Flipkart Private Limited is an Indian e-commerce company, headquartered in Benga
 
 ### Tech Stack Used
 - HTML
+- CSS
+- React
+- React-Redux
