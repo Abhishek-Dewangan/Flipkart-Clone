@@ -33,10 +33,7 @@ const ProductCategoryPage = () => {
   );
 
   // Calling filter fuctions
-  useEffect(() => {
-    let result =
-      category === 'topoffers' ? [...offerProducts] : [...categoryProducts];
-
+  const filterProducts = (result) => {
     if (sortby) {
       result = filterBySort(
         result,
@@ -47,12 +44,18 @@ const ProductCategoryPage = () => {
       );
     }
     if (discount.length) {
+      console.log(discount);
       result = filterByDiscount(result, discount);
     }
     if (priceRange.length) {
       result = filterByPriceRange(result, priceRange);
     }
     setProducts([...result]);
+  };
+
+  useEffect(() => {
+    let result = category === 'topoffers' ? [...offerProducts] : [...products];
+    filterProducts(result);
   }, [sortby, discount, priceRange, category]);
 
   // Calling category product function
