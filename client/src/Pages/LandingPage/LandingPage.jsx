@@ -1,22 +1,17 @@
-import React from 'react';
-import styles from './LandingPage.module.css';
-import {useSelector} from 'react-redux';
-import BannerSlider from '../../Components/BannerSlider/BannerSlider';
-import SubHeader from '../../Components/SubHeader/SubHeader';
-import ProductSlider from '../../Components/ProductSlider/ProductSlider';
+import styles from "./LandingPage.module.css";
+import { useSelector } from "react-redux";
+import BannerSlider from "../../Components/BannerSlider/BannerSlider";
+import SubHeader from "../../Components/SubHeader/SubHeader";
+import ProductSlider from "../../Components/ProductSlider/ProductSlider";
 
 const LandingPage = () => {
-  const product = useSelector((state) => state.ProductReducer);
-  const mobiles = product.products.filter((elem) => elem.category === 'mobile');
-  const homes = product.products.filter((elem) => elem.category === 'home');
-  const appliances = product.products.filter(
-    (elem) => elem.category === 'appliance'
-  );
-  const babycares = product.products.filter(
-    (elem) => elem.category === 'babycare'
-  );
-  const beauty = product.products.filter((elem) => elem.category === 'beauty');
-  const sports = product.products.filter((elem) => elem.category === 'sports');
+  const { products } = useSelector((state) => state.ProductReducer);
+  const mobiles = products.filter((elem) => elem.category === "mobile");
+  const homes = products.filter((elem) => elem.category === "home");
+  const appliances = products.filter((elem) => elem.category === "appliance");
+  const babycares = products.filter((elem) => elem.category === "babycare");
+  const beauty = products.filter((elem) => elem.category === "beauty");
+  const sports = products.filter((elem) => elem.category === "sports");
 
   const bestMobiles = mobiles.splice(
     Math.floor(Math.random() * (mobiles.length - 10)),
@@ -48,33 +43,33 @@ const LandingPage = () => {
       <BannerSlider />
       <ProductSlider
         products={bestMobiles}
-        heading={'Mobiles'}
-        link={'/category/mobile'}
+        heading={"Mobiles"}
+        link={"/category/mobile"}
       />
       <ProductSlider
         products={bestHomes}
-        heading={'Homes'}
-        link={'/category/home'}
+        heading={"Homes"}
+        link={"/category/home"}
       />
       <ProductSlider
         products={bestAppliances}
-        heading={'Applicances'}
-        link={'/category/appliance'}
+        heading={"Applicances"}
+        link={"/category/appliance"}
       />
       <ProductSlider
         products={bestBabycares}
-        heading={'BabyCares'}
-        link={'/category/babycare'}
+        heading={"BabyCares"}
+        link={"/category/babycare"}
       />
       <ProductSlider
         products={bestBeauty}
-        heading={'Beauty'}
-        link={'/category/beauty'}
+        heading={"Beauty"}
+        link={"/category/beauty"}
       />
       <ProductSlider
         products={bestSports}
-        heading={'Sports'}
-        link={'/category/sports'}
+        heading={"Sports"}
+        link={"/category/sports"}
       />
     </div>
   );

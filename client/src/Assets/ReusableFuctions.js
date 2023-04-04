@@ -1,17 +1,17 @@
 import {
   addToCart,
   removeMultiplefromCart,
-} from '../Services/Actions/CartAction';
-import {addOrder} from '../Services/Actions/OrderAction';
-import {toast} from 'react-toastify';
+} from "../Services/Actions/CartAction";
+import { addOrder } from "../Services/Actions/OrderAction";
+import { toast } from "react-toastify";
 import {
   addToWishlist,
   removeFromWishlist,
-} from '../Services/Actions/WishlistAction';
+} from "../Services/Actions/WishlistAction";
 
 //  Adding product into cart
 export const addCart = (dispatch, elem, user) => {
-  if (!user.userId) return toast.error('Please login first');
+  if (!user.userId) return toast.error("Please login first");
   const product = {
     userId: user.userId,
     productId: elem._id,
@@ -29,17 +29,15 @@ export const addCart = (dispatch, elem, user) => {
 
 // Removing multiple products from cart
 export const removeProductsFromCart = (dispatch, products, userId) => {
-  // console.log(userId, products);
   let productsId = products.map((elem) =>
     elem.productId ? elem.productId : elem._id
   );
-  // console.log(productsId);
   removeMultiplefromCart(dispatch, productsId, userId);
 };
 
 // Adding product into wishlist
 export const addWishlist = (dispatch, elem, user) => {
-  if (!user.userId) return toast.error('Please login first');
+  if (!user.userId) return toast.error("Please login first");
   const product = {
     userId: user.userId,
     productId: elem._id,
@@ -62,10 +60,8 @@ export const removeWishlist = (dispatch, id) => {
 
 // Add orders while ordering products
 export const addOrders = (dispatch, data, userId) => {
-  // console.log(new Date());
   const orderProducts = data.map((elem) => {
     const date = new Date();
-    // console.log(typeof date);
     return {
       userId: userId,
       productId: elem._id,
@@ -80,12 +76,11 @@ export const addOrders = (dispatch, data, userId) => {
       date: `${date}`,
     };
   });
-  // console.log(orderProducts);
   addOrder(dispatch, orderProducts);
 };
 
 // Buy Now fuction
 export const buyNow = (products, navigate) => {
-  localStorage.setItem('checkout', JSON.stringify(products));
-  navigate('/checkout');
+  localStorage.setItem("checkout", JSON.stringify(products));
+  navigate("/checkout");
 };

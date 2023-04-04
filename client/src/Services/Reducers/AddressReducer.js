@@ -5,7 +5,7 @@ import {
   IS_LOADING_IN_ADDRESS,
   UPDATE_ADDRESS,
   REFRESH_ADDRESS,
-} from '../Actions/AddressAction';
+} from "../Actions/AddressAction";
 
 const initialState = {
   isLoading: false,
@@ -51,12 +51,6 @@ export const AddressReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_ADDRESS: {
-      const index = state.addressData.findIndex(
-        (elem) => elem._id === action.payload.data._id
-      );
-      // console.log(action.payload.data);
-      // break;
-      // state.addressData[0] = ;
       return {
         ...state,
         isLoading: false,

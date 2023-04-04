@@ -1,23 +1,16 @@
-import React from 'react';
-import styles from './WishlistPage.module.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {signout} from '../../Services/Actions/UserAction';
-import fAssured from '../../Assets/Images/f-assured.png';
-import emptyImage from '../../Assets/Images/empty.png';
-import {CgProfile} from 'react-icons/cg';
-import {BsFillArrowUpCircleFill} from 'react-icons/bs';
-import {FaShoppingCart} from 'react-icons/fa';
-import {BiLogOutCircle} from 'react-icons/bi';
-import {GrNext} from 'react-icons/gr';
-import {MdDelete} from 'react-icons/md';
-import {removeFromWishlist} from '../../Services/Actions/WishlistAction';
-import WishlistSidebar from './WishlistSidebar';
-import LoginButton from '../../Components/LoginButton/LoginButton';
+import styles from "./WishlistPage.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import fAssured from "../../Assets/Images/f-assured.png";
+import emptyImage from "../../Assets/Images/empty.png";
+import { MdDelete } from "react-icons/md";
+import { removeFromWishlist } from "../../Services/Actions/WishlistAction";
+import WishlistSidebar from "./WishlistSidebar";
+import LoginButton from "../../Components/LoginButton/LoginButton";
 
-const WishlistPage = ({handleShowSignin}) => {
+const WishlistPage = ({ handleShowSignin }) => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.UserReducer);
+  const { user } = useSelector((state) => state.UserReducer);
   const wishlist = useSelector((state) => state.WishlistReducer);
 
   return user.userId ? (
@@ -34,7 +27,7 @@ const WishlistPage = ({handleShowSignin}) => {
             <hr />
           </div>
         ) : (
-          ''
+          ""
         )}
         {wishlist.wishlistData.length ? (
           wishlist.wishlistData.map((elem) => {
@@ -65,12 +58,12 @@ const WishlistPage = ({handleShowSignin}) => {
                     <img
                       className={styles.fAssured}
                       src={fAssured}
-                      alt='Flipkart assured'
+                      alt="Flipkart assured"
                     />
                     <p className={styles.price}>
                       <span className={styles.currentPrice}>
                         ₹{elem.current_price}
-                      </span>{' '}
+                      </span>{" "}
                       <strike className={styles.originalPrice}>
                         ₹{elem.original_price}
                       </strike>
@@ -78,7 +71,7 @@ const WishlistPage = ({handleShowSignin}) => {
                     </p>
                   </div>
                   <MdDelete
-                    title='Remove'
+                    title="Remove"
                     className={styles.deleteIcon}
                     onClick={() => removeFromWishlist(dispatch, elem._id)}
                   />
@@ -89,7 +82,7 @@ const WishlistPage = ({handleShowSignin}) => {
           })
         ) : (
           <div className={styles.emptyWishlist}>
-            <img src={emptyImage} alt='Empty Item' />
+            <img src={emptyImage} alt="Empty Item" />
             <h4>Empty Wishlist</h4>
             <p>You have no items in your wishlist. Start adding!</p>
           </div>
@@ -99,8 +92,8 @@ const WishlistPage = ({handleShowSignin}) => {
   ) : (
     <LoginButton
       handleShowSignin={handleShowSignin}
-      heading={'Missing Wishlist items?'}
-      text={'Login to see the items you added previously'}
+      heading={"Missing Wishlist items?"}
+      text={"Login to see the items you added previously"}
     />
   );
 };

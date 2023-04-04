@@ -3,7 +3,7 @@ export const filterProducts = async (event, variables) => {
   const { name, value, checked } = event.target;
   const [sortby, setSortby, discount, setDiscount, priceRange, setPriceRange] =
     variables;
-  // console.log(name, value, checked);
+
   switch (name) {
     case "sortby": {
       setSortby(value);

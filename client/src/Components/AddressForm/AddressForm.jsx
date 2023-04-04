@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import styles from './AddressForm.module.css';
-import {Modal} from 'react-bootstrap';
-import {addAddress} from '../../Services/Actions/AddressAction';
-import {useDispatch, useSelector} from 'react-redux';
+import styles from "./AddressForm.module.css";
+import { Modal } from "react-bootstrap";
+import { addAddress } from "../../Services/Actions/AddressAction";
+import { useDispatch, useSelector } from "react-redux";
 
-const AddressForm = ({show, handleCloseAddress}) => {
+const AddressForm = ({ show, handleCloseAddress }) => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.UserReducer);
+  const { user } = useSelector((state) => state.UserReducer);
 
   const submit = (e) => {
     e.preventDefault();
@@ -20,14 +19,13 @@ const AddressForm = ({show, handleCloseAddress}) => {
       city: e.target.city.value,
       state: e.target.state.value,
     };
-    // console.log(address);
     addAddress(dispatch, address);
     handleCloseAddress();
   };
   return (
     <div className={styles.addressContainer}>
       <Modal
-        size=''
+        size=""
         show={show}
         onHide={handleCloseAddress}
         className={styles.modal}
@@ -39,50 +37,50 @@ const AddressForm = ({show, handleCloseAddress}) => {
           <Modal.Body>
             <form onSubmit={submit} className={styles.addressForm}>
               <div>
-                <input required type={'text'} placeholder='Name' name='name' />{' '}
+                <input required type={"text"} placeholder="Name" name="name" />{" "}
                 <input
                   required
-                  type={'number'}
-                  placeholder='10-digit mobile number'
-                  name='mobile_number'
+                  type={"number"}
+                  placeholder="10-digit mobile number"
+                  name="mobile_number"
                 />
               </div>
               <div>
                 <input
-                  type={'number'}
-                  placeholder={'Pincode'}
-                  name={'pincode'}
+                  type={"number"}
+                  placeholder={"Pincode"}
+                  name={"pincode"}
                   required
                 />
                 <input
-                  type={'text'}
-                  placeholder={'Locality'}
-                  name={'locality'}
+                  type={"text"}
+                  placeholder={"Locality"}
+                  name={"locality"}
                 />
               </div>
               <div>
                 <input
-                  type={'text'}
-                  placeholder={'Address (Area and Street)'}
-                  name={'houseAddress'}
+                  type={"text"}
+                  placeholder={"Address (Area and Street)"}
+                  name={"houseAddress"}
                   required
                 />
               </div>
               <div>
                 <input
-                  type={'text'}
-                  placeholder={'City/District/Town'}
-                  name={'city'}
+                  type={"text"}
+                  placeholder={"City/District/Town"}
+                  name={"city"}
                   required
                 />
                 <input
-                  type={''}
-                  placeholder={'State'}
-                  name={'state'}
+                  type={""}
+                  placeholder={"State"}
+                  name={"state"}
                   required
                 />
               </div>
-              <input type={'submit'} value='Add Address' /> <br />
+              <input type={"submit"} value="Add Address" /> <br />
             </form>
           </Modal.Body>
           <Modal.Footer></Modal.Footer>

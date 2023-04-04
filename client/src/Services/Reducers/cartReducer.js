@@ -7,13 +7,13 @@ import {
   REMOVE_FROM_CART,
   REFRESH_CART,
   REMOVE_MULTIPLE_FROM_CART,
-} from '../Actions/CartAction';
+} from "../Actions/CartAction";
 
 const initialState = {
   isError: false,
   isLoading: false,
   isSuccess: false,
-  message: '',
+  message: "",
   cartData: [],
 };
 
@@ -25,7 +25,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: true,
         isSuccess: false,
-        message: '',
+        message: "",
       };
     }
     case IS_ERROR_IN_CART: {
@@ -83,7 +83,6 @@ export const CartReducer = (state = initialState, action) => {
       const updatedCartData = state.cartData.filter(
         (elem) => !action.payload.includes(elem.productId)
       );
-      // console.log(updatedCartData);
       return {
         ...state,
         isLoading: false,
@@ -97,7 +96,7 @@ export const CartReducer = (state = initialState, action) => {
         isError: false,
         isLoading: false,
         isSuccess: false,
-        message: '',
+        message: "",
         cartData: [],
       };
     }

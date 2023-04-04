@@ -6,14 +6,14 @@ import {
   REMOVE_FROM_WISHLIST,
   IS_LOADING_IN_WISHLIST,
   REFRESH_WISHLIST,
-} from '../Actions/WishlistAction';
+} from "../Actions/WishlistAction";
 
 const initialState = {
   wishlistData: [],
   isLoading: false,
   isError: false,
   isSuccess: false,
-  message: '',
+  message: "",
 };
 
 export const WishlistReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ export const WishlistReducer = (state = initialState, action) => {
         isError: false,
         isLoading: true,
         isSuccess: false,
-        message: '',
+        message: "",
       };
     }
     case IS_ERROR_IN_WISHLIST: {
@@ -42,7 +42,7 @@ export const WishlistReducer = (state = initialState, action) => {
         isError: false,
         isLoading: false,
         isSuccess: false,
-        message: '',
+        message: "",
         wishlistData: action.payload.data,
       };
     }
@@ -85,7 +85,7 @@ export const WishlistReducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         isSuccess: false,
-        message: '',
+        message: "",
       };
     }
     default: {

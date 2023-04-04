@@ -4,9 +4,9 @@ import {
   SIGNIN,
   SIGNOUT,
   SIGNUP,
-} from '../Actions/UserAction';
+} from "../Actions/UserAction";
 
-const userData = JSON.parse(localStorage.getItem('user')) || {};
+const userData = JSON.parse(localStorage.getItem("user")) || {};
 
 const initialState = {
   isError: false,
@@ -14,9 +14,9 @@ const initialState = {
   signinSuccess: false,
   signupSuccess: false,
   signoutSuccess: false,
-  token: '',
+  token: "",
   user: userData,
-  message: '',
+  message: "",
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -29,7 +29,7 @@ export const UserReducer = (state = initialState, action) => {
         signinSuccess: false,
         signupSuccess: false,
         signoutSuccess: false,
-        message: '',
+        message: "",
       };
     }
     case IS_ERROR_IN_USER: {
@@ -75,7 +75,7 @@ export const UserReducer = (state = initialState, action) => {
         signinSuccess: false,
         signupSuccess: false,
         signoutSuccess: true,
-        token: '',
+        token: "",
         user: {},
         message: action.payload.message,
       };

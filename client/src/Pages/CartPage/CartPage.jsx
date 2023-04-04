@@ -1,20 +1,19 @@
-import React, {useEffect} from 'react';
-import styles from './CartPage.module.css';
-import {useSelector, useDispatch} from 'react-redux';
-import fAssured from '../../Assets/Images/f-assured.png';
-import emptyImage from '../../Assets/Images/empty.png';
-import {Link, useNavigate} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import {removeFromCart} from '../../Services/Actions/CartAction';
-import CartSidebar from './CartSidebar';
-import {buyNow} from '../../Assets/ReusableFuctions';
-import LoginButton from '../../Components/LoginButton/LoginButton';
+import styles from "./CartPage.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import fAssured from "../../Assets/Images/f-assured.png";
+import emptyImage from "../../Assets/Images/empty.png";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { removeFromCart } from "../../Services/Actions/CartAction";
+import CartSidebar from "./CartSidebar";
+import { buyNow } from "../../Assets/ReusableFuctions";
+import LoginButton from "../../Components/LoginButton/LoginButton";
 
-const CartPage = ({handleShowSignin}) => {
+const CartPage = ({ handleShowSignin }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
-  const {user} = useSelector((state) => state.UserReducer);
+  const { user } = useSelector((state) => state.UserReducer);
 
   return user.userId ? (
     <div className={styles.cartPageContainer}>
@@ -27,7 +26,7 @@ const CartPage = ({handleShowSignin}) => {
             <hr />
           </div>
         ) : (
-          ''
+          ""
         )}
         <div className={styles.cartData}>
           {cart.cartData.length ? (
@@ -59,12 +58,12 @@ const CartPage = ({handleShowSignin}) => {
                       <img
                         className={styles.fAssured}
                         src={fAssured}
-                        alt='Flipkart assured'
+                        alt="Flipkart assured"
                       />
                       <p className={styles.price}>
                         <span className={styles.currentPrice}>
                           ₹{elem.current_price}
-                        </span>{' '}
+                        </span>{" "}
                         <strike className={styles.originalPrice}>
                           ₹{elem.original_price}
                         </strike>
@@ -72,13 +71,13 @@ const CartPage = ({handleShowSignin}) => {
                       </p>
                       <div className={styles.btnDiv}>
                         <Button
-                          variant='outline-danger'
+                          variant="outline-danger"
                           onClick={() => removeFromCart(dispatch, elem._id)}
                         >
                           Remove
                         </Button>
                         <Button
-                          variant='outline-warning'
+                          variant="outline-warning"
                           onClick={() => buyNow([elem], navigate)}
                         >
                           Buy this now
@@ -92,10 +91,10 @@ const CartPage = ({handleShowSignin}) => {
             })
           ) : (
             <div className={styles.emptyCart}>
-              <img src={emptyImage} alt='Empty Item' />
+              <img src={emptyImage} alt="Empty Item" />
               <h4>Your cart is empty!</h4>
               <p>Add items to it now!</p>
-              <Button onClick={() => navigate('/')}>Shop now</Button>
+              <Button onClick={() => navigate("/")}>Shop now</Button>
             </div>
           )}
         </div>
@@ -115,8 +114,8 @@ const CartPage = ({handleShowSignin}) => {
   ) : (
     <LoginButton
       handleShowSignin={handleShowSignin}
-      heading={'Missing Cart items?'}
-      text={'Login to see the items you added previously'}
+      heading={"Missing Cart items?"}
+      text={"Login to see the items you added previously"}
     />
   );
 };

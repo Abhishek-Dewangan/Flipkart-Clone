@@ -1,9 +1,8 @@
-import React from 'react';
-import styles from './Footer.module.css';
-import {about, help, policy, social} from '../../Assets/FooterData';
-import {BsBagFill} from 'react-icons/bs';
-import {GiAlliedStar, GiHelp} from 'react-icons/gi';
-import {MdCardGiftcard} from 'react-icons/md';
+import styles from "./Footer.module.css";
+import { about, help, policy, social } from "../../Assets/FooterData";
+import { BsBagFill } from "react-icons/bs";
+import { GiAlliedStar, GiHelp } from "react-icons/gi";
+import { MdCardGiftcard } from "react-icons/md";
 import {
   FaCcAmex,
   FaCcVisa,
@@ -11,9 +10,9 @@ import {
   FaCcAmazonPay,
   FaCcApplePay,
   FaCcPaypal,
-} from 'react-icons/fa';
-import {SiMastercard} from 'react-icons/si';
-import {SlCreditCard} from 'react-icons/sl';
+} from "react-icons/fa";
+import { SiMastercard } from "react-icons/si";
+import { SlCreditCard } from "react-icons/sl";
 
 const Footer = () => {
   return (
@@ -26,8 +25,8 @@ const Footer = () => {
               <a
                 className={styles.ancorLink}
                 href={elem.link}
-                target={'_blank'}
-                rel='noreferrer'
+                target={"_blank"}
+                rel="noreferrer"
               >
                 {elem.name}
               </a>
@@ -41,8 +40,8 @@ const Footer = () => {
               <a
                 className={styles.ancorLink}
                 href={elem.link}
-                target={'_blank'}
-                rel='noreferrer'
+                target={"_blank"}
+                rel="noreferrer"
               >
                 {elem.name}
               </a>
@@ -56,8 +55,8 @@ const Footer = () => {
               <a
                 className={styles.ancorLink}
                 href={elem.link}
-                target={'_blank'}
-                rel='noreferrer'
+                target={"_blank"}
+                rel="noreferrer"
               >
                 {elem.name}
               </a>
@@ -71,8 +70,8 @@ const Footer = () => {
               <a
                 className={styles.ancorLink}
                 href={elem.link}
-                target={'_blank'}
-                rel='noreferrer'
+                target={"_blank"}
+                rel="noreferrer"
               >
                 {elem.name}
               </a>
@@ -103,9 +102,9 @@ const Footer = () => {
         <p>
           <a
             className={styles.ancorLink}
-            href='https://seller.flipkart.com/?utm_source=fkwebsite&utm_medium=websitedirect'
-            target={'_blank'}
-            rel='noreferrer'
+            href="https://seller.flipkart.com/?utm_source=fkwebsite&utm_medium=websitedirect"
+            target={"_blank"}
+            rel="noreferrer"
           >
             <BsBagFill className={styles.icon} /> Become a Seller
           </a>
@@ -113,9 +112,9 @@ const Footer = () => {
         <p>
           <a
             className={styles.ancorLink}
-            href='https://brands.flipkart.com/'
-            target={'_blank'}
-            rel='noreferrer'
+            href="https://brands.flipkart.com/"
+            target={"_blank"}
+            rel="noreferrer"
           >
             <GiAlliedStar className={styles.icon} /> Advertise
           </a>
@@ -123,9 +122,9 @@ const Footer = () => {
         <p>
           <a
             className={styles.ancorLink}
-            href='https://www.flipkart.com/the-gift-card-store?otracker=undefined_footer_footer_navlinks'
-            target={'_blank'}
-            rel='noreferrer'
+            href="https://www.flipkart.com/the-gift-card-store?otracker=undefined_footer_footer_navlinks"
+            target={"_blank"}
+            rel="noreferrer"
           >
             <MdCardGiftcard className={styles.icon} /> Gift Card
           </a>
@@ -133,9 +132,9 @@ const Footer = () => {
         <p>
           <a
             className={styles.ancorLink}
-            href='https://www.flipkart.com/helpcentre?otracker=undefined_footer_footer_navlinks'
-            target={'_blank'}
-            rel='noreferrer'
+            href="https://www.flipkart.com/helpcentre?otracker=undefined_footer_footer_navlinks"
+            target={"_blank"}
+            rel="noreferrer"
           >
             <GiHelp className={styles.icon} /> Help Center
           </a>

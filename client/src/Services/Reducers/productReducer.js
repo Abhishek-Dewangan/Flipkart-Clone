@@ -7,7 +7,7 @@ import {
   IS_ERROR_IN_PRODUCT,
   GET_TOP_OFFER_PRODUCTS,
   GET_PRODUCTS_ON_SEARCH,
-} from '../Actions/ProductAction';
+} from "../Actions/ProductAction";
 
 const initialState = {
   isError: false,
@@ -97,7 +97,7 @@ export const ProductReducer = (state = initialState, action) => {
       };
     }
     default: {
-      return {...state, isLoading: false};
+      return { ...state, isLoading: false };
     }
   }
 };

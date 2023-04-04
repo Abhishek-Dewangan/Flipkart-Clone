@@ -1,22 +1,8 @@
 import styles from "./FilterBar.module.css";
 import { Accordion } from "react-bootstrap";
 import { filterProducts } from "../../Assets/FilterFunctions";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const FilterBar = ({ variables, setFilterStatus }) => {
-  const { category } = useParams();
-  const [sortby, setSortby, discount, setDiscount, priceRange, setPriceRange] =
-    [...variables];
-
-  // useEffect(() => {
-  //   document.getElementById('form').reset();
-  // setSortby('');
-  // setDiscount([]);
-  // setPriceRange([]);
-  //   setFilterStatus(false);
-  // }, [category]);
-
   return (
     <div className={styles.filterBarContainer}>
       <form

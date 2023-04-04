@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './SubHeader.module.css';
-import {Link} from 'react-router-dom';
-import {subHeaderData} from '../../Assets/SubHeaderData';
+import React from "react";
+import styles from "./SubHeader.module.css";
+import { Link } from "react-router-dom";
+import { subHeaderData } from "../../Assets/SubHeaderData";
 
 const SubHeader = () => {
   return (
@@ -9,7 +9,10 @@ const SubHeader = () => {
       {subHeaderData.map((elem, i) => {
         return (
           <div key={i}>
-            <Link to={`/category/${elem.linkName}`} className={styles.categoryLink}>
+            <Link
+              to={`/category/${elem.linkName}`}
+              className={styles.categoryLink}
+            >
               <img
                 src={elem.image}
                 alt={elem.name}

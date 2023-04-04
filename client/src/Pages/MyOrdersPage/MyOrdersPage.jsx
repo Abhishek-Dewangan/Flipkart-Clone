@@ -1,18 +1,16 @@
-import React, {useEffect} from 'react';
-import styles from './MyOrdersPage.module.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link, useNavigate} from 'react-router-dom';
-import {MdDelete, MdCircle} from 'react-icons/md';
-import fAssured from '../../Assets/Images/f-assured.png';
-import emptyImage from '../../Assets/Images/empty.png';
-import {Button} from 'react-bootstrap';
-import LoginButton from '../../Components/LoginButton/LoginButton';
+import styles from "./MyOrdersPage.module.css";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { MdCircle } from "react-icons/md";
+import fAssured from "../../Assets/Images/f-assured.png";
+import emptyImage from "../../Assets/Images/empty.png";
+import { Button } from "react-bootstrap";
+import LoginButton from "../../Components/LoginButton/LoginButton";
 
-const MyOrdersPage = ({handleShowSignin}) => {
-  const dispatch = useDispatch();
+const MyOrdersPage = ({ handleShowSignin }) => {
   const navigate = useNavigate();
   const order = useSelector((state) => state.OrderReducer);
-  const {user} = useSelector((state) => state.UserReducer);
+  const { user } = useSelector((state) => state.UserReducer);
 
   return user.userId ? (
     <div className={styles.myOrderContainer}>
@@ -20,11 +18,7 @@ const MyOrdersPage = ({handleShowSignin}) => {
       <hr />
       {order.ordersData.length ? (
         order.ordersData.map((elem) => {
-          // Calculating discount percent of products
-          const discount = Math.floor(
-            100 - (elem.current_price * 100) / elem.original_price
-          );
-          const date = elem.date.split(' ');
+          const date = elem.date.split(" ");
           return (
             <div key={elem._id} className={styles.productContainer}>
               <div className={styles.productBox}>
@@ -50,7 +44,7 @@ const MyOrdersPage = ({handleShowSignin}) => {
                   <img
                     className={styles.fAssured}
                     src={fAssured}
-                    alt='Flipkart assured'
+                    alt="Flipkart assured"
                   />
                 </div>
                 <div>
@@ -62,8 +56,8 @@ const MyOrdersPage = ({handleShowSignin}) => {
                 </div>
                 <div>
                   <p className={styles.orderedAt}>
-                    <MdCircle color='#26a541' size={11} /> Ordered on{' '}
-                    {date[1] + ' ' + date[2]}
+                    <MdCircle color="#26a541" size={11} /> Ordered on{" "}
+                    {date[1] + " " + date[2]}
                   </p>
                 </div>
               </div>
@@ -73,18 +67,18 @@ const MyOrdersPage = ({handleShowSignin}) => {
         })
       ) : (
         <div className={styles.emptyOrder}>
-          <img src={emptyImage} alt='Empty Item' />
+          <img src={emptyImage} alt="Empty Item" />
           <h4>Empty order</h4>
           <p>You have not ordered anything yet. Start ordering!</p>
-          <Button onClick={() => navigate('/')}>Start Shopping</Button>
+          <Button onClick={() => navigate("/")}>Start Shopping</Button>
         </div>
       )}
     </div>
   ) : (
     <LoginButton
       handleShowSignin={handleShowSignin}
-      heading={'Want to see your orders?'}
-      text={'Login to see the items you ordered previously'}
+      heading={"Want to see your orders?"}
+      text={"Login to see the items you ordered previously"}
     />
   );
 };

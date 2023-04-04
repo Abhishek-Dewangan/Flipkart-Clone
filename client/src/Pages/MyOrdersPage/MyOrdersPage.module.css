@@ -20,14 +20,11 @@
 }
 .productBox div {
   width: 25%;
-  /* border: 1px solid red; */
 }
 .productBox div:first-child {
   text-align: center;
 }
 .imgDiv {
-  /* display: flex;
-  align-items: center; */
 }
 .productImage {
   max-width: 95%;

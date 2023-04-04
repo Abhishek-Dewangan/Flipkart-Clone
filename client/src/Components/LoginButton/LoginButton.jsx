@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './LoginButton.module.css';
 import emptyImage from '../../Assets/Images/empty.png';
 

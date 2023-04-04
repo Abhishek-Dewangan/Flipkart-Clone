@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {Button} from 'react-bootstrap';
-import {useSelector, useDispatch} from 'react-redux';
-import CartSidebar from '../CartPage/CartSidebar';
-import styles from './CheckoutPage.module.css';
-import fAssured from '../../Assets/Images/f-assured.png';
-import {Link} from 'react-router-dom';
-import {addOrders, removeProductsFromCart} from '../../Assets/ReusableFuctions';
-import LoginButton from '../../Components/LoginButton/LoginButton';
-import {AiFillDelete} from 'react-icons/ai';
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import CartSidebar from "../CartPage/CartSidebar";
+import styles from "./CheckoutPage.module.css";
+import fAssured from "../../Assets/Images/f-assured.png";
+import { Link } from "react-router-dom";
+import {
+  addOrders,
+  removeProductsFromCart,
+} from "../../Assets/ReusableFuctions";
+import LoginButton from "../../Components/LoginButton/LoginButton";
+import { AiFillDelete } from "react-icons/ai";
 
 const CheckoutPage = ({
   handleShowAddress,
@@ -18,15 +21,15 @@ const CheckoutPage = ({
   const dispatch = useDispatch();
   const [stage, setStage] = useState(2);
   const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem('checkout')) || []
+    JSON.parse(localStorage.getItem("checkout")) || []
   );
-  const {user} = useSelector((state) => state.UserReducer);
-  const {addressData} = useSelector((state) => state.AddressReducer);
+  const { user } = useSelector((state) => state.UserReducer);
+  const { addressData } = useSelector((state) => state.AddressReducer);
 
   const removeFromCheckoutList = (id) => {
     const filteredProducts = products.filter((elem) => elem._id !== id);
     setProducts(filteredProducts);
-    localStorage.setItem('checkout', JSON.stringify(filteredProducts));
+    localStorage.setItem("checkout", JSON.stringify(filteredProducts));
   };
 
   return user.userId ? (
@@ -41,7 +44,7 @@ const CheckoutPage = ({
               <p>
                 <b>
                   {user.first_name} {user.last_name}
-                </b>{' '}
+                </b>{" "}
                 +91{user.mobile_number}
               </p>
             </div>
@@ -56,12 +59,12 @@ const CheckoutPage = ({
               <div>
                 <div className={styles.focusAddressBody}>
                   <p className={styles.address}>
-                    <b>{addressData[0].name}</b> {addressData[0].houseAddress}{' '}
-                    {addressData[0].city} {addressData[0].state} -{' '}
+                    <b>{addressData[0].name}</b> {addressData[0].houseAddress}{" "}
+                    {addressData[0].city} {addressData[0].state} -{" "}
                     {addressData[0].pincode}
                   </p>
                   <Button
-                    variant='outline-primary'
+                    variant="outline-primary"
                     onClick={handleShowEditAddress}
                   >
                     Edit Address
@@ -77,7 +80,7 @@ const CheckoutPage = ({
             ) : (
               <Button
                 className={styles.focusAddAddressBtn}
-                variant='outline-primary'
+                variant="outline-primary"
                 onClick={handleShowAddress}
               >
                 Add Address
@@ -92,18 +95,18 @@ const CheckoutPage = ({
             {addressData.length ? (
               <div className={styles.sectionBody}>
                 <p className={styles.address}>
-                  <b>{addressData[0].name}</b> {addressData[0].houseAddress}{' '}
-                  {addressData[0].city} {addressData[0].state} -{' '}
+                  <b>{addressData[0].name}</b> {addressData[0].houseAddress}{" "}
+                  {addressData[0].city} {addressData[0].state} -{" "}
                   {addressData[0].pincode}
                 </p>
-                <Button variant='outline-primary' onClick={() => setStage(2)}>
+                <Button variant="outline-primary" onClick={() => setStage(2)}>
                   Change Address
                 </Button>
               </div>
             ) : (
               <Button
                 className={styles.addAddress}
-                variant='outline-primary'
+                variant="outline-primary"
                 onClick={handleShowAddress}
               >
                 Add Address
@@ -145,12 +148,12 @@ const CheckoutPage = ({
                         <img
                           className={styles.fAssured}
                           src={fAssured}
-                          alt='Flipkart assured'
+                          alt="Flipkart assured"
                         />
                         <p className={styles.price}>
                           <span className={styles.currentPrice}>
                             ₹{elem.current_price}
-                          </span>{' '}
+                          </span>{" "}
                           <strike className={styles.originalPrice}>
                             ₹{elem.original_price}
                           </strike>
@@ -162,7 +165,7 @@ const CheckoutPage = ({
                       <button
                         className={styles.removeBtn}
                         onClick={() => removeFromCheckoutList(elem._id)}
-                        title='Remove'
+                        title="Remove"
                       >
                         <AiFillDelete />
                       </button>
@@ -191,13 +194,13 @@ const CheckoutPage = ({
             <div className={styles.focusPaymentBody}>
               <div>
                 <input
-                  type={'radio'}
-                  id='payment'
-                  name='payment'
-                  value='cod'
+                  type={"radio"}
+                  id="payment"
+                  name="payment"
+                  value="cod"
                   defaultChecked
-                />{' '}
-                <label htmlFor='payment'>Cash on delivery</label>
+                />{" "}
+                <label htmlFor="payment">Cash on delivery</label>
               </div>
               <button
                 className={styles.confirmOrderBtn}
@@ -226,8 +229,8 @@ const CheckoutPage = ({
   ) : (
     <LoginButton
       handleShowSignin={handleShowSignin}
-      heading={'Want to Buy Something?'}
-      text={'Please login first to buy products'}
+      heading={"Want to Buy Something?"}
+      text={"Please login first to buy products"}
     />
   );
 };
