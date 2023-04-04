@@ -1,22 +1,22 @@
-import {useEffect, useState} from 'react';
-import styles from './ProductCategoryPage.module.css';
-import {useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {getProductsByCategory} from '../../Services/Actions/ProductAction';
-import ShowProducts from '../../Components/ShowProducts/ShowProducts';
-import SubHeader from '../../Components/SubHeader/SubHeader';
-import FilterBar from '../../Components/FilterBar/FilterBar';
+import { useEffect, useState } from "react";
+import styles from "./ProductCategoryPage.module.css";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsByCategory } from "../../Services/Actions/ProductAction";
+import ShowProducts from "../../Components/ShowProducts/ShowProducts";
+import SubHeader from "../../Components/SubHeader/SubHeader";
+import FilterBar from "../../Components/FilterBar/FilterBar";
 import {
   filterByDiscount,
   filterByPriceRange,
   filterBySort,
-} from '../../Assets/FilterFuctions';
+} from "../../Assets/FilterFunctions";
 
 const ProductCategoryPage = () => {
-  const {category} = useParams();
+  const { category } = useParams();
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
-  const [sortby, setSortby] = useState('');
+  const [sortby, setSortby] = useState("");
   const [discount, setDiscount] = useState([]);
   const [priceRange, setPriceRange] = useState([]);
   const [filterStatus, setFilterStatus] = useState(false);
@@ -28,12 +28,18 @@ const ProductCategoryPage = () => {
     priceRange,
     setPriceRange,
   ];
-  const {categoryProducts, offerProducts, isLoading, isSuccess} = useSelector(
+  const { categoryProducts, offerProducts, isLoading, isSuccess } = useSelector(
     (state) => state.ProductReducer
   );
 
   // Calling filter fuctions
   const filterProducts = (result) => {
+    if (discount.length) {
+      result = filterByDiscount(result, discount);
+    }
+    if (priceRange.length) {
+      result = filterByPriceRange(result, priceRange);
+    }
     if (sortby) {
       result = filterBySort(
         result,
@@ -43,18 +49,12 @@ const ProductCategoryPage = () => {
         category
       );
     }
-    if (discount.length) {
-      console.log(discount);
-      result = filterByDiscount(result, discount);
-    }
-    if (priceRange.length) {
-      result = filterByPriceRange(result, priceRange);
-    }
     setProducts([...result]);
   };
 
   useEffect(() => {
-    let result = category === 'topoffers' ? [...offerProducts] : [...products];
+    let result =
+      category === "topoffers" ? [...offerProducts] : [...categoryProducts];
     filterProducts(result);
   }, [sortby, discount, priceRange, category]);
 
@@ -65,7 +65,7 @@ const ProductCategoryPage = () => {
   }, [category]);
 
   useEffect(() => {
-    category === 'topoffers'
+    category === "topoffers"
       ? setProducts([...offerProducts])
       : setProducts([...categoryProducts]);
   }, [categoryProducts, category, offerProducts]);
