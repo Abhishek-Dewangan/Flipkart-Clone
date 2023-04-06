@@ -15,7 +15,9 @@ export const GET_TOP_OFFER_PRODUCTS = "GET_TOP_OFFER_PRODUCTS";
 export const getPrducts = async (dispatch) => {
   dispatch({ type: IS_LOADING_IN_PRODUCT });
   try {
-    const products = await axios.get("http://localhost:8080/api/getproducts");
+    const products = await axios.get(
+      "https://crimson-crane-vest.cyclic.app/api/getproducts"
+    );
     dispatch({ type: GET_PRODUCTS, payload: products.data });
   } catch (error) {
     dispatch({ type: IS_ERROR_IN_PRODUCT, payload: error });
@@ -28,12 +30,12 @@ export const getProductsByCategory = async (dispatch, category) => {
   try {
     if (category === "topoffers") {
       const products = await axios.get(
-        `http://localhost:8080/api/getofferproducts`
+        `https://crimson-crane-vest.cyclic.app/api/getofferproducts`
       );
       dispatch({ type: GET_TOP_OFFER_PRODUCTS, payload: products.data });
     } else {
       const products = await axios.get(
-        `http://localhost:8080/api/getproductsbycategory/${category}`
+        `https://crimson-crane-vest.cyclic.app/api/getproductsbycategory/${category}`
       );
       dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: products.data });
     }

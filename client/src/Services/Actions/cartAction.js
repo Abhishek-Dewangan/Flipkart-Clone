@@ -15,7 +15,7 @@ export const addToCart = async (dispatch, product) => {
   dispatch({ type: IS_LOADING_IN_CART });
   try {
     const res = await axios.post(
-      "http://localhost:8080/api/addtocart",
+      "https://crimson-crane-vest.cyclic.app/api/addtocart",
       product
     );
     dispatch({ type: ADD_TO_CART, payload: res.data });
@@ -29,7 +29,7 @@ export const getCartProducts = async (dispatch, userId) => {
   dispatch({ type: IS_LOADING_IN_CART });
   try {
     const res = await axios.get(
-      `http://localhost:8080/api/getcartproducts/${userId}`
+      `https://crimson-crane-vest.cyclic.app/api/getcartproducts/${userId}`
     );
     dispatch({ type: GET_CART_DATA, payload: res.data });
   } catch (error) {
@@ -42,7 +42,7 @@ export const removeFromCart = async (dispatch, productId) => {
   dispatch({ type: IS_LOADING_IN_CART });
   try {
     const res = await axios.delete(
-      `http://localhost:8080/api/removefromcart/${productId}`
+      `https://crimson-crane-vest.cyclic.app/api/removefromcart/${productId}`
     );
     dispatch({ type: REMOVE_FROM_CART, payload: res.data });
   } catch (error) {
@@ -55,7 +55,7 @@ export const removeAllFromCart = async (dispatch, userId) => {
   dispatch({ type: IS_LOADING_IN_CART });
   try {
     const res = await axios.delete(
-      `http://localhost:8080/api/removeallfromcart/${userId}`
+      `https://crimson-crane-vest.cyclic.app/api/removeallfromcart/${userId}`
     );
     dispatch({ type: REMOVE_ALL_FROM_CART, payload: res.data });
   } catch (error) {
@@ -69,7 +69,7 @@ export const removeMultiplefromCart = async (dispatch, productsId, userId) => {
   try {
     const data = { productsId: productsId };
     const res = await axios.delete(
-      `http://localhost:8080/api/removemultiplefromcart/${userId}`,
+      `https://crimson-crane-vest.cyclic.app/api/removemultiplefromcart/${userId}`,
       { data }
     );
     dispatch({ type: REMOVE_MULTIPLE_FROM_CART, payload: productsId });

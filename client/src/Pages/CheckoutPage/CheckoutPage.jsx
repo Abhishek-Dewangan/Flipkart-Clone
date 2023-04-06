@@ -162,13 +162,15 @@ const CheckoutPage = ({
                           </span>
                         </p>
                       </div>
-                      <button
-                        className={styles.removeBtn}
-                        onClick={() => removeFromCheckoutList(elem._id)}
-                        title="Remove"
-                      >
-                        <AiFillDelete />
-                      </button>
+                      {products.length > 1 && (
+                        <button
+                          className={styles.removeBtn}
+                          onClick={() => removeFromCheckoutList(elem._id)}
+                          title="Remove"
+                        >
+                          <AiFillDelete />
+                        </button>
+                      )}
                     </div>
                     <hr />
                   </div>

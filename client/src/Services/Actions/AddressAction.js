@@ -13,7 +13,7 @@ export const addAddress = async (dispatch, address) => {
   dispatch({ type: IS_LOADING_IN_ADDRESS });
   try {
     const response = await axios.post(
-      `http://localhost:8080/api/addnewaddress`,
+      `https://crimson-crane-vest.cyclic.app/api/addnewaddress`,
       address
     );
     dispatch({ type: ADD_ADDRESS, payload: response.data });
@@ -27,7 +27,7 @@ export const getAddress = async (dispatch, userid) => {
   dispatch({ type: IS_LOADING_IN_ADDRESS });
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/getaddress/${userid}`
+      `https://crimson-crane-vest.cyclic.app/api/getaddress/${userid}`
     );
     dispatch({ type: GET_ADDRESS, payload: response.data });
   } catch (error) {
@@ -40,7 +40,7 @@ export const updateAddress = async (dispatch, addressId, address) => {
   dispatch({ type: IS_LOADING_IN_ADDRESS });
   try {
     const response = await axios.put(
-      `http://localhost:8080/api/updateaddress/${addressId}`,
+      `https://crimson-crane-vest.cyclic.app/api/updateaddress/${addressId}`,
       address
     );
     response.data.data = { _id: addressId, ...address };

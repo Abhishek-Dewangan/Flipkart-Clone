@@ -8,6 +8,7 @@ import { removeFromCart } from "../../Services/Actions/CartAction";
 import CartSidebar from "./CartSidebar";
 import { buyNow } from "../../Assets/ReusableFuctions";
 import LoginButton from "../../Components/LoginButton/LoginButton";
+import { toast } from "react-toastify";
 
 const CartPage = ({ handleShowSignin }) => {
   const navigate = useNavigate();
@@ -104,7 +105,11 @@ const CartPage = ({ handleShowSignin }) => {
         <div className={styles.placeOrder}>
           <Button
             className={styles.placeOrderBtn}
-            onClick={() => buyNow(cart.cartData, navigate)}
+            onClick={() => {
+              cart.cartData.length
+                ? buyNow(cart.cartData, navigate)
+                : toast.warning("Your cart is empty!");
+            }}
           >
             PLACE ORDER
           </Button>

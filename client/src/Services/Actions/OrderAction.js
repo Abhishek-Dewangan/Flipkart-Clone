@@ -12,7 +12,7 @@ export const addOrder = async (dispatch, products) => {
   dispatch({ type: IS_LOADING_IN_ORDER });
   try {
     const res = await axios.post(
-      "http://localhost:8080/api/addorder",
+      "https://crimson-crane-vest.cyclic.app/api/addorder",
       products
     );
     dispatch({ type: ADD_ORDER, payload: res.data });
@@ -27,7 +27,7 @@ export const getOrders = async (dispatch, userid) => {
   dispatch({ type: IS_LOADING_IN_ORDER });
   try {
     const res = await axios.get(
-      `http://localhost:8080/api/getorders/${userid}`
+      `https://crimson-crane-vest.cyclic.app/api/getorders/${userid}`
     );
     dispatch({ type: GET_ORDERS, payload: res.data });
   } catch (error) {

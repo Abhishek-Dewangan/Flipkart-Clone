@@ -14,7 +14,7 @@ export const addToWishlist = async (dispatch, product) => {
   dispatch({ type: IS_LOADING_IN_WISHLIST });
   try {
     const res = await axios.post(
-      "http://localhost:8080/api/addtowishlist",
+      "https://crimson-crane-vest.cyclic.app/api/addtowishlist",
       product
     );
     dispatch({ type: ADD_TO_WISHLIST, payload: res.data });
@@ -28,7 +28,7 @@ export const getWishlistProducts = async (dispatch, userId) => {
   dispatch({ type: IS_LOADING_IN_WISHLIST });
   try {
     const res = await axios.get(
-      `http://localhost:8080/api/getwishlistproducts/${userId}`
+      `https://crimson-crane-vest.cyclic.app/api/getwishlistproducts/${userId}`
     );
     dispatch({ type: GET_WISHLIST_PRODUCTS, payload: res.data });
   } catch (error) {
@@ -41,7 +41,7 @@ export const removeFromWishlist = async (dispatch, productId) => {
   dispatch({ type: IS_LOADING_IN_WISHLIST });
   try {
     const res = await axios.delete(
-      `http://localhost:8080/api/removefromwishlist/${productId}`
+      `https://crimson-crane-vest.cyclic.app/api/removefromwishlist/${productId}`
     );
     dispatch({ type: REMOVE_FROM_WISHLIST, payload: res.data });
   } catch (error) {
@@ -53,7 +53,9 @@ export const removeFromWishlist = async (dispatch, productId) => {
 export const removeAllFromWishlist = async (dispatch, userId) => {
   dispatch({ type: IS_LOADING_IN_WISHLIST });
   try {
-    const res = await axios.delete(`http://localhost:8080/api/${userId}`);
+    const res = await axios.delete(
+      `https://crimson-crane-vest.cyclic.app/api/${userId}`
+    );
     dispatch({ type: REMOVE_ALL_FROM_WISHLIST, payload: res });
   } catch (error) {
     dispatch({ type: IS_ERROR_IN_WISHLIST, payload: error });
