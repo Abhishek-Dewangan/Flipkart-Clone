@@ -32,7 +32,7 @@ const AddressForm = ({ show, handleCloseAddress }) => {
       >
         <div className={styles.formDiv}>
           <Modal.Header closeButton>
-            <Modal.Title className={styles.formTitle}>Address Form</Modal.Title>
+            <Modal.Title className={styles.formTitle}>ADD ADDRESS</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={submit} className={styles.addressForm}>
@@ -80,7 +80,13 @@ const AddressForm = ({ show, handleCloseAddress }) => {
                   required
                 />
               </div>
-              <input type={"submit"} value="Add Address" /> <br />
+              <div>
+                <input
+                  className={styles.submitBtn}
+                  type={"submit"}
+                  value="ADD ADDRESS"
+                />
+              </div>
             </form>
           </Modal.Body>
           <Modal.Footer></Modal.Footer>

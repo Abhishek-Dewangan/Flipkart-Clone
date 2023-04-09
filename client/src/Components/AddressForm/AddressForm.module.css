@@ -1,17 +1,30 @@
 /* Address form styles */
-.madal {
+.modal {
   width: 100%;
 }
 .formDiv {
   width: 100%;
 }
+.formTitle{
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 0.6em;
+  color: #2874f0;
+}
 .addressForm div {
   display: flex;
-  /* width: 100%; */
-  /* margin: auto; */
-  /* gap: 1em; */
 }
-.addressForm div input{
-    width: 100%;
-    margin: 0.5em;
+.addressForm div input {
+  width: 100%;
+  margin: 0.5em;
+  border-radius: 5px;
+  border: 1px solid silver;
+  padding: 5px 15px;
+}
+.submitBtn {
+  width: fit-content;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  background-color: #fb641b;
 }

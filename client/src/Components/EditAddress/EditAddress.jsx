@@ -54,7 +54,7 @@ const EditAddress = ({ show, handleCloseEditAddress }) => {
       >
         <div className={styles.formDiv}>
           <Modal.Header closeButton>
-            <Modal.Title className={styles.formTitle}>Address Form</Modal.Title>
+            <Modal.Title className={styles.formTitle}>EDIT ADDRESS</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={submit} className={styles.addressForm}>
@@ -121,7 +121,14 @@ const EditAddress = ({ show, handleCloseEditAddress }) => {
                   onChange={(e) => setState(e.target.value)}
                 />
               </div>
-              <input type={"submit"} value="Add Address" /> <br />
+              <div>
+                <input
+                  type={"submit"}
+                  className={styles.submitBtn}
+                  value="ADD ADDRESS"
+                />{" "}
+                <br />
+              </div>
             </form>
           </Modal.Body>
           <Modal.Footer></Modal.Footer>
