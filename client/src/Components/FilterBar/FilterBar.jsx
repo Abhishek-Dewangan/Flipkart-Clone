@@ -1,14 +1,22 @@
 import styles from "./FilterBar.module.css";
 import { Accordion } from "react-bootstrap";
 import { filterProducts } from "../../Assets/FilterFunctions";
+import { useEffect } from "react";
 
 const FilterBar = ({ variables, setFilterStatus }) => {
+  const [sortby, setSortby, discount, setDiscount, priceRange, setPriceRange] =
+    variables;
+    
+  useEffect(() => {
+    if (discount.length || priceRange.length) setFilterStatus(true);
+    else setFilterStatus(false);
+  }, [discount.length, priceRange.length]);
   return (
     <div className={styles.filterBarContainer}>
       <form
         onChange={(e) => {
-          filterProducts(e, variables);
-          setFilterStatus(true);
+          filterProducts(e, variables, setFilterStatus);
+          // setFilterStatus(true);
         }}
         id="form"
       >

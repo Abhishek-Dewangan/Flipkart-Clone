@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+git import { useEffect, useState } from "react";
 import styles from "./ProductCategoryPage.module.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,7 +46,9 @@ const ProductCategoryPage = () => {
         sortby,
         offerProducts,
         categoryProducts,
-        category
+        category,
+        discount,
+        priceRange
       );
     }
     setProducts([...result]);
@@ -56,7 +58,7 @@ const ProductCategoryPage = () => {
     let result =
       category === "topoffers" ? [...offerProducts] : [...categoryProducts];
     filterProducts(result);
-  }, [sortby, discount, priceRange, category]);
+  }, [sortby, discount, priceRange.length, category]);
 
   // Calling category product function
   useEffect(() => {

@@ -1,5 +1,5 @@
 // Filter products
-export const filterProducts = async (event, variables) => {
+export const filterProducts = async (event, variables, setFilterStatus) => {
   const { name, value, checked } = event.target;
   const [sortby, setSortby, discount, setDiscount, priceRange, setPriceRange] =
     variables;
@@ -35,16 +35,22 @@ export const filterBySort = (
   sortby,
   offerProducts,
   categoryProducts,
-  category
+  category,
+  discount,
+  priceRange
 ) => {
   if (sortby === "lth") {
     return products.sort((a, b) => a.current_price - b.current_price);
   } else if (sortby === "htl") {
     return products.sort((a, b) => b.current_price - a.current_price);
-  } else
-    return category === "topoffers"
-      ? [...offerProducts]
-      : [...categoryProducts];
+  } else {
+    let newProducts =
+      category === "topoffers" ? [...offerProducts] : [...categoryProducts];
+    if (discount.length) newProducts = filterByDiscount(newProducts, discount);
+    if (priceRange.length)
+      newProducts = filterByPriceRange(newProducts, priceRange);
+    return newProducts;
+  }
 };
 
 // Filtering products bases on dicount
