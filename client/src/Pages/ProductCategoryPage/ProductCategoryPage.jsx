@@ -1,4 +1,4 @@
-git import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ProductCategoryPage.module.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
