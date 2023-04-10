@@ -15,7 +15,7 @@ import CartPage from "./Pages/CartPage/CartPage";
 import WishlistPage from "./Pages/WishlistPage/WishlistPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
 import MyOrdersPage from "./Pages/MyOrdersPage/MyOrdersPage";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import { getAddress } from "./Services/Actions/AddressAction";
 import AddressForm from "./Components/AddressForm/AddressForm";
@@ -86,6 +86,15 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <ToastContainer
+        toastStyle={{
+          marginTop: "80vh",
+          borderRadius: "2px",
+          backgroundColor: "#212121",
+          color:'white',
+
+        }}
+      />
       <Header handleShowSignin={handleShowSignin} />
       <SignIn
         show={showSignin}

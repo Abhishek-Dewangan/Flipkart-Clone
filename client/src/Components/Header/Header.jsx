@@ -12,7 +12,7 @@ import {
   FaGooglePlay,
 } from "react-icons/fa";
 import logo from "../../Assets/Images/flipkart-logo.png";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Dropdown } from "react-bootstrap";
 import { signout } from "../../Services/Actions/UserAction";
@@ -50,7 +50,6 @@ const Header = ({ handleShowSignin }) => {
 
   return (
     <nav className={styles.navbar}>
-      <ToastContainer />
       <section className={styles.left}>
         <Link to={"/"} className={styles.link}>
           <img className={styles.logo} src={logo} alt="Flipkart logo" />
