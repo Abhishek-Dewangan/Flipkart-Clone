@@ -15,7 +15,6 @@
 - MongoDB
 - Bootstrap
 - Swiper
-- JWT
 
 ### Features
 - User authentication
