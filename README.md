@@ -23,5 +23,5 @@
 - Sliders & dfferent category of products pages
 - User Cart, Wishlist and Orders
 - Search products by its name and category functionality
-- User friendly
+- User's friendly
 - Smooth e-commerce purchase flow from exploring different category items to ordering them to your address
