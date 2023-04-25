@@ -14,6 +14,7 @@
 - Express Js
 - MongoDB
 - Bootstrap
+- Swipper
 
 ### Features
 - User authentication
