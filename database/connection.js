@@ -12,7 +12,7 @@ const connection = async () => {
     await mongoose.connect(mongodb_url, connetionParams);
     console.log('Application is connected to database');
   } catch (error) {
-    console.log('Unable to connect with database', error);
+    console.log('Database collection failed', error);
   }
 };
 
