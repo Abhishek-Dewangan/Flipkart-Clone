@@ -13,7 +13,6 @@
 - Node Js
 - Express Js
 - MongoDB
-- Bootstrap
 
 ### Features
 - User authentication
