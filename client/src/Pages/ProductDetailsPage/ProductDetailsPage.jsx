@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import styles from "./ProductDetailsPage.module.css";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getProductDetails } from "../../Services/Actions/ProductAction";
-import { FaShoppingCart } from "react-icons/fa";
-import { GiElectric } from "react-icons/gi";
-import { AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai";
-import fAssured from "../../Assets/Images/f-assured.png";
-import emptyImage from "../../Assets/Images/empty.png";
-import placeholderImage from "../../Assets/Images/placeholder-image.png";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import styles from './ProductDetailsPage.module.css';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductDetails } from '../../Services/Actions/ProductAction';
+import { FaShoppingCart } from 'react-icons/fa';
+import { GiElectric } from 'react-icons/gi';
+import { AiFillHeart, AiFillStar, AiOutlineHeart } from 'react-icons/ai';
+import fAssured from '../../Assets/Images/f-assured.png';
+import emptyImage from '../../Assets/Images/empty.png';
+import placeholderImage from '../../Assets/Images/placeholder-image.png';
+import { useNavigate } from 'react-router-dom';
 import {
   addCart,
   addWishlist,
   buyNow,
   removeWishlist,
-} from "../../Assets/ReusableFuctions";
-import { Card, Placeholder } from "react-bootstrap";
+} from '../../Assets/ReusableFuctions';
+import { Card, Placeholder } from 'react-bootstrap';
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -73,20 +73,20 @@ const ProductDetailsPage = () => {
             <AiOutlineHeart
               onClick={() => addWishlist(dispatch, product, user)}
               className={styles.addWishlistIcon}
-              style={{ stroke: "silver", strokeWidth: "50" }}
+              style={{ stroke: 'silver', strokeWidth: '50' }}
             />
           )}
         </div>
         <div className={styles.productImageDiv}>
           <img
             className={styles.productImage}
-            src={productDetails.thumbnails}
+            src={productDetails.thumbnails[0]}
             alt={productDetails.name}
           />
         </div>
         <div className={styles.buttonDiv}>
           {isExistInCart.name ? (
-            <button onClick={() => navigate("/cart")}>
+            <button onClick={() => navigate('/cart')}>
               <FaShoppingCart /> GO TO CART
             </button>
           ) : (
@@ -107,16 +107,20 @@ const ProductDetailsPage = () => {
               {productDetails.rating} <AiFillStar className={styles.starIcon} />
             </p>
             {productDetails.f_assured ? (
-              <img className={styles.fAssured} src={fAssured} alt="F-Assured" />
+              <img
+                className={styles.fAssured}
+                src={fAssured}
+                alt='F-Assured'
+              />
             ) : (
-              ""
+              ''
             )}
           </div>
           <span className={styles.specialPrice}>Special price</span>
           <p className={styles.price}>
             <span className={styles.currentPrice}>
               ₹{productDetails.current_price}
-            </span>{" "}
+            </span>{' '}
             <strike className={styles.originalPrice}>
               ₹{productDetails.original_price}
             </strike>
@@ -130,14 +134,19 @@ const ProductDetailsPage = () => {
             {productDetails.highlights.length ? (
               productDetails.highlights.map((elem, i) => {
                 return (
-                  <li key={i} className={styles.highlightsList}>
+                  <li
+                    key={i}
+                    className={styles.highlightsList}>
                     {elem}
                   </li>
                 );
               })
             ) : (
               <div className={styles.empty}>
-                <img src={emptyImage} alt="Empty Item" />
+                <img
+                  src={emptyImage}
+                  alt='Empty Item'
+                />
                 <p>No highlights for this product!</p>
               </div>
             )}
@@ -154,7 +163,9 @@ const ProductDetailsPage = () => {
                     <h5>{element.title}</h5>
                     {element.details.map((elem, index) => {
                       return (
-                        <div key={index} className={styles.property}>
+                        <div
+                          key={index}
+                          className={styles.property}>
                           <div>
                             <span>{elem.property}</span>
                           </div>
@@ -167,12 +178,15 @@ const ProductDetailsPage = () => {
                     <hr className={styles.hr} />
                   </div>
                 ) : (
-                  ""
+                  ''
                 );
               })
             ) : (
               <div className={styles.empty}>
-                <img src={emptyImage} alt="Empty Item" />
+                <img
+                  src={emptyImage}
+                  alt='Empty Item'
+                />
                 <p>No specification for this product!</p>
               </div>
             )}
@@ -183,9 +197,12 @@ const ProductDetailsPage = () => {
   ) : (
     <div className={styles.productDetailsContainer}>
       <section className={styles.leftSection}>
-        <Card style={{ width: "15rem", textAlign: "center", border: "none" }}>
+        <Card style={{ width: '15rem', textAlign: 'center', border: 'none' }}>
           <div className={styles.productImageDiv}>
-            <Card.Img variant="top" src={placeholderImage} />
+            <Card.Img
+              variant='top'
+              src={placeholderImage}
+            />
           </div>
           <div className={styles.buttonDiv}>
             <Placeholder.Button />
@@ -197,25 +214,39 @@ const ProductDetailsPage = () => {
         <div className={styles.highlightsBox}>
           <Card>
             <Card.Body>
-              <Placeholder as={Card.Title} animation="glow">
+              <Placeholder
+                as={Card.Title}
+                animation='glow'>
                 <Placeholder xs={10} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Title} animation="glow">
+              <Placeholder
+                as={Card.Title}
+                animation='glow'>
                 <Placeholder xs={10} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
             </Card.Body>
@@ -224,25 +255,39 @@ const ProductDetailsPage = () => {
         <div className={styles.specificationBox}>
           <Card>
             <Card.Body>
-              <Placeholder as={Card.Title} animation="glow">
+              <Placeholder
+                as={Card.Title}
+                animation='glow'>
                 <Placeholder xs={10} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Title} animation="glow">
+              <Placeholder
+                as={Card.Title}
+                animation='glow'>
                 <Placeholder xs={10} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
+              <Placeholder
+                as={Card.Text}
+                animation='glow'>
                 <Placeholder xs={6} />
               </Placeholder>
             </Card.Body>
