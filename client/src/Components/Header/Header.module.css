@@ -1,6 +1,7 @@
 /* Header styles */
 .navbar {
   display: flex;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 5;
@@ -13,13 +14,15 @@
 }
 .left {
   display: flex;
-  width: 50%;
+  flex-wrap: wrap;
+  width: 40%;
   justify-content: space-between;
 }
 .right {
   display: flex;
-  width: 20%;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 40%;
+  justify-content: space-around;
   align-items: center;
 }
 .flipkartIcon {
