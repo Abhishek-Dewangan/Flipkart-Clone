@@ -12,7 +12,6 @@
 - React-Redux
 - Node Js
 - Express Js
-- MongoDB
 
 ### Features
 - User authentication
