@@ -8,6 +8,8 @@
 .topSection {
   display: flex;
   flex-wrap: wrap;
+  gap: 3em;
+  width: 100%;
   padding: 1em 4em 1em 4em;
 }
 .bottomSection {
@@ -17,7 +19,7 @@
   align-items: center;
 }
 .linkSection {
-  width: 90%;
+  /* width: 16%; */
   padding: 1em;
 }
 .cards {
@@ -54,4 +56,10 @@
 .horizonLine {
   border: 1px groove #878787;
   border-radius: 0.1px;
+}
+
+@media screen and (max-width:998px) {
+  .verticleLine {
+    display: none;
+  }
 }
