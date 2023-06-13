@@ -20,12 +20,14 @@ import { refreshAddress } from '../../Services/Actions/AddressAction';
 import { refreshCart } from '../../Services/Actions/CartAction';
 import { refreshWishlist } from '../../Services/Actions/WishlistAction';
 import { refreshOreders } from '../../Services/Actions/OrderAction';
+import { MobileHeader } from '../MobileHeader/MobileHeader';
 
 const Header = ({ handleShowSignin }) => {
   const distpatch = useDispatch();
   const navigate = useNavigate();
   const [showUser, setShowUser] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [status, setStatus] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const cart = useSelector((state) => state.CartReducer);
   const {
@@ -177,6 +179,9 @@ const Header = ({ handleShowSignin }) => {
             <FaShoppingCart className={styles.cartIcon} /> Cart
           </div>
         </Link>
+      </section>
+      <section>
+        <MobileHeader />
       </section>
     </nav>
   );

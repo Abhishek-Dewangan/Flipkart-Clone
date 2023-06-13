@@ -116,3 +116,13 @@
   padding: 0 5px;
   border-radius: 50%;
 }
+
+@media screen and (max-width:800px) {
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+  }
+  .right{
+    display: none;
+  }
+}
