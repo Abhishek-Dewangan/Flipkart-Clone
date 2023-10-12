@@ -1,6 +1,6 @@
 /* Filter bar styles */
 .filterBarContainer {
-  width: 20%;
+  width: 220px;
   height: fit-content;
   position: sticky;
   top: 4em;
@@ -21,4 +21,12 @@
 }
 .accordion {
   border-radius: 0;
+}
+
+@media screen and (max-width:800px){
+  .filterBarContainer{
+    position: relative;
+    width: 100%;
+    top: 0;
+  }
 }

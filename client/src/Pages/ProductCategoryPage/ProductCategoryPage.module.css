@@ -10,3 +10,10 @@
   gap: 1em;
 }
 
+@media screen and (max-width:800px){
+  .categoryBox{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+

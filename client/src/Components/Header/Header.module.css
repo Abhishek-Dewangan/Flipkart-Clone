@@ -115,11 +115,14 @@
   padding: 0 5px;
   border-radius: 50%;
 }
+.menu{
+  display: none;
+}
 
 @media screen and (max-width:800px) {
   .navbar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .left{
     display: flex;
@@ -128,5 +131,8 @@
   }
   .right{
     display: none;
+  }
+  .menu{
+    display: block;
   }
 }

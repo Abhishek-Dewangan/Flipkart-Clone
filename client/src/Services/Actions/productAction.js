@@ -49,7 +49,7 @@ export const getProductById = async (dispatch, id) => {
   dispatch({ type: IS_LOADING_IN_PRODUCT });
   try {
     const product = await axios.get(
-      `http:/localhost:8080/api/getproductbyid/${id}`
+      `https://crimson-crane-vest.cyclic.app/api/getproductbyid/${id}`
     );
     dispatch({ type: GET_PRODUCTS_BY_ID, payload: product });
   } catch (error) {

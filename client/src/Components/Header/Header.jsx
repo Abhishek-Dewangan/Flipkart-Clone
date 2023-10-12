@@ -180,8 +180,8 @@ const Header = ({ handleShowSignin }) => {
           </div>
         </Link>
       </section>
-      <section>
-        <MobileHeader />
+      <section className={styles.menu}>
+        <MobileHeader handleShowSignin={handleShowSignin} />
       </section>
     </nav>
   );
